@@ -24,7 +24,7 @@ source=("https://github.com/herrnst/linux-raspberrypi/archive/refs/tags/v${pkgve
 md5sums=('a08a54df4bc48f46a2e095e7e983a03a'
          '91d1298599aa31b10f1f3954a450b6c3'
          '3b781286c0b97cec552ad6c8a7a019dd'
-         '668f5c3660d1d489960efa2952ca0033'
+         '98838a5fed2cd0c8c85e981efd41685b'
          '41cb5fef62715ead2dd109dbea8413d6'
          '0a5f16bfec6ad982a2f6782724cca8ba'
          '3dc88030a8f2f5a5f97266d99b149f77')
