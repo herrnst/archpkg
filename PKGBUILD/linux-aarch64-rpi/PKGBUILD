@@ -3,7 +3,7 @@
 
 buildarch=8
 
-pkgbase=linux-aarch64
+pkgbase=linux-aarch64-rpi
 _srcname=linux-5.17
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
