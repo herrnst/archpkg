@@ -5,6 +5,7 @@ pkgbase = vkquake
 	url = https://github.com/Novum/vkquake
 	install = vkquake.install
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	makedepends = vulkan-validation-layers
 	depends = flac
