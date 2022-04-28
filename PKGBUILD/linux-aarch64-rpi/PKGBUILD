@@ -4,7 +4,7 @@
 buildarch=8
 
 pkgbase=linux-aarch64-rpi
-pkgver=5.17.4
+pkgver=5.17.5
 pkgrel=1
 _srcdir="linux-raspberrypi-${pkgver}-rpi"
 _kernelname=${pkgbase#linux}
@@ -20,9 +20,9 @@ source=("https://github.com/herrnst/linux-raspberrypi/archive/refs/tags/v${pkgve
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-md5sums=('34fbf8bea3936a88a99d072fe86e914e'
+md5sums=('cdaff6bcf340dea3dacbb6ad1fa0e5c1'
          '3b781286c0b97cec552ad6c8a7a019dd'
-         'c289c21b225dee7bf6629a999e6b9ec8'
+         '68240489da4bd6a41ceb924a1335d65d'
          '41cb5fef62715ead2dd109dbea8413d6'
          '0a5f16bfec6ad982a2f6782724cca8ba'
          '3dc88030a8f2f5a5f97266d99b149f77')
