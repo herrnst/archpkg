@@ -1,0 +1,23 @@
+pkgbase = dosbox-x-sdl2
+	pkgdesc = x86 emulator with builtin DOS, with patches and more features
+	pkgver = 0.84.3
+	pkgrel = 1
+	url = http://dosbox-x.com
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = glu
+	depends = fluidsynth
+	depends = libxkbfile
+	depends = libxrandr
+	depends = ffmpeg4.4
+	depends = sdl2_net
+	depends = libslirp
+	conflicts = dosbox-x-git
+	conflicts = dosbox-x
+	conflicts = dosbox-x-sdl2-git
+	source = https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.84.3.tar.gz
+	sha256sums = 6c807e72ece5de6b038e5ff3a7f1bc2e3bd61901548ed027192f58ff19585881
+
+pkgname = dosbox-x-sdl2
