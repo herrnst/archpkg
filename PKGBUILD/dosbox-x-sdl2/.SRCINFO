@@ -19,6 +19,8 @@ pkgbase = dosbox-x-sdl2
 	conflicts = dosbox-x
 	conflicts = dosbox-x-sdl2-git
 	source = https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.84.3.tar.gz
+	source = 001-mt32_aarch64.patch
 	sha256sums = 6c807e72ece5de6b038e5ff3a7f1bc2e3bd61901548ed027192f58ff19585881
+	sha256sums = 413c25ec5242d14ac6406c1b13ef7097f9b7ae85c069624318ad4252e8d9a7f7
 
 pkgname = dosbox-x-sdl2

@@ -11,11 +11,21 @@ depends=(fluidsynth libxkbfile libxrandr ffmpeg4.4 sdl2_net libslirp)
 makedepends=(glu nasm)
 optdepends=()
 conflicts=('dosbox-x-git' 'dosbox-x' 'dosbox-x-sdl2-git')
-source=(https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v${pkgver}.tar.gz)
-sha256sums=('6c807e72ece5de6b038e5ff3a7f1bc2e3bd61901548ed027192f58ff19585881')
+source=(
+	"https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v${pkgver}.tar.gz"
+	'001-mt32_aarch64.patch'
+)
+sha256sums=(
+	'6c807e72ece5de6b038e5ff3a7f1bc2e3bd61901548ed027192f58ff19585881'
+	'413c25ec5242d14ac6406c1b13ef7097f9b7ae85c069624318ad4252e8d9a7f7'
+)
 
 build() {
   cd "$srcdir/dosbox-x-dosbox-x-v$pkgver"
+
+  # Enable MT32 on aarch64
+  patch -p1 < ../001-mt32_aarch64.patch
+
   # Workaround ffmpeg5, thanks to Grapelli on the bug opened on dosbox-x github page
   sed -i 's|"$LIBS -lavcodec -lavformat -lavutil -lswscale "`pkg-config libavcodec --libs`|`pkg-config libavcodec libavformat libavutil libswscale libswresample --libs`"$LIBS"|' configure.ac
   ./autogen.sh

@@ -1,0 +1,12 @@
+diff -ruN dosbox-x-dosbox-x-v0.84.3.orig/configure.ac dosbox-x-dosbox-x-v0.84.3/configure.ac
+--- dosbox-x-dosbox-x-v0.84.3.orig/configure.ac	2022-09-02 00:55:29.000000000 +0200
++++ dosbox-x-dosbox-x-v0.84.3/configure.ac	2022-09-22 15:13:35.417226377 +0200
+@@ -756,7 +756,7 @@
+ # test
+ if test x$enable_mt32 = xyes ; then 
+   case "$host_cpu" in
+-    x86_64 | amd64)
++    x86_64 | amd64 | aarch64)
+       AC_MSG_RESULT(yes)
+       AC_DEFINE(C_MT32,1)
+       ;;
