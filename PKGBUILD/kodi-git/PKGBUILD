@@ -112,11 +112,6 @@ b2sums=('SKIP'
         'e1564b3cfa020f76437b0a35048a42ff2cd98b5ce285e63f228e158885182e5cecda13407cdf30c03fa39b47cbc579ff0065f6c2682d04b806e8f9ea8d36fc4e'
         '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0')
 
-pkgver() {
-  cd "$_gitname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
   mkdir "$srcdir/kodi-build"
