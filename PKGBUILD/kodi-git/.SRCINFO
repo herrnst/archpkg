@@ -168,3 +168,9 @@ pkgname = kodi-git-dev
 	depends = kodi-git
 	provides = kodi-dev=r20221114.ed1f1e97470
 	conflicts = kodi-dev
+
+pkgname = kodi-git-ffmpeg-dev
+	pkgdesc = Kodi FFmpeg dev files (master branch)
+	depends = kodi-git
+	provides = kodi-ffmpeg-dev=r20221114.ed1f1e97470
+	conflicts = kodi-ffmpeg-dev
