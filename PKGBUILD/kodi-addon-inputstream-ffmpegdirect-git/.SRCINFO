@@ -1,0 +1,29 @@
+pkgbase = kodi-addon-inputstream-ffmpegdirect-git
+	pkgdesc = FFmpegdirect Inputstream addon for Kodi
+	pkgver = 20.6.0+git20221111.4a88048
+	pkgrel = 1
+	url = https://github.com/herrnst/inputstream.ffmpegdirect
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = GPL2
+	makedepends = kodi-git-dev
+	makedepends = kodi-git-ffmpeg-dev
+	makedepends = pkgconf
+	makedepends = git
+	makedepends = cmake
+	makedepends = yasm
+	makedepends = zlib
+	makedepends = bzip2
+	depends = kodi-git
+	depends = zlib
+	depends = bzip2
+	depends = libva
+	provides = kodi-addon-inputstream-ffmpegdirect
+	conflicts = kodi-addon-inputstream-ffmpegdirect
+	source = kodi-addon-inputstream-ffmpegdirect-git::git+https://github.com/herrnst/inputstream.ffmpegdirect.git#commit=4a8804870a0f4e8eac8c32883d4aef232ef36964
+	sha256sums = SKIP
+
+pkgname = kodi-addon-inputstream-ffmpegdirect-git

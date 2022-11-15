@@ -1,0 +1,36 @@
+# Maintainer: Daniel Scheller <d.scheller@gmx.net>
+
+_version=20.6.0
+_commitdate=20221111
+_commitid=4a8804870a0f4e8eac8c32883d4aef232ef36964
+
+pkgname=kodi-addon-inputstream-ffmpegdirect-git
+pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
+pkgrel=1
+pkgdesc="FFmpegdirect Inputstream addon for Kodi"
+arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
+url="https://github.com/herrnst/inputstream.ffmpegdirect"
+license=('GPL2')
+depends=('kodi-git' 'zlib' 'bzip2' 'libva')
+makedepends=('kodi-git-dev' 'kodi-git-ffmpeg-dev' 'pkgconf' 'git' 'cmake' 'yasm' 'zlib' 'bzip2')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+# kodi 20
+source=("$pkgname::git+https://github.com/herrnst/inputstream.ffmpegdirect.git#commit=$_commitid")
+sha256sums=('SKIP')
+
+build() {
+  mkdir -p "$srcdir/$pkgname/$pkgname-build"
+  cd "$srcdir/$pkgname/$pkgname-build"
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+           -DCMAKE_BUILD_TYPE=Release \
+           -DBUILD_SHARED_LIBS=1 \
+           -DCMAKE_PREFIX_PATH=/usr/lib/kodi/ffmpeg \
+           -DUSE_LTO=1
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname/$pkgname-build"
+  make DESTDIR="$pkgdir/" install
+}
