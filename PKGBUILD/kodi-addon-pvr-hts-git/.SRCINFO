@@ -1,0 +1,21 @@
+pkgbase = kodi-addon-pvr-hts-git
+	pkgdesc = HTS/TVHeadend PVR addon for Kodi
+	pkgver = 20.6.0+git20221007.c8e933b
+	pkgrel = 1
+	url = https://github.com/kodi-pvr/pvr.hts
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = GPL2
+	makedepends = kodi-git-dev
+	makedepends = git
+	makedepends = cmake
+	depends = kodi-git
+	provides = kodi-addon-pvr-hts
+	conflicts = kodi-addon-pvr-hts
+	source = kodi-addon-pvr-hts-git::git+https://github.com/kodi-pvr/pvr.hts.git#commit=c8e933b4ee26dc905caf5f520eb32289210b34cb
+	b2sums = SKIP
+
+pkgname = kodi-addon-pvr-hts-git
