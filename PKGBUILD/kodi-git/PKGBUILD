@@ -20,9 +20,13 @@
 # set this to anything to build with clang rather than with gcc
 _clangbuild=
 
+_version=19.90.801
+_commitdate=20221115
+_commitid=e393b3e0d4cbdb16bc337d8bac9e3f467142c892
+
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpeg-dev")
-pkgver=r20221114.ed1f1e97470
+pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -44,7 +48,7 @@ makedepends=(
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
 _gitname='xbmc'
-_codename=patchedmaster
+_codename=patched/Nexus
 _sse_workaround=1
 
 # Found on their respective github release pages. One can check them against
@@ -72,7 +76,7 @@ _libudfread_version="1.1.2"
 _rapidjson_version="1.1.0"
 options=(!lto)
 source=(
-  "git+https://github.com/herrnst/xbmc.git#branch=$_codename"
+  "git+https://github.com/herrnst/xbmc.git#commit=$_commitid"
   "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_version.tar.gz"
   "libdvdnav-$_libdvdnav_version.tar.gz::https://github.com/xbmc/libdvdnav/archive/$_libdvdnav_version.tar.gz"
   "libdvdread-$_libdvdread_version.tar.gz::https://github.com/xbmc/libdvdread/archive/$_libdvdread_version.tar.gz"
