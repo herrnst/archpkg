@@ -289,17 +289,31 @@ package_kodi-git-ffmpeg-dev() {
   provides=("kodi-ffmpeg-dev=${pkgver}")
   conflicts=('kodi-ffmpeg-dev')
 
+  _files_a=('libavcodec.a' 'libavdevice.a' 'libavfilter.a' 'libavformat.a' 'libavutil.a' 'libpostproc.a' 'libswresample.a' 'libswscale.a' 'libdav1d.a')
+  _files_pc=('libavcodec.pc' 'libavdevice.pc' 'libavfilter.pc' 'libavformat.pc' 'libavutil.pc' 'libpostproc.pc' 'libswresample.pc' 'libswscale.pc' 'dav1d.pc')
+
   mkdir -p $pkgdir/usr/lib/kodi/ffmpeg/lib/pkgconfig
   mkdir -p $pkgdir/usr/include/kodi
-  cp -r kodi-build/build/lib/lib*.a $pkgdir/usr/lib/kodi/ffmpeg/lib && \
-    chmod 644 $pkgdir/usr/lib/kodi/ffmpeg/lib/*
-  cp kodi-build/build/lib/pkgconfig/*.pc $pkgdir/usr/lib/kodi/ffmpeg/lib/pkgconfig && \
-    chmod 644 $pkgdir/usr/lib/kodi/ffmpeg/lib/pkgconfig/* && \
-    sed -i \
-      -e 's|^prefix=.*$|prefix=/usr/lib/kodi/ffmpeg|' \
-      -e 's|^libdir=.*$|libdir=/usr/lib/kodi/ffmpeg/lib|' \
-      -e 's| -L/.* -ldav1d| -L/usr/lib/kodi/ffmpeg/lib -ldav1d|' \
-      -e 's|includedir=.*$|includedir=/usr/include/kodi|' $pkgdir/usr/lib/kodi/ffmpeg/lib/pkgconfig/*.pc
+
+  # copy libs
+  for _file in ${_files_a[@]}; do
+    cp kodi-build/build/lib/$_file $pkgdir/usr/lib/kodi/ffmpeg/lib && \
+      chmod 644 $pkgdir/usr/lib/kodi/ffmpeg/lib/$_file
+  done
+
+  # copy pkgconfigs
+  for _file in ${_files_pc[@]}; do
+    cp kodi-build/build/lib/pkgconfig/$_file $pkgdir/usr/lib/kodi/ffmpeg/lib/pkgconfig && \
+      chmod 644 $pkgdir/usr/lib/kodi/ffmpeg/lib/pkgconfig/$_file
+  done
+
+  sed -i \
+    -e 's|^prefix=.*$|prefix=/usr/lib/kodi/ffmpeg|' \
+    -e 's|^libdir=.*$|libdir=/usr/lib/kodi/ffmpeg/lib|' \
+    -e 's| -L/.* -ldav1d| -L/usr/lib/kodi/ffmpeg/lib -ldav1d|' \
+    -e 's|includedir=.*$|includedir=/usr/include/kodi|' $pkgdir/usr/lib/kodi/ffmpeg/lib/pkgconfig/*.pc
+
+  # only ffmpeg and dav1d install headers, so copy them by wildcard
   cp -r kodi-build/build/include/lib* $pkgdir/usr/include/kodi
   cp -r kodi-build/build/include/dav1d* $pkgdir/usr/include/kodi
 }
