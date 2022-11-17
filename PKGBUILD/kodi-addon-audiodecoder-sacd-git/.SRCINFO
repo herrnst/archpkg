@@ -1,0 +1,23 @@
+pkgbase = kodi-addon-audiodecoder-sacd-git
+	pkgdesc = SACD audiodecoder addon for Kodi
+	pkgver = 20.2.0+git20220806.82d0d19
+	pkgrel = 1
+	url = https://github.com/xbmc/audiodecoder.sacd
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = GPL2
+	makedepends = kodi-git-dev
+	makedepends = git
+	makedepends = cmake
+	makedepends = wavpack
+	depends = kodi-git
+	depends = wavpack
+	provides = kodi-addon-audiodecoder-sacd
+	conflicts = kodi-addon-audiodecoder-sacd
+	source = kodi-addon-audiodecoder-sacd-git::git+https://github.com/xbmc/audiodecoder.sacd.git#commit=82d0d1985f6ee46c7eaf736327135ce513f6f9a6
+	b2sums = SKIP
+
+pkgname = kodi-addon-audiodecoder-sacd-git
