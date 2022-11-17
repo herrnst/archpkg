@@ -40,6 +40,7 @@ makedepends=(
   'python-pycryptodomex' 'python-pillow' 'python-pybluez'
   'python-simplejson' 'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
   'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest' 'graphviz'
+  'rapidjson' 'flatbuffers' 'fmt' 'spdlog'
   # wayland
   'wayland-protocols' 'waylandpp' 'libxkbcommon'
   # gbm
@@ -60,20 +61,14 @@ _sse_workaround=1
 # https://github.com/xbmc/libdvdnav/tags
 # https://github.com/xbmc/libdvdread/tags
 #
-# fmt and crossguid can be found http://mirrors.kodi.tv/build-deps/sources/
-#
 _libdvdcss_version="1.4.3-Next-Nexus-Alpha2-2"
 _libdvdnav_version="6.1.1-Next-Nexus-Alpha2-2"
 _libdvdread_version="6.1.3-Next-Nexus-Alpha2-2"
 _ffmpeg_version="5.1.2-Nexus-Alpha3"
 _dav1d_version="1.0.0"
-_fmt_version="9.1.0"
-_spdlog_version="1.10.0"
 _crossguid_version="ca1bf4b810e2d188d04cb6286f957008ee1b7681"
 _fstrcmp_version="0.7.D001"
-_flatbuffers_version="2.0.0"
 _libudfread_version="1.1.2"
-_rapidjson_version="1.1.0"
 options=(!lto)
 source=(
   "git+https://github.com/herrnst/xbmc.git#commit=$_commitid"
@@ -82,13 +77,9 @@ source=(
   "libdvdread-$_libdvdread_version.tar.gz::https://github.com/xbmc/libdvdread/archive/$_libdvdread_version.tar.gz"
   "ffmpeg-$_ffmpeg_version.tar.gz::https://github.com/xbmc/FFmpeg/archive/$_ffmpeg_version.tar.gz"
   "https://code.videolan.org/videolan/dav1d/-/archive/$_dav1d_version/dav1d-$_dav1d_version.tar.bz2"
-  "http://mirrors.kodi.tv/build-deps/sources/fmt-$_fmt_version.tar.gz"
-  "http://mirrors.kodi.tv/build-deps/sources/spdlog-$_spdlog_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/crossguid-$_crossguid_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
-  "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
-  "http://mirrors.kodi.tv/build-deps/sources/rapidjson-$_rapidjson_version.tar.gz"
   'cheat-sse-build.patch'
 )
 noextract=(
@@ -96,13 +87,9 @@ noextract=(
   "libdvdnav-$_libdvdnav_version.tar.gz"
   "libdvdread-$_libdvdread_version.tar.gz"
   "ffmpeg-$_ffmpeg_version.tar.gz"
-  "fmt-$_fmt_version.tar.gz"
-  "spdlog-$_spdlog_version.tar.gz"
   "crossguid-$_crossguid_version.tar.gz"
   "fstrcmp-$_fstrcmp_version.tar.gz"
-  "flatbuffers-$_flatbuffers_version.tar.gz"
   "libudfread-$_libudfread_version.tar.gz"
-  "rapidjson-$_rapidjson_version.tar.gz"
 )
 b2sums=('SKIP'
         '2f503d3ab767094958f7ec10b4ad11ffd02665deee571c8f3c739bef5fc7e2ff84babc5a3fdee638dc095f896b72fe3ce65e6b688674cb5f7b7b77190992688c'
@@ -110,13 +97,9 @@ b2sums=('SKIP'
         'c94feb5a03a12efa5b7767965118d2500a088299ea36f3b82e46d157e45893e6b04503cb50f179ca681bac914457607fab26acfa6e304752b355c407578572d1'
         'fe35ef6a9aa2d60a2b34432ae8063850003d550208f223ea43af8ebcaa73e6993639e8cfe8a38676bac79e6b1816bd791b75b66ef58ff4d740bc9a5e0e7f9b78'
 	'79355eeceea37df81e30be49dfea3dee9747fbbb82c0a08be3bbda525881112a8eb847afe3c3ccd0447fd6ee67ae540c5120ea00d4f891ac422850c611850c97'
-        'ff1daa43140615b63aeb1ecd0aa1c32d24decfd5006805080293ef3db04d544c0445a30e8da0d985a6f5a25ad48ce4f6ae61e52da5ea4a4d3b031c212da38b18'
-        'e40afa9fd1dd791e1f703392f0f54fc798ed70537a9f1ee9c8598dd449f4cd4dd03bc4ce95e416cbbe224711a17e70708a106f0432384542d6316cf232cf8757'
         '0f78a8ab5a420297f666b3b8156d499a9141ec25c049d4d2bb2ba594dc585abe211a149b83c605cce4f5530207231a065d5f3a87a0c969781de8c6381afa2527'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
-        'ccd827a43da39cf831727b439beed0cea216cdf50dbfe70954854bbe388b2c47ed4e78cc87e3fc0d5568034b13baa2ea96480914cc8129747bccbf8ea928847c'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
-        'e1564b3cfa020f76437b0a35048a42ff2cd98b5ce285e63f228e158885182e5cecda13407cdf30c03fa39b47cbc579ff0065f6c2682d04b806e8f9ea8d36fc4e'
         '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0')
 
 prepare() {
@@ -150,13 +133,10 @@ build() {
     -DENABLE_EVENTCLIENTS=ON
     -DENABLE_INTERNAL_DAV1D=ON
     -DENABLE_INTERNAL_FFMPEG=ON
-    -DENABLE_INTERNAL_FMT=ON
-    -DENABLE_INTERNAL_SPDLOG=ON
     -DENABLE_INTERNAL_CROSSGUID=ON
     -DENABLE_INTERNAL_FSTRCMP=ON
-    -DENABLE_INTERNAL_FLATBUFFERS=ON
     -DENABLE_INTERNAL_UDFREAD=ON
-    -DENABLE_INTERNAL_RAPIDJSON=ON
+    -DENABLE_INTERNAL_RapidJSON=OFF
     -DENABLE_MYSQLCLIENT=ON
     -DENABLE_VAAPI=ON
     -DENABLE_VDPAU=ON
@@ -165,13 +145,9 @@ build() {
     -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz"
     -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.gz"
     -DDAV1D_URL="$srcdir/dav1d-$_dav1d_version.tar.bz2"
-    -DFMT_URL="$srcdir/fmt-$_fmt_version.tar.gz"
-    -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz"
     -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz"
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz"
-    -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz"
     -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.gz"
-    -DRAPIDJSON_URL="$srcdir/rapidjson-$_rapidjson_version.tar.gz"
     -DAPP_RENDER_SYSTEM=gl
     -DCORE_PLATFORM_NAME="x11 wayland gbm"
   )
@@ -192,6 +168,7 @@ package_kodi-git() {
     'mesa' 'python-pillow' 'python-pycryptodomex' 'python-simplejson'
     'shairplay' 'smbclient' 'sqlite' 'taglib' 'tinyxml'
     'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
+    'fmt' 'spdlog'
   )
   [[ -n "$_clangbuild" ]] && depends+=('glu')
 
