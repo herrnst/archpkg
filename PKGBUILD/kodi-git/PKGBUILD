@@ -21,8 +21,8 @@
 _clangbuild=
 
 _version=19.90.801
-_commitdate=20221115
-_commitid=e393b3e0d4cbdb16bc337d8bac9e3f467142c892
+_commitdate=20221117
+_commitid=57838b0511f74804e6e0799e306c2f2b0ae96a81
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpeg-dev")
