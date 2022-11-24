@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-inputstream-adaptive-git
 	pkgdesc = Inputstream Adaptive addon for Kodi
-	pkgver = 20.3.1+git20221102.6a02e74
+	pkgver = 20.3.1+git20221116.9483313
 	pkgrel = 1
 	url = https://github.com/xbmc/inputstream.adaptive
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = kodi-addon-inputstream-adaptive-git
 	depends = expat
 	provides = kodi-addon-inputstream-adaptive
 	conflicts = kodi-addon-inputstream-adaptive
-	source = kodi-addon-inputstream-adaptive-git::git+https://github.com/xbmc/inputstream.adaptive.git#commit=6a02e74d0845ebdc5b913d9fa95c9d2ced279ce2
+	source = kodi-addon-inputstream-adaptive-git::git+https://github.com/xbmc/inputstream.adaptive.git#commit=94833130ecab798cd2a58315a7e31d91c5d27d8d
 	source = bento4-1.6.0-639-4-Nexus.tar.gz::https://github.com/xbmc/Bento4/archive/refs/tags/1.6.0-639-4-Nexus.tar.gz
 	b2sums = SKIP
 	b2sums = 2b8cbc98f9bbd4cc3ac8bea3b411040bbe2c0520ebdeb0387a07703f1819fa9b5ef2e26f5afb1ab4e2413a881290cebb6468b3ddf3e0ed6d3aaf46c86b14abbf
