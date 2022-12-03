@@ -4,7 +4,7 @@
 buildarch=8
 
 pkgbase=linux-aarch64-rpi
-pkgver=6.0.10
+pkgver=6.0.11
 pkgrel=1
 _srcdir="linux-raspberrypi-${pkgver}-rpi"
 _kernelname=${pkgbase#linux}
@@ -19,15 +19,13 @@ source=("https://github.com/herrnst/linux-raspberrypi/archive/refs/tags/v${pkgve
         'config'
         'linux.preset'
         '60-linux.hook'
-        '90-linux.hook'
-	'Kconfig-depends.patch')
-md5sums=('cce8664faba261cd0e527c4e44984175'
+        '90-linux.hook')
+md5sums=('b126de4c3c52483b7c2c0f01f1679aed'
          '3b781286c0b97cec552ad6c8a7a019dd'
-         'dc504a00fcbdf35d028d4b380ce754f9'
+         'bf4461b0e6e912af49b0dedc22f7fce0'
          '41cb5fef62715ead2dd109dbea8413d6'
          '0a5f16bfec6ad982a2f6782724cca8ba'
-         '3dc88030a8f2f5a5f97266d99b149f77'
-         '8dddd0b22bfb465211df6189c70d66ea')
+         '3dc88030a8f2f5a5f97266d99b149f77')
 
 prepare() {
   cd ${_srcdir}
@@ -39,9 +37,6 @@ prepare() {
 
   # ALARM patches
   git apply ../0001-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
-
-  # Kconfig depends/recursion fix
-  git apply ../Kconfig-depends.patch
 
   cat "${srcdir}/config" > ./.config
 }
