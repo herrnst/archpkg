@@ -20,9 +20,9 @@
 # set this to anything to build with clang rather than with gcc
 _clangbuild=
 
-_version=19.90.901
-_commitdate=20221210
-_commitid=c5c1f9e8781354ba97886a91a29559718eb9d8ac
+_version=19.90.905
+_commitdate=20221219
+_commitid=827e4b672b7a76ae2fba2228007aa5f65a458383
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpeg-dev")
@@ -49,7 +49,7 @@ makedepends=(
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
 _gitname='xbmc'
-_codename=patched/Nexus-20.0rc1
+_codename=patched/Nexus-20.0rc2
 _sse_workaround=1
 
 # Found on their respective github release pages. One can check them against
@@ -81,6 +81,7 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
   'cheat-sse-build.patch'
+  'egl.patch'
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -100,7 +101,8 @@ b2sums=('SKIP'
         '0f78a8ab5a420297f666b3b8156d499a9141ec25c049d4d2bb2ba594dc585abe211a149b83c605cce4f5530207231a065d5f3a87a0c969781de8c6381afa2527'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
-        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0')
+        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0'
+        '66da8110bb1ac340d5f5c7fa3d207cfe05d5b96cd0b124958e851e8a6313b43f8b5728948036074ce625cf62d32126fdfaf77d754960fa1b4ce767fefd0c57bb')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
@@ -109,6 +111,8 @@ prepare() {
   cd "$_gitname"
 
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
+
+  patch -p1 -i "$srcdir/egl.patch"
 
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
