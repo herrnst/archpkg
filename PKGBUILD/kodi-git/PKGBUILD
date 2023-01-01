@@ -21,8 +21,8 @@
 _clangbuild=
 
 _version=19.90.905
-_commitdate=20221221
-_commitid=a8f2f98647a87e79ad102995431d4972baed47fa
+_commitdate=20230101
+_commitid=6d35a19d3621831748605be845f5355d21b6d82f
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpeg-dev")
@@ -49,7 +49,7 @@ makedepends=(
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
 _gitname='xbmc'
-_codename=patched/Nexus-20.0rc2
+_codename=patched/Nexus
 _sse_workaround=1
 
 # Found on their respective github release pages. One can check them against
