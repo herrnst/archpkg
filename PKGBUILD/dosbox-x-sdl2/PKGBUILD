@@ -1,41 +1,40 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 
+_tagver=2022.12.26
 pkgname=dosbox-x-sdl2
-pkgver=0.84.3
+pkgver=0.84.3+$_tagver
 pkgrel=1
 pkgdesc="x86 emulator with builtin DOS, with patches and more features"
 arch=(i686 x86_64 aarch64)
 url="http://dosbox-x.com"
 license=(GPL)
-depends=(fluidsynth libxkbfile libxrandr ffmpeg4.4 sdl2_net libslirp)
+depends=(fluidsynth libxkbfile libxrandr ffmpeg sdl2_net libslirp)
 makedepends=(glu nasm)
 optdepends=()
 conflicts=('dosbox-x-git' 'dosbox-x' 'dosbox-x-sdl2-git')
 source=(
-	"https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v${pkgver}.tar.gz"
+	"https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v$_tagver.tar.gz"
 	'001-mt32_aarch64.patch'
 )
 sha256sums=(
-	'6c807e72ece5de6b038e5ff3a7f1bc2e3bd61901548ed027192f58ff19585881'
+	'39fb1ed19ea31e11883aa57655493b3100ac6b328ef59c799b840b9bfdfacb7b'
 	'413c25ec5242d14ac6406c1b13ef7097f9b7ae85c069624318ad4252e8d9a7f7'
 )
 
 build() {
-  cd "$srcdir/dosbox-x-dosbox-x-v$pkgver"
+  cd "$srcdir/dosbox-x-dosbox-x-v$_tagver"
 
   # Enable MT32 on aarch64
   patch -p1 < ../001-mt32_aarch64.patch
 
-  # Workaround ffmpeg5, thanks to Grapelli on the bug opened on dosbox-x github page
-  sed -i 's|"$LIBS -lavcodec -lavformat -lavutil -lswscale "`pkg-config libavcodec --libs`|`pkg-config libavcodec libavformat libavutil libswscale libswresample --libs`"$LIBS"|' configure.ac
   ./autogen.sh
   export LDFLAGS="${LDFLAGS//,--as-needed}"
   chmod +x configure
-  PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" ./configure --enable-core-inline --disable-debug --enable-avcodec --prefix=/usr --enable-sdl2
+  ./configure --enable-core-inline --disable-debug --enable-avcodec --prefix=/usr --enable-sdl2
   make -j$(nproc)
 }
 
 package() {
-  cd "$srcdir/dosbox-x-dosbox-x-v$pkgver"
+  cd "$srcdir/dosbox-x-dosbox-x-v$_tagver"
   make DESTDIR="$pkgdir" install
 }
