@@ -21,8 +21,8 @@
 _clangbuild=
 
 _version=19.90.905
-_commitdate=20230101
-_commitid=6d35a19d3621831748605be845f5355d21b6d82f
+_commitdate=20230109
+_commitid=d798d9df0ed9a11787d74141bbd2ed8087c2c950
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpeg-dev")
@@ -195,6 +195,9 @@ package_kodi-git() {
     -DCMAKE_INSTALL_COMPONENT="$_cmp" \
      -P cmake_install.cmake
   done
+
+  # avoid error <general>: GetDirectory - Error getting /usr/lib/kodi/addons
+  mkdir -p "$pkgdir"/usr/lib/kodi/addons
 }
 
 # kodi-eventclients
