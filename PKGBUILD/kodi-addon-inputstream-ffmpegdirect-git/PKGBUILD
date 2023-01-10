@@ -1,8 +1,8 @@
 # Maintainer: Daniel Scheller <d.scheller@gmx.net>
 
 _version=20.6.0
-_commitdate=20221111
-_commitid=4a8804870a0f4e8eac8c32883d4aef232ef36964
+_commitdate=20230109
+_commitid=f8900687de6a016672335973effa1e4a85ed33db
 
 pkgname=kodi-addon-inputstream-ffmpegdirect-git
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
