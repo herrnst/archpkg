@@ -20,9 +20,9 @@
 # set this to anything to build with clang rather than with gcc
 _clangbuild=
 
-_version=19.90.905
-_commitdate=20230109
-_commitid=d798d9df0ed9a11787d74141bbd2ed8087c2c950
+_version=20.0
+_commitdate=20230115
+_commitid=44a99f36b23d8f79089e6968107de084401f84d5
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpeg-dev")
@@ -49,7 +49,7 @@ makedepends=(
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
 _gitname='xbmc'
-_codename=patched/Nexus
+_codename=patched/Nexus-20.0
 _sse_workaround=1
 
 # Found on their respective github release pages. One can check them against
