@@ -1,0 +1,43 @@
+# Maintainer: Daniel Scheller <d.scheller@gmx.net>
+
+_version=20.3.2
+_commitdate=20230204
+_commitid=f279ebc64605aa0a9c65b391ba56be217e8ef6cd
+_bento4_version=1.6.0-639-5-Nexus
+
+pkgname=kodi-addon-inputstream-adaptive-nexus
+pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
+pkgrel=1
+pkgdesc="Inputstream Adaptive addon for Kodi"
+arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
+url="https://github.com/xbmc/inputstream.adaptive"
+license=('GPL2')
+depends=('kodi-nexus' 'expat')
+makedepends=('kodi-nexus-dev' 'git' 'cmake' 'gtest')
+provides=("${pkgname%-nexus}")
+conflicts=("${pkgname%-nexus}" "${pkgname%-nexus}-git")
+# kodi 20
+source=("$pkgname::git+https://github.com/xbmc/inputstream.adaptive.git#commit=$_commitid"
+	"bento4-$_bento4_version.tar.gz::https://github.com/xbmc/Bento4/archive/refs/tags/$_bento4_version.tar.gz"
+)
+b2sums=(
+	'SKIP'
+	'147207eb528fac4ee6455df29ac2f4ffeac2b8b503e5a62425b9fbe19f9e5ec2962c3858ac964ef571f892fe0a4b1569960e5ff2fc89d769da279bee70a2c7de'
+)
+
+build() {
+  mkdir -p "$srcdir/$pkgname/$pkgname-build"
+  cd "$srcdir/$pkgname/$pkgname-build"
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+           -DCMAKE_BUILD_TYPE=Release \
+           -DBUILD_SHARED_LIBS=1 \
+           -DENABLE_INTERNAL_BENTO4=ON \
+           -DBENTO4_URL="$srcdir/bento4-$_bento4_version.tar.gz" \
+           -DUSE_LTO=1
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname/$pkgname-build"
+  make DESTDIR="$pkgdir/" install
+}
