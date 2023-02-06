@@ -1,0 +1,35 @@
+# Maintainer: Daniel Scheller <d.scheller@gmx.net>
+
+_version=20.6.0
+_commitdate=20221007
+_commitid=c8e933b4ee26dc905caf5f520eb32289210b34cb
+
+pkgname=kodi-addon-pvr-hts-nexus
+pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
+pkgrel=1
+pkgdesc="HTS/TVHeadend PVR addon for Kodi"
+arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
+url="https://github.com/kodi-pvr/pvr.hts"
+license=('GPL2')
+depends=('kodi-nexus')
+makedepends=('kodi-nexus-dev' 'git' 'cmake')
+provides=("${pkgname%-nexus}")
+conflicts=("${pkgname%-nexus}" "${pkgname%-nexus}-git")
+# kodi 20
+source=("$pkgname::git+https://github.com/kodi-pvr/pvr.hts.git#commit=$_commitid")
+b2sums=('SKIP')
+
+build() {
+  mkdir -p "$srcdir/$pkgname/$pkgname-build"
+  cd "$srcdir/$pkgname/$pkgname-build"
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+           -DCMAKE_BUILD_TYPE=Release \
+           -DBUILD_SHARED_LIBS=1 \
+           -DUSE_LTO=1
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname/$pkgname-build"
+  make DESTDIR="$pkgdir/" install
+}
