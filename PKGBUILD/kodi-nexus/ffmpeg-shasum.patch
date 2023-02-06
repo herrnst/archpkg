@@ -1,0 +1,11 @@
+diff --git a/tools/depends/target/ffmpeg/FFMPEG-VERSION b/tools/depends/target/ffmpeg/FFMPEG-VERSION
+index 6ea8cfb9ad..cf51d8566b 100644
+--- a/tools/depends/target/ffmpeg/FFMPEG-VERSION
++++ b/tools/depends/target/ffmpeg/FFMPEG-VERSION
+@@ -1,5 +1,5 @@
+ LIBNAME=ffmpeg
+ VERSION=5.1.2
+ ARCHIVE=$(LIBNAME)-$(VERSION).tar.gz
+-SHA512=18dd351d9a2877d2518f7dc1c8a8a7d1afb199f5129876042532adb58ab29b734af268e02b8eb37d111dbfb0f5f51808109e634ab345164b3b9e970ad39de6c8
++SHA512=1b90c38b13149f2de7618ad419adc277afd5e65bbf52b849a7245aec0f92f73189c8547599dba8408b8828a767c1120f132727b57cd6231cd8b81de2471a4b8b
+ 
