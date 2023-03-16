@@ -20,9 +20,9 @@
 # set this to anything to build with clang rather than with gcc
 _clangbuild=
 
-_version=20.0
-_commitdate=20230204
-_commitid=a689e512e8e4a8396bea7afb7c37b5506c9520cc
+_version=20.1
+_commitdate=20230316
+_commitid=98aa4ecf9a8840037a1884c4f3acd0fde2ed6ce5
 
 pkgbase=kodi-nexus
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpeg-dev")
@@ -40,7 +40,7 @@ makedepends=(
   'python-pycryptodomex' 'python-pillow' 'python-pybluez'
   'python-simplejson' 'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
   'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest' 'graphviz'
-  'rapidjson' 'flatbuffers' 'fmt' 'spdlog'
+  'rapidjson' 'flatbuffers' 'fmt' 'spdlog' 'pcre'
   # wayland
   'wayland-protocols' 'waylandpp' 'libxkbcommon'
   # gbm
@@ -49,7 +49,7 @@ makedepends=(
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
 _gitname='xbmc'
-_codename=patched/Nexus-20.0
+_codename=patched/Nexus-20.1
 _sse_workaround=1
 
 # Found on their respective github release pages. One can check them against
@@ -174,7 +174,7 @@ package_kodi-nexus() {
     'mesa' 'python-pillow' 'python-pycryptodomex' 'python-simplejson'
     'shairplay' 'smbclient' 'sqlite' 'taglib' 'tinyxml'
     'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
-    'fmt' 'spdlog'
+    'fmt' 'spdlog' 'pcre'
   )
   [[ -n "$_clangbuild" ]] && depends+=('glu')
 
