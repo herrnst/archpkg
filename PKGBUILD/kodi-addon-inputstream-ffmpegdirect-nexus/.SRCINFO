@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-inputstream-ffmpegdirect-nexus
 	pkgdesc = FFmpegdirect Inputstream addon for Kodi
-	pkgver = 20.6.0+git20230108.f890068
+	pkgver = 20.6.0+git20230411.5bf6ad8
 	pkgrel = 1
 	url = https://github.com/herrnst/inputstream.ffmpegdirect
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = kodi-addon-inputstream-ffmpegdirect-nexus
 	provides = kodi-addon-inputstream-ffmpegdirect
 	conflicts = kodi-addon-inputstream-ffmpegdirect
 	conflicts = kodi-addon-inputstream-ffmpegdirect-git
-	source = kodi-addon-inputstream-ffmpegdirect-nexus::git+https://github.com/herrnst/inputstream.ffmpegdirect.git#commit=f8900687de6a016672335973effa1e4a85ed33db
+	source = kodi-addon-inputstream-ffmpegdirect-nexus::git+https://github.com/herrnst/inputstream.ffmpegdirect.git#commit=5bf6ad81e8acf3a38c69352e49e1147675ae04e9
 	sha256sums = SKIP
 
 pkgname = kodi-addon-inputstream-ffmpegdirect-nexus
