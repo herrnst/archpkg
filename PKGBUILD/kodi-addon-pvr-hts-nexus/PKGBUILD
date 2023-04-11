@@ -1,8 +1,8 @@
 # Maintainer: Daniel Scheller <d.scheller@gmx.net>
 
-_version=20.6.0
-_commitdate=20221007
-_commitid=c8e933b4ee26dc905caf5f520eb32289210b34cb
+_version=20.6.2
+_commitdate=20230319
+_commitid=b6b936863cf1c0025a51119aa4eaefd512623ec6
 
 pkgname=kodi-addon-pvr-hts-nexus
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
