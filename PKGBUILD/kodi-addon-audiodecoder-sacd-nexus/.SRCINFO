@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-audiodecoder-sacd-nexus
 	pkgdesc = SACD audiodecoder addon for Kodi
-	pkgver = 20.2.0+git20220806.82d0d19
+	pkgver = 20.3.0+git20230217.1309c66
 	pkgrel = 1
 	url = https://github.com/xbmc/audiodecoder.sacd
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = kodi-addon-audiodecoder-sacd-nexus
 	provides = kodi-addon-audiodecoder-sacd
 	conflicts = kodi-addon-audiodecoder-sacd
 	conflicts = kodi-addon-audiodecoder-sacd-git
-	source = kodi-addon-audiodecoder-sacd-nexus::git+https://github.com/xbmc/audiodecoder.sacd.git#commit=82d0d1985f6ee46c7eaf736327135ce513f6f9a6
+	source = kodi-addon-audiodecoder-sacd-nexus::git+https://github.com/xbmc/audiodecoder.sacd.git#commit=1309c663394d4ee6ec84ea71f1b86935159c8c51
 	b2sums = SKIP
 
 pkgname = kodi-addon-audiodecoder-sacd-nexus

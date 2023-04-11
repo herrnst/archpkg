@@ -1,8 +1,8 @@
 # Maintainer: Daniel Scheller <d.scheller@gmx.net>
 
-_version=20.2.0
-_commitdate=20220806
-_commitid=82d0d1985f6ee46c7eaf736327135ce513f6f9a6
+_version=20.3.0
+_commitdate=20230217
+_commitid=1309c663394d4ee6ec84ea71f1b86935159c8c51
 
 pkgname=kodi-addon-audiodecoder-sacd-nexus
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
