@@ -1,9 +1,9 @@
 # Maintainer: Daniel Scheller <d.scheller@gmx.net>
 
-_version=20.3.2
-_commitdate=20230204
-_commitid=f279ebc64605aa0a9c65b391ba56be217e8ef6cd
-_bento4_version=1.6.0-639-5-Nexus
+_version=20.3.6
+_commitdate=20230407
+_commitid=89da8a91ba8daa1dc99311d82addb255974ea16b
+_bento4_version=1.6.0-639-6-Nexus
 
 pkgname=kodi-addon-inputstream-adaptive-nexus
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
@@ -22,7 +22,7 @@ source=("$pkgname::git+https://github.com/xbmc/inputstream.adaptive.git#commit=$
 )
 b2sums=(
 	'SKIP'
-	'147207eb528fac4ee6455df29ac2f4ffeac2b8b503e5a62425b9fbe19f9e5ec2962c3858ac964ef571f892fe0a4b1569960e5ff2fc89d769da279bee70a2c7de'
+	'130e5391abc3f85377a2ef2bfa992769ec188172743e6406fc96b9e561e82e0da57c77585f2cbf3e176228267d4c53920970dd1cbdc784f954130c92f77eaf61'
 )
 
 build() {
