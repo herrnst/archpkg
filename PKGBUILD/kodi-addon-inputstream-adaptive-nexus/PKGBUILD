@@ -1,9 +1,9 @@
 # Maintainer: Daniel Scheller <d.scheller@gmx.net>
 
-_version=20.3.6
-_commitdate=20230407
-_commitid=89da8a91ba8daa1dc99311d82addb255974ea16b
-_bento4_version=1.6.0-639-6-Nexus
+_version=20.3.8
+_commitdate=20230512
+_commitid=3c6215343a62c2af20cae30265e3a166e8b67db5
+_bento4_version=1.6.0-639-7-Omega
 
 pkgname=kodi-addon-inputstream-adaptive-nexus
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
@@ -19,11 +19,22 @@ conflicts=("${pkgname%-nexus}" "${pkgname%-nexus}-git")
 # kodi 20
 source=("$pkgname::git+https://github.com/xbmc/inputstream.adaptive.git#commit=$_commitid"
 	"bento4-$_bento4_version.tar.gz::https://github.com/xbmc/Bento4/archive/refs/tags/$_bento4_version.tar.gz"
+	"gcc13.patch"
 )
 b2sums=(
 	'SKIP'
-	'130e5391abc3f85377a2ef2bfa992769ec188172743e6406fc96b9e561e82e0da57c77585f2cbf3e176228267d4c53920970dd1cbdc784f954130c92f77eaf61'
+	'0636f0c94ebb3246c8720e120f3b505e4a82ed2e37d9ed44351875dcf3fab8bc2e53b83e0be43fb711aac3144d6df3d8ae2ead24fcd55bd116f3c54f07e3c19f'
+	'df69f2dc78d489ee6af0d0b7b5e61e9765063b7b4a0cb91af6ee3485063819226776f3cf851c1cb9ef7d19c3f90aaaae634a208c9544ea09ecb135cce9948270'
 )
+
+prepare() {
+  # Fixup build with GCC 13
+  echo
+  echo `pwd`
+  ls -al
+
+  cd "$pkgname" && patch -p1 -i "$srcdir/gcc13.patch"
+}
 
 build() {
   mkdir -p "$srcdir/$pkgname/$pkgname-build"
