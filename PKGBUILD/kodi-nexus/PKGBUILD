@@ -21,13 +21,13 @@
 _clangbuild=
 
 _version=20.1
-_commitdate=20230514
-_commitid=7994b5a48e7c4d7fd7904beb6dcc34f71f9a8155
+_commitdate=20230611
+_commitid=7a90b3529c978ea853c685e51ae3d11ccd262adb
 pkgbase=kodi-nexus
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpeg-dev")
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
 pkgrel=1
-arch=('x86_64')
+arch=('aarch64' 'x86_64')
 url="https://kodi.tv"
 license=('GPL2')
 makedepends=(

@@ -1,7 +1,8 @@
 pkgbase = kodi-nexus
-	pkgver = 20.1+git20230514.7994b5a
+	pkgver = 20.1+git20230611.7a90b35
 	pkgrel = 1
 	url = https://kodi.tv
+	arch = aarch64
 	arch = x86_64
 	license = GPL2
 	makedepends = afpfs-ng
@@ -68,7 +69,7 @@ pkgbase = kodi-nexus
 	noextract = fstrcmp-0.7.D001.tar.gz
 	noextract = libudfread-1.1.2.tar.gz
 	options = !lto
-	source = git+https://github.com/herrnst/xbmc.git#commit=7994b5a48e7c4d7fd7904beb6dcc34f71f9a8155
+	source = git+https://github.com/herrnst/xbmc.git#commit=7a90b3529c978ea853c685e51ae3d11ccd262adb
 	source = libdvdcss-1.4.3-Next-Nexus-Alpha2-2.tar.gz::https://github.com/xbmc/libdvdcss/archive/1.4.3-Next-Nexus-Alpha2-2.tar.gz
 	source = libdvdnav-6.1.1-Next-Nexus-Alpha2-2.tar.gz::https://github.com/xbmc/libdvdnav/archive/6.1.1-Next-Nexus-Alpha2-2.tar.gz
 	source = libdvdread-6.1.3-Next-Nexus-Alpha2-2.tar.gz::https://github.com/xbmc/libdvdread/archive/6.1.3-Next-Nexus-Alpha2-2.tar.gz
@@ -132,7 +133,7 @@ pkgname = kodi-nexus
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = upower: Display battery level
-	provides = kodi=20.1+git20230514.7994b5a
+	provides = kodi=20.1+git20230611.7a90b35
 	provides = kodi-x11
 	provides = kodi-wayland
 	provides = kodi-gbm
@@ -151,7 +152,7 @@ pkgname = kodi-nexus-eventclients
 	pkgdesc = Kodi Event Clients (patched Nexus branch)
 	optdepends = kodi: local machine eventclient use
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=20.1+git20230514.7994b5a
+	provides = kodi-eventclients=20.1+git20230611.7a90b35
 	conflicts = kodi-eventclients
 	conflicts = kodi-git-eventclients
 
@@ -161,20 +162,20 @@ pkgname = kodi-nexus-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=20.1+git20230514.7994b5a
+	provides = kodi-tools-texturepacker=20.1+git20230611.7a90b35
 	conflicts = kodi-tools-texturepacker
 	conflicts = kodi-git-tools-texturepacker
 
 pkgname = kodi-nexus-dev
 	pkgdesc = Kodi dev files (patched Nexus branch)
 	depends = kodi-nexus
-	provides = kodi-dev=20.1+git20230514.7994b5a
+	provides = kodi-dev=20.1+git20230611.7a90b35
 	conflicts = kodi-dev
 	conflicts = kodi-git-dev
 
 pkgname = kodi-nexus-ffmpeg-dev
 	pkgdesc = Kodi FFmpeg dev files (patched Nexus branch)
 	depends = kodi-nexus
-	provides = kodi-ffmpeg-dev=20.1+git20230514.7994b5a
+	provides = kodi-ffmpeg-dev=20.1+git20230611.7a90b35
 	conflicts = kodi-ffmpeg-dev
 	conflicts = kodi-git-ffmpeg-dev
