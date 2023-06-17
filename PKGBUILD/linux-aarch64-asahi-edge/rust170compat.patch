@@ -1,0 +1,91 @@
+From 496a1b061691f01602aa63d2a8027cf3020d4bb8 Mon Sep 17 00:00:00 2001
+From: Hector Martin <marcan@marcan.st>
+Date: Sat, 17 Jun 2023 22:08:29 +0900
+Subject: [PATCH] rust: 1.70 compat hack
+
+Signed-off-by: Hector Martin <marcan@marcan.st>
+---
+ rust/alloc/lib.rs           |  1 +
+ rust/alloc/vec/into_iter.rs | 15 +++++++++++++--
+ scripts/Makefile.build      |  2 +-
+ 3 files changed, 15 insertions(+), 3 deletions(-)
+
+diff --git a/rust/alloc/lib.rs b/rust/alloc/lib.rs
+index 0eeee6ccfdf4a3..de4a34d4289b8b 100644
+--- a/rust/alloc/lib.rs
++++ b/rust/alloc/lib.rs
+@@ -198,6 +198,7 @@
+ // that the feature-gate isn't enabled. Ideally, it wouldn't check for the feature gate for docs
+ // from other crates, but since this can only appear for lang items, it doesn't seem worth fixing.
+ #![feature(intra_doc_pointers)]
++#![feature(cfg_version)]
+ 
+ // Allow testing this library
+ #[cfg(test)]
+diff --git a/rust/alloc/vec/into_iter.rs b/rust/alloc/vec/into_iter.rs
+index a8a2a8b66bfddf..6783d5ad23537e 100644
+--- a/rust/alloc/vec/into_iter.rs
++++ b/rust/alloc/vec/into_iter.rs
+@@ -16,6 +16,11 @@ use core::ops::Deref;
+ use core::ptr::{self, NonNull};
+ use core::slice::{self};
+ 
++#[cfg(version("1.70"))]
++type AdvanceRet = core::num::NonZeroUsize;
++#[cfg(not(version("1.70")))]
++type AdvanceRet = usize;
++
+ /// An iterator that moves out of a vector.
+ ///
+ /// This `struct` is created by the `into_iter` method on [`Vec`](super::Vec)
+@@ -184,7 +189,7 @@ impl<T, A: Allocator> Iterator for IntoIter<T, A> {
+     }
+ 
+     #[inline]
+-    fn advance_by(&mut self, n: usize) -> Result<(), usize> {
++    fn advance_by(&mut self, n: usize) -> Result<(), AdvanceRet> {
+         let step_size = self.len().min(n);
+         let to_drop = ptr::slice_from_raw_parts_mut(self.ptr as *mut T, step_size);
+         if T::IS_ZST {
+@@ -201,6 +206,9 @@ impl<T, A: Allocator> Iterator for IntoIter<T, A> {
+             ptr::drop_in_place(to_drop);
+         }
+         if step_size < n {
++            #[cfg(version("1.70"))]
++            return Err(AdvanceRet::new(step_size).unwrap());
++            #[cfg(not(version("1.70")))]
+             return Err(step_size);
+         }
+         Ok(())
+@@ -286,7 +294,7 @@ impl<T, A: Allocator> DoubleEndedIterator for IntoIter<T, A> {
+     }
+ 
+     #[inline]
+-    fn advance_back_by(&mut self, n: usize) -> Result<(), usize> {
++    fn advance_back_by(&mut self, n: usize) -> Result<(), AdvanceRet> {
+         let step_size = self.len().min(n);
+         if T::IS_ZST {
+             // SAFETY: same as for advance_by()
+@@ -301,6 +309,9 @@ impl<T, A: Allocator> DoubleEndedIterator for IntoIter<T, A> {
+             ptr::drop_in_place(to_drop);
+         }
+         if step_size < n {
++            #[cfg(version("1.70"))]
++            return Err(AdvanceRet::new(step_size).unwrap());
++            #[cfg(not(version("1.70")))]
+             return Err(step_size);
+         }
+         Ok(())
+diff --git a/scripts/Makefile.build b/scripts/Makefile.build
+index 1871aa1941b4ed..c5d412a39a22b6 100644
+--- a/scripts/Makefile.build
++++ b/scripts/Makefile.build
+@@ -277,7 +277,7 @@ $(obj)/%.lst: $(src)/%.c FORCE
+ # Compile Rust sources (.rs)
+ # ---------------------------------------------------------------------------
+ 
+-rust_allowed_features := allocator_api,const_refs_to_cell,new_uninit,pin_macro,type_alias_impl_trait
++rust_allowed_features := allocator_api,const_refs_to_cell,new_uninit,pin_macro,type_alias_impl_trait$(shell expr $$($(RUSTC) --version | cut -d' ' -f2) \> 1.69.0 >/dev/null && echo -n ,impl_trait_in_assoc_type)
+ 
+ rust_common_cmd = \
+ 	RUST_MODFILE=$(modfile) $(RUSTC_OR_CLIPPY) $(rust_flags) \
