@@ -1,5 +1,5 @@
 pkgbase = linux-aarch64-asahi-edge
-	pkgver = 6.3.10
+	pkgver = 6.3.11
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = aarch64
@@ -18,7 +18,7 @@ pkgbase = linux-aarch64-asahi-edge
 	makedepends = xz
 	makedepends = xmlto
 	options = !strip
-	source = https://github.com/herrnst/linux-asahi/archive/refs/tags/v6.3.10-asahi.tar.gz
+	source = https://github.com/herrnst/linux-asahi/archive/refs/tags/v6.3.11-asahi.tar.gz
 	source = config
 	sha256sums = 9012d80cc4128f8d5aa37a3346c7d50a3e18f788943a7b4190600ed221d1d5ef
 	sha256sums = c6ce2bdde835e4ce5d670d6541c91937e92fb83fadea940d7288a938357b17de
@@ -34,7 +34,7 @@ pkgname = linux-aarch64-asahi-edge
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = WIREGUARD-MODULE
-	provides = linux=6.3.10
+	provides = linux=6.3.11
 	provides = linux-asahi
 	conflicts = linux
 	replaces = wireguard-arch
