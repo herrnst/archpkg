@@ -11,8 +11,8 @@ pkgbase = linux-aarch64-asahi-edge
 	makedepends = pahole
 	makedepends = cpio
 	makedepends = perl
-	makedepends = rust
-	makedepends = rust-src
+	makedepends = rust<=1:1.70.9999
+	makedepends = rust-src<=1:1.70.9999
 	makedepends = rust-bindgen
 	makedepends = tar
 	makedepends = xz
