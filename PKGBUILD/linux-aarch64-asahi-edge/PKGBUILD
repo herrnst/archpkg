@@ -17,9 +17,9 @@ buildarch=8
 
 pkgbase=linux-aarch64-asahi-edge
 pkgver=6.4.7
-pkgrel=1
+pkgrel=2
 
-_srcdir="linux-asahi-${pkgver}-asahi"
+_srcdir="linux-asahi-${pkgver}-${pkgrel}-asahi"
 _m1n1_version=1.2.8
 _kernelname=${pkgbase#linux}
 _desc="AArch64 Apple Silicon (M1 development kernel)"
@@ -28,16 +28,16 @@ url="http://www.kernel.org/"
 license=('GPL2')
 
 makedepends=(
-  bc dtc kmod libelf pahole cpio perl 'rust<1:1.71' 'rust-src<1:1.71' rust-bindgen tar xz xmlto
+  bc dtc kmod libelf pahole cpio perl rust rust-src rust-bindgen tar xz xmlto
 )
 options=('!strip')
 source=(
-  https://github.com/herrnst/linux-asahi/archive/refs/tags/v${pkgver}-asahi.tar.gz
+  https://github.com/herrnst/linux-asahi/archive/refs/tags/v${pkgver}-${pkgrel}-asahi.tar.gz
   config         # merged olddefconfig+asahi+asahiedge config file
 )
-sha256sums=('e57ff16a9807f97cb4f869d987877605995ab2dc82278bd963ad592a069895a5'
+sha256sums=('beeec9981f749a65fa2a1f6ba19832bb639560b96c7b84224faf85dbd74ec36d'
             'fa5cc0a78251b0796700e451b64976739dac84f6c20d0701457a457152771e46')
-b2sums=('3def07f20e35c4df6929d78b89ded44cce8a0eaab7642e1f4e34fca7e976697dd07574337368dcf779cbabc8589c4f6d2dfc931d9f34de716bb614bfe39456fd'
+b2sums=('45c0db247369d8f4db21a0aded6e554ca5b06101721168175d2e9768b896e05931cb3b3c5632fada062e40940138426a1d3c242cd4330769e12335f31dab81d3'
         '45be1cfa9e5b2dad0b45f4f5bbe3e901bbc33b6fe81f19b01bf76d478c81eed30e9737f7cbe938af5077170de5a26c61c8e1a74af8e5cfaeaf66899a77ece64c')
 
 prepare() {
