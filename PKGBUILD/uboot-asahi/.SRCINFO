@@ -1,0 +1,15 @@
+pkgbase = uboot-asahi
+	pkgdesc = U-Boot for Apple Silicon Macs
+	pkgver = 2023.07.02.asahi2
+	pkgrel = 1
+	url = http://asahilinux.org
+	arch = aarch64
+	license = MIT
+	license = GPL2
+	makedepends = bc
+	makedepends = imagemagick
+	source = u-boot-asahi-v2023.07.02-2.tar.gz::https://github.com/AsahiLinux/u-boot/archive/asahi-v2023.07.02-2.tar.gz
+	sha256sums = 0208241691890fc44aeb353ceba880c198f26734aa92837f9be7dbf32f8e8357
+	b2sums = 658098da2e0e279fe6c0a6f372002f6ccccfc5c5807f0f99d8db9d4a8a76abb7752a81cdbcf02e9bafd60016e4cfc2528e6b2a945012e3af2ddc6797a13c422b
+
+pkgname = uboot-asahi
