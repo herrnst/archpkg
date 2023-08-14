@@ -15,12 +15,12 @@
 
 buildarch=8
 
-pkgbase=linux-aarch64-asahi-edge
-pkgver=6.4.10
+pkgbase=linux-aarch64-asahi
+pkgver=6.4.11
 pkgrel=1
 
 _srcdir="linux-asahi-${pkgver}-asahi"
-_m1n1_version=1.2.8
+_m1n1_version=1.3.2
 _kernelname=${pkgbase#linux}
 _desc="AArch64 Apple Silicon (M1 development kernel)"
 arch=('aarch64')
@@ -35,9 +35,9 @@ source=(
   https://github.com/herrnst/linux-asahi/archive/refs/tags/v${pkgver}-asahi.tar.gz
   config         # merged olddefconfig+asahi+asahiedge config file
 )
-sha256sums=('c387d2363ae0bea9b66b7cc409b7afc454896d8192161c8ad7245ebe4d81c047'
+sha256sums=('081e053b861221a13f4776253968bcac0c9efd57685015928adfa54792c010d9'
             'fa5cc0a78251b0796700e451b64976739dac84f6c20d0701457a457152771e46')
-b2sums=('6f498e6fcd77ca791b5b6532d5f17ff05dcee885e9d9a7fa7b34a55d5ded364c1449f8a01df8292a825db5ab95e7bcd782ff1ad8f22c29511ebac20e8c7d106d'
+b2sums=('f8f661a803862a6d6eb58c3013d697bbe18f6e85a3cf6614505638f8075dded4983f1e0001e17295ff6641ac3ef172bdd5d6f75174102b907e54197647e75ff6'
         '45be1cfa9e5b2dad0b45f4f5bbe3e901bbc33b6fe81f19b01bf76d478c81eed30e9737f7cbe938af5077170de5a26c61c8e1a74af8e5cfaeaf66899a77ece64c')
 
 prepare() {
@@ -77,7 +77,7 @@ _package() {
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(WIREGUARD-MODULE linux=${pkgver} linux-asahi)
-  replaces=(wireguard-arch)
+  replaces=('wireguard-arch' 'linux-aarch64-asahi-edge')
   conflicts=('linux')
 
   cd $_srcdir
