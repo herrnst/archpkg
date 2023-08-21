@@ -1,8 +1,8 @@
 # Maintainer: Hector Martin <marcan@marcan.st>
 
-_version=1.3.2
-_commitdate=20230817
-_commitid=f7824561af303f6ca91318427f4b77af37c5ce2f
+_version=1.3.3
+_commitdate=20230821
+_commitid=6d0979e71e83f47c5da5fdb8c5e21eb1268d54e8
 
 pkgname=m1n1-git
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
