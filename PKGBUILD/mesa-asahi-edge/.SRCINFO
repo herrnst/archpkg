@@ -1,6 +1,6 @@
 pkgbase = mesa-asahi-edge
 	pkgdesc = An open-source implementation of the OpenGL specification
-	pkgver = 23.3.0_pre20230819
+	pkgver = 23.3.0_pre20230823
 	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = aarch64
@@ -36,9 +36,9 @@ pkgbase = mesa-asahi-edge
 	makedepends = meson
 	options = debug
 	options = !lto
-	source = https://gitlab.freedesktop.org/asahi/mesa/-/archive/7bdc188a9453fc2a513c2ffd386c858aa958e839/mesa-7bdc188a9453fc2a513c2ffd386c858aa958e839.tar.gz
+	source = https://gitlab.freedesktop.org/asahi/mesa/-/archive/299a625b849965d25e2dc27eeb23935ee685400c/mesa-299a625b849965d25e2dc27eeb23935ee685400c.tar.gz
 	source = LICENSE
-	sha512sums = a62a65b79a118ff5e8cad8874df53a17a9fe2c9b6ed5bb0c7072261b91da0d8ea8359a7bab51b419e83fab3b1d34917437f606d56249eb68ae7868a31cada24d
+	sha512sums = 43368806ed468510dff3b78a0c10a7ad802246902e68ab5ee45b22a4ebf6eca4996038d26070a2274e72f2475f60fa85342ecc06b5d1d8715c707667e0c81d86
 	sha512sums = f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7
 
 pkgname = vulkan-swrast-asahi-edge
