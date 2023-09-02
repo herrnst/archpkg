@@ -6,7 +6,10 @@
 
 highmem=1
 
-_suffix=-asahi-edge
+_suffix=-asahi-git
+_version=23.3.0
+_commitdate=20230823
+_commitid=299a625b849965d25e2dc27eeb23935ee685400c
 
 pkgbase=mesa$_suffix
 pkgname=(
@@ -14,10 +17,9 @@ pkgname=(
 	"mesa$_suffix"
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
-_asahiver=20230823
-_commit=299a625b849965d25e2dc27eeb23935ee685400c
-pkgver=23.3.0_pre$_asahiver
+pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
 pkgrel=1
+
 arch=('aarch64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
              'libxdamage' 'libvdpau' 'libva' 'wayland' 'wayland-protocols' 'zstd' 'elfutils' 'llvm'
@@ -26,13 +28,13 @@ makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence
 url="https://www.mesa3d.org/"
 license=('custom')
 options=('debug' '!lto')
-source=(https://gitlab.freedesktop.org/asahi/mesa/-/archive/$_commit/mesa-$_commit.tar.gz
+source=(https://gitlab.freedesktop.org/asahi/mesa/-/archive/$_commitid/mesa-$_commitid.tar.gz
         LICENSE)
 sha512sums=('edc15d3ef2c923388b7ab5abc13a7c06869285e2dcb4b49b8ebbfa3957f19e9b600fefc50e0b9e0008228186eb0874018eab7b9e63b0b6ecf944b08c2001b71c'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 
 prepare() {
-  cd mesa-$_commit
+  cd mesa-$_commitid
 }
 
 build() {
@@ -40,7 +42,7 @@ build() {
   CFLAGS+=' -g1'
   CXXFLAGS+=' -g1'
 
-  arch-meson mesa-$_commit build \
+  arch-meson mesa-$_commitid build \
     -D b_ndebug=true \
     -D b_lto=false \
     -D platforms=x11,wayland \
@@ -94,8 +96,8 @@ _package_vulkan-swrast() {
   pkgdesc="Vulkan software rasteriser driver"
   depends=('wayland' 'libx11' 'libxshmfence' 'libdrm' 'zstd' 'llvm-libs' 'systemd-libs' 'libunwind')
   optdepends=('vulkan-mesa-layers: additional vulkan layers')
-  conflicts=('vulkan-mesa' 'vulkan-swrast')
-  replaces=('vulkan-mesa')
+  conflicts=('vulkan-mesa' 'vulkan-swrast' 'vulkan-swrast-asahi-edge')
+  replaces=('vulkan-mesa' 'vulkan-swrast-asahi-edge')
   provides=('vulkan-driver' 'vulkan-swrast')
 
   _install fakeinstall/usr/share/vulkan/icd.d/lvp_icd*.json
@@ -111,8 +113,8 @@ _package_mesa() {
   depends+=('libsensors.so' 'libexpat.so' 'libvulkan.so')
   optdepends=('opengl-man-pages: for the OpenGL API man pages')
   provides=('mesa-libgl' 'opengl-driver' 'mesa')
-  conflicts=('mesa-libgl' 'mesa')
-  replaces=('mesa-libgl')
+  conflicts=('mesa-libgl' 'mesa' 'mesa-asahi-edge')
+  replaces=('mesa-libgl' 'mesa-asahi-edge')
 
   _install fakeinstall/usr/share/drirc.d/00-mesa-defaults.conf
   _install fakeinstall/usr/share/glvnd/egl_vendor.d/50_mesa.json
