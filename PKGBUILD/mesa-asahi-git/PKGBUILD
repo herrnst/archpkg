@@ -18,7 +18,7 @@ pkgname=(
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
-pkgrel=1
+pkgrel=2
 
 arch=('aarch64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
