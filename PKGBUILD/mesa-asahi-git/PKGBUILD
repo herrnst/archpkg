@@ -8,8 +8,8 @@ highmem=1
 
 _suffix=-asahi-git
 _version=23.3.0
-_commitdate=20230905
-_commitid=67ff98cbaeb4d6b7262f699664c592ebd2b90b88
+_commitdate=20230915
+_commitid=0a4fc8f4f3f706307600d58a099ffa69ccd4aa02
 
 pkgbase=mesa$_suffix
 pkgname=(
@@ -18,7 +18,7 @@ pkgname=(
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
-pkgrel=2
+pkgrel=1
 
 arch=('aarch64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
@@ -30,7 +30,7 @@ license=('custom')
 options=('debug' '!lto')
 source=(https://gitlab.freedesktop.org/asahi/mesa/-/archive/$_commitid/mesa-$_commitid.tar.gz
         LICENSE)
-sha512sums=('3c3343adc88e5c0e2eb2b7fb668b3b6ca85fee49c6f255c0da967aec472acab4d92bcbb0c36e901929c59f95374fa5f3aee7a18cc8539bd05f024bd3aae92fda'
+sha512sums=('e5bf921c520feac83d6f358dce570557d56c70004cc0c50a9b12c609c11fdb14e26404cb0b3ded3edd8d80bf155e85a6678696c820bb685b367759ce21afc8f2'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 
 prepare() {
