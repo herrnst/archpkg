@@ -1,17 +1,17 @@
 pkgbase = m1n1-git
 	pkgdesc = Asahi Linux bootloader
-	pkgver = 1.3.6+git20230903.99e659a
+	pkgver = 1.3.7+git20230920.650441d
 	pkgrel = 1
 	url = http://asahilinux.org
 	arch = aarch64
 	license = MIT
 	makedepends = imagemagick
 	makedepends = git
-	provides = m1n1=1.3.6
+	provides = m1n1=1.3.7
 	conflicts = m1n1
 	replaces = m1n1
 	source = artwork-35626c31f5c5a8a884aaff93f864795026495742.tar.gz::https://github.com/AsahiLinux/artwork/archive/35626c31f5c5a8a884aaff93f864795026495742.tar.gz
-	source = git+https://github.com/AsahiLinux/m1n1.git#commit=99e659ae0184379df9b16bbea0e32d180c4cf55f
+	source = git+https://github.com/AsahiLinux/m1n1.git#commit=650441daa5c2d59d2e3d417ba116d4d22d0fdfce
 	sha256sums = ffa129b5cae8debd4ffd97f7f1ac7f571c7ba4679793cd138918c2ae76a7103d
 	sha256sums = SKIP
 	b2sums = 26e9668f7c7393fec24b53b184ea0eabed4f46479c1aab26728d01c179091683cc4387ff83796bdcbb289376236faf9f651197b9fbba51e52540e58ebdc8bcc5
