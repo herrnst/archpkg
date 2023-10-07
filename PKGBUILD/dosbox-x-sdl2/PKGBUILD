@@ -1,6 +1,6 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 
-_tagver=2023.09.01
+_tagver=2023.10.06
 pkgname=dosbox-x-sdl2
 pkgver=0.84.3+$_tagver
 pkgrel=1
@@ -17,7 +17,7 @@ source=(
 	'001-mt32_aarch64.patch'
 )
 sha256sums=(
-	'71bf4477ae1640406fa24023f51766ab158ebf26f0e2f317f6fd7bd84c15b4e6'
+	'65f756e29f9c9b898fdbd22b0cb9b3b24c6e3becb5dcda588aa20a3fde9539a5'
 	'413c25ec5242d14ac6406c1b13ef7097f9b7ae85c069624318ad4252e8d9a7f7'
 )
 
