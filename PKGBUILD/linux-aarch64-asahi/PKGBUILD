@@ -16,7 +16,7 @@
 buildarch=8
 
 pkgbase=linux-aarch64-asahi
-pkgver=6.5.6
+pkgver=6.5.7
 pkgrel=1
 
 _srcdir="linux-asahi-${pkgver}-asahi"
@@ -28,17 +28,17 @@ url="http://www.kernel.org/"
 license=('GPL2')
 
 makedepends=(
-  bc dtc kmod libelf pahole cpio perl rust rust-src rust-bindgen tar xz xmlto
+  bc dtc kmod libelf pahole cpio perl 'rust<=1:1.72.9999' 'rust-src<=1:1.72.9999' rust-bindgen tar xz xmlto
 )
 options=('!strip')
 source=(
   https://github.com/herrnst/linux-asahi/archive/refs/tags/v${pkgver}-asahi.tar.gz
   config         # merged olddefconfig+asahi+asahiedge config file
 )
-sha256sums=('c1e568eaf07c83caee74c24ccaad8ecbedaf3862cf86082805c327fc48484e5c'
-            '9af2de39244c71fa4732015813db4f4a679e92bf70f23f6b525a457bf152890b')
-b2sums=('4994c1ec691b1030266ee8e6f95260bf6597b6d057947c0e42f24fdd7ac1a2af2c71357e4a77d0d336d8cb4a5a4d4846385fee597d4d9b61cfeaefb27ce8f13c'
-        '0cef83c23de8dd45f7f67c4137159e548ccfb497b339dd351d1869f6b0562fea52feb991744c81028bbabf25a1c81507d648ee5b727ccef813bfb7cdead9f08a')
+sha256sums=('992d4e8512466ac5b1f4a8321c3d69cb8ea0fc11273c0c83fb1aaea16f4ac8dd'
+            '704a12d893a6bd0b9199703791a3e8fc44d4ee93b872ceff6ea2f220a7786fcd')
+b2sums=('5255000ad18c58970424f6b33f0af28c6e97ac9784db9ee14635316928b741430a069cc08199cc65033a822e8e7d27b1d43249b0c3448bb9f73a84f4f0d5e697'
+        '3f48163a6634baf32332c8e7e5bbd9d986c33da68f01a910dabcaf84ddaf9f2c411e71a99c1962d1f716644fc0e12787a0d10095d00281c55c323b285f8b3c5b')
 
 prepare() {
   cd $_srcdir

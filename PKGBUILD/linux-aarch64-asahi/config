@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.5.3 Kernel Configuration
+# Linux/arm64 6.5.7 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 12.1.0"
 CONFIG_CC_IS_GCC=y
@@ -271,8 +271,8 @@ CONFIG_PERF_EVENTS=y
 CONFIG_SYSTEM_DATA_VERIFICATION=y
 CONFIG_PROFILING=y
 CONFIG_RUST=y
-CONFIG_RUSTC_VERSION_TEXT="rustc 1.71.0 (8ede3aae2 2023-07-12) (Arch Linux rust 1:1.71.0-1)"
-CONFIG_BINDGEN_VERSION_TEXT="bindgen 0.66.1"
+CONFIG_RUSTC_VERSION_TEXT="rustc 1.72.0 (5680fa18f 2023-08-23) (Arch Linux rust 1:1.72.0-1)"
+CONFIG_BINDGEN_VERSION_TEXT="bindgen 0.68.1"
 # end of General setup
 
 CONFIG_ARM64=y
@@ -378,6 +378,7 @@ CONFIG_ARM64_LD_HAS_FIX_ERRATUM_843419=y
 # CONFIG_ARM64_ERRATUM_2441009 is not set
 # CONFIG_ARM64_ERRATUM_2457168 is not set
 # CONFIG_ARM64_ERRATUM_2645198 is not set
+# CONFIG_ARM64_ERRATUM_2966298 is not set
 # CONFIG_CAVIUM_ERRATUM_22375 is not set
 # CONFIG_CAVIUM_ERRATUM_23154 is not set
 # CONFIG_CAVIUM_ERRATUM_27456 is not set
@@ -4394,6 +4395,11 @@ CONFIG_V4L_MEM2MEM_DRIVERS=y
 #
 # Amphion drivers
 #
+
+#
+# Apple media platform drivers
+#
+CONFIG_VIDEO_APPLE_ISP=m
 
 #
 # Aspeed media platform drivers
