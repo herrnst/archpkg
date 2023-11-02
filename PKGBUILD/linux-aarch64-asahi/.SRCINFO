@@ -1,5 +1,5 @@
 pkgbase = linux-aarch64-asahi
-	pkgver = 6.5.8
+	pkgver = 6.5.10
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = aarch64
@@ -13,16 +13,16 @@ pkgbase = linux-aarch64-asahi
 	makedepends = perl
 	makedepends = rust<=1:1.72.9999
 	makedepends = rust-src<=1:1.72.9999
-	makedepends = rust-bindgen
+	makedepends = rust-bindgen<=0.68.9999
 	makedepends = tar
 	makedepends = xz
 	makedepends = xmlto
 	options = !strip
-	source = https://github.com/herrnst/linux-asahi/archive/refs/tags/v6.5.8-asahi.tar.gz
+	source = https://github.com/herrnst/linux-asahi/archive/refs/tags/v6.5.10-asahi.tar.gz
 	source = config
-	sha256sums = 817c451a7e1a8356f137734535f8283da83069a2ab6a5f911f93ac57ca9f9bc0
+	sha256sums = 0f939c5123ea262e1547d95c0eb506321bcea8f26678ba176403ef6580132c4f
 	sha256sums = 704a12d893a6bd0b9199703791a3e8fc44d4ee93b872ceff6ea2f220a7786fcd
-	b2sums = 98bd38c82f8ef7cd492cb176c9c1cd90d498bee7e25138bb53cb9043cc14932cba8bc2e7483b8a5a3090996608b410efd0705f7f5df2d1af1346d4424382a5e5
+	b2sums = 4ecfe8edc09ebdc7140e52658746652b27c5cab27d1fa7f9b4bde5f19e0b0776762ef476e7356734f241007869e8bd0bc8063a08b397c2dcd79310e985910017
 	b2sums = 3f48163a6634baf32332c8e7e5bbd9d986c33da68f01a910dabcaf84ddaf9f2c411e71a99c1962d1f716644fc0e12787a0d10095d00281c55c323b285f8b3c5b
 
 pkgname = linux-aarch64-asahi
@@ -34,7 +34,7 @@ pkgname = linux-aarch64-asahi
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = WIREGUARD-MODULE
-	provides = linux=6.5.8
+	provides = linux=6.5.10
 	provides = linux-asahi
 	conflicts = linux
 	replaces = wireguard-arch
