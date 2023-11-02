@@ -7,9 +7,9 @@
 highmem=1
 
 _suffix=-asahi-git
-_version=23.3.0
-_commitdate=20231002
-_commitid=adffa8633b90deee476115bf15687263284f3fe7
+_version=24.0.0
+_commitdate=20231101
+_commitid=1ad0c6f3f8f024c49a38685bbab3af6814fb0c4a
 
 pkgbase=mesa$_suffix
 pkgname=(
@@ -24,13 +24,14 @@ arch=('aarch64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
              'libxdamage' 'libvdpau' 'libva' 'wayland' 'wayland-protocols' 'zstd' 'elfutils' 'llvm'
              'libomxil-bellagio' 'libclc' 'clang' 'libglvnd' 'libunwind' 'lm_sensors' 'libxrandr'
-             'systemd' 'valgrind' 'glslang' 'vulkan-icd-loader' 'directx-headers' 'cmake' 'meson')
+             'systemd' 'valgrind' 'glslang' 'vulkan-icd-loader' 'directx-headers' 'cmake' 'meson'
+             'spirv-tools' 'spirv-llvm-translator')
 url="https://www.mesa3d.org/"
 license=('custom')
 options=('debug' '!lto')
 source=(https://gitlab.freedesktop.org/asahi/mesa/-/archive/$_commitid/mesa-$_commitid.tar.gz
         LICENSE)
-sha512sums=('239afeff7d49a5d1aaa4f7fa21847623cd23c121e30dc0628adf2e07641d9f0b9f6ba8f0c5f701829a46bff131f9fd4a069f77667a1314d656f5266518317784'
+sha512sums=('b4e7614b70d3597e89a070cbfa60ef4057cff1be0783da5fabb8d926a9fb55a9fb41fa9ffe266eadce60c7cdee38c86d6a5b275e39cf0394cbf831efa7503da9'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 
 prepare() {
