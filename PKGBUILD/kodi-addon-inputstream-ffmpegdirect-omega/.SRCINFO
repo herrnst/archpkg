@@ -1,0 +1,30 @@
+pkgbase = kodi-addon-inputstream-ffmpegdirect-omega
+	pkgdesc = FFmpegdirect Inputstream addon for Kodi
+	pkgver = 21.2.0+git20230829.505addd
+	pkgrel = 1
+	url = https://github.com/xbmc/inputstream.ffmpegdirect
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = GPL2
+	makedepends = kodi-omega-dev
+	makedepends = kodi-omega-ffmpeg-dev
+	makedepends = pkgconf
+	makedepends = git
+	makedepends = cmake
+	makedepends = yasm
+	makedepends = zlib
+	makedepends = bzip2
+	depends = kodi-omega
+	depends = zlib
+	depends = bzip2
+	depends = libva
+	provides = kodi-addon-inputstream-ffmpegdirect
+	conflicts = kodi-addon-inputstream-ffmpegdirect
+	conflicts = kodi-addon-inputstream-ffmpegdirect-git
+	source = kodi-addon-inputstream-ffmpegdirect-omega::git+https://github.com/xbmc/inputstream.ffmpegdirect.git#commit=505adddb949f8d032dc6ed217283cc99822cb51c
+	sha256sums = SKIP
+
+pkgname = kodi-addon-inputstream-ffmpegdirect-omega

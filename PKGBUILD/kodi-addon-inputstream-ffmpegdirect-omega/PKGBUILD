@@ -1,0 +1,35 @@
+# Maintainer: Daniel Scheller <d.scheller@gmx.net>
+
+_version=21.2.0
+_commitdate=20230829
+_commitid=505adddb949f8d032dc6ed217283cc99822cb51c
+
+pkgname=kodi-addon-inputstream-ffmpegdirect-omega
+pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
+pkgrel=1
+pkgdesc="FFmpegdirect Inputstream addon for Kodi"
+arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
+url="https://github.com/xbmc/inputstream.ffmpegdirect"
+license=('GPL2')
+depends=('kodi-omega' 'zlib' 'bzip2' 'libva')
+makedepends=('kodi-omega-dev' 'kodi-omega-ffmpeg-dev' 'pkgconf' 'git' 'cmake' 'yasm' 'zlib' 'bzip2')
+provides=("${pkgname%-omega}")
+conflicts=("${pkgname%-omega}" "${pkgname%-omega}-git")
+source=("$pkgname::git+https://github.com/xbmc/inputstream.ffmpegdirect.git#commit=$_commitid")
+sha256sums=('SKIP')
+
+build() {
+  mkdir -p "$srcdir/$pkgname/$pkgname-build"
+  cd "$srcdir/$pkgname/$pkgname-build"
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+           -DCMAKE_BUILD_TYPE=Release \
+           -DBUILD_SHARED_LIBS=1 \
+           -DCMAKE_PREFIX_PATH=/usr/lib/kodi/ffmpeg \
+           -DUSE_LTO=1
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname/$pkgname-build"
+  make DESTDIR="$pkgdir/" install
+}
