@@ -1,0 +1,22 @@
+diff --git a/tools/depends/target/dav1d/DAV1D-VERSION b/tools/depends/target/dav1d/DAV1D-VERSION
+index 7897d53556..99b2dba250 100644
+--- a/tools/depends/target/dav1d/DAV1D-VERSION
++++ b/tools/depends/target/dav1d/DAV1D-VERSION
+@@ -1,5 +1,5 @@
+ LIBNAME=dav1d
+-VERSION=1.1.0
++VERSION=1.3.0
+ ARCHIVE=$(LIBNAME)-$(VERSION).tar.bz2
+-SHA512=2eb177b415d1ac7bd08d54b16375afedec61f0771a5181fa93e5e6215856fc26504a7cb47de08abbea5bf18fac5ff91ca31044e7054681c380e0ab152e53aabc
++SHA512=7a08484c4a9de8f6f76436e0194bc1ca8b7ccdefe51d79e330f38ef277979ee0cca574cf2a54403219cc80f65fd098744d87dea4c527f0460131b2f2d3dda893
+ BYPRODUCT=libdav1d.a
+diff --git a/tools/depends/target/ffmpeg/FFMPEG-VERSION b/tools/depends/target/ffmpeg/FFMPEG-VERSION
+index 6ea8cfb9ad..cf51d8566b 100644
+--- a/tools/depends/target/ffmpeg/FFMPEG-VERSION
++++ b/tools/depends/target/ffmpeg/FFMPEG-VERSION
+@@ -1,5 +1,5 @@
+ LIBNAME=ffmpeg
+ VERSION=6.0
+ ARCHIVE=$(LIBNAME)-$(VERSION).tar.gz
+-SHA512=b3214328f2792364353f38c6b46a71d4970c071d8656b20780abf0e02950167d0933eae825c09102cf8fb19fc679ac444bf1f41a448b624eaa5ea6b0f0bdf4f5
++SHA512=79305e5d205aa7cf925fe163aa5bea5fbe24325aa06aaa96c17743a8e7c4bafd08324239245967b6c123a80e6a0ec50d71b6c046fa1b91c7096601c305f5c4fc
