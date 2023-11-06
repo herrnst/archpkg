@@ -21,8 +21,8 @@
 _clangbuild=
 
 _version=20.90.801
-_commitdate=20231105
-_commitid=f3f52b91eeb7c82f623c7e2fc58c16d3e4d6b9ef
+_commitdate=20231106
+_commitid=bbd65bccf0108d0453a4b7c48cd686b812a5bfb2
 pkgbase=kodi-omega
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpeg-dev")
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
@@ -36,7 +36,7 @@ makedepends=(
   'libbluray' 'libcdio' 'libcec' 'libgl' 'mariadb-libs' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libva'
   'libva-vdpau-driver' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
-  'pipewire' 'python-pycryptodomex' 'python-pillow' 'python-pybluez'
+  'python-pycryptodomex' 'python-pillow' 'python-pybluez'
   'python-simplejson' 'shairplay' 'smbclient' 'sndio' 'spdlog' 'taglib'
   'tinyxml' 'swig' 'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest'
   'graphviz' 'pcre' 'libdisplay-info' 'tinyxml2' 'flatbuffers'
@@ -50,7 +50,7 @@ options=(!lto)
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
 _gitname='xbmc'
-_codename=master
+_codename=patchedmaster
 _sse_workaround=1
 
 # Found on their respective github release pages. One can check them against
@@ -147,6 +147,7 @@ build() {
     -DENABLE_MYSQLCLIENT=ON
     -DENABLE_NFS=ON
     -DENABLE_OPTICAL=ON
+    -DENABLE_PIPEWIRE=OFF
     -DENABLE_SMBCLIENT=ON
     -DENABLE_UDEV=ON
     -DENABLE_UPNP=ON
@@ -185,7 +186,7 @@ package_kodi-omega() {
     'bluez-libs' 'curl' 'desktop-file-utils' 'hicolor-icon-theme' 'fmt'
     'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec' 'libmicrohttpd' 'libnfs'
     'libplist' 'libpulse' 'libva' 'libvdpau' 'libxslt' 'lirc' 'mariadb-libs'
-    'mesa' 'libpipewire' 'python-pillow' 'python-pycryptodomex'
+    'mesa' 'python-pillow' 'python-pycryptodomex'
     'python-simplejson' 'shairplay' 'smbclient' 'sndio' 'spdlog' 'sqlite'
     'taglib' 'tinyxml' 'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
     'pcre' 'libdisplay-info' 'tinyxml2'
@@ -197,7 +198,6 @@ package_kodi-omega() {
     'bluez: Blutooth support'
     'python-pybluez: Bluetooth support'
     'pulseaudio: PulseAudio support'
-    'pipewire: PipeWire support'
     'upower: Display battery level'
   )
   provides=("kodi=${pkgver}" 'kodi-x11' 'kodi-wayland' 'kodi-gbm')

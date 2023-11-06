@@ -1,5 +1,5 @@
 pkgbase = kodi-omega
-	pkgver = 20.90.801+git20231105.f3f52b9
+	pkgver = 20.90.801+git20231106.bbd65bc
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = aarch64
@@ -37,7 +37,6 @@ pkgbase = kodi-omega
 	makedepends = lzo
 	makedepends = mesa
 	makedepends = nasm
-	makedepends = pipewire
 	makedepends = python-pycryptodomex
 	makedepends = python-pillow
 	makedepends = python-pybluez
@@ -72,7 +71,7 @@ pkgbase = kodi-omega
 	noextract = fstrcmp-0.7.D001.tar.gz
 	noextract = libudfread-1.1.2.tar.gz
 	options = !lto
-	source = git+https://github.com/herrnst/xbmc.git#commit=f3f52b91eeb7c82f623c7e2fc58c16d3e4d6b9ef
+	source = git+https://github.com/herrnst/xbmc.git#commit=bbd65bccf0108d0453a4b7c48cd686b812a5bfb2
 	source = libdvdcss-1.4.3-Next-Nexus-Alpha2-2.tar.gz::https://github.com/xbmc/libdvdcss/archive/1.4.3-Next-Nexus-Alpha2-2.tar.gz
 	source = libdvdnav-6.1.1-Next-Nexus-Alpha2-2.tar.gz::https://github.com/xbmc/libdvdnav/archive/6.1.1-Next-Nexus-Alpha2-2.tar.gz
 	source = libdvdread-6.1.3-Next-Nexus-Alpha2-2.tar.gz::https://github.com/xbmc/libdvdread/archive/6.1.3-Next-Nexus-Alpha2-2.tar.gz
@@ -117,7 +116,6 @@ pkgname = kodi-omega
 	depends = lirc
 	depends = mariadb-libs
 	depends = mesa
-	depends = libpipewire
 	depends = python-pillow
 	depends = python-pycryptodomex
 	depends = python-simplejson
@@ -139,9 +137,8 @@ pkgname = kodi-omega
 	optdepends = bluez: Blutooth support
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = pulseaudio: PulseAudio support
-	optdepends = pipewire: PipeWire support
 	optdepends = upower: Display battery level
-	provides = kodi=20.90.801+git20231105.f3f52b9
+	provides = kodi=20.90.801+git20231106.bbd65bc
 	provides = kodi-x11
 	provides = kodi-wayland
 	provides = kodi-gbm
@@ -160,7 +157,7 @@ pkgname = kodi-omega-eventclients
 	pkgdesc = Kodi Event Clients (patched Omega branch)
 	optdepends = kodi: local machine eventclient use
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=20.90.801+git20231105.f3f52b9
+	provides = kodi-eventclients=20.90.801+git20231106.bbd65bc
 	conflicts = kodi-eventclients
 	conflicts = kodi-git-eventclients
 
@@ -170,20 +167,20 @@ pkgname = kodi-omega-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=20.90.801+git20231105.f3f52b9
+	provides = kodi-tools-texturepacker=20.90.801+git20231106.bbd65bc
 	conflicts = kodi-tools-texturepacker
 	conflicts = kodi-git-tools-texturepacker
 
 pkgname = kodi-omega-dev
 	pkgdesc = Kodi dev files (patched Omega branch)
 	depends = kodi-omega
-	provides = kodi-dev=20.90.801+git20231105.f3f52b9
+	provides = kodi-dev=20.90.801+git20231106.bbd65bc
 	conflicts = kodi-dev
 	conflicts = kodi-git-dev
 
 pkgname = kodi-omega-ffmpeg-dev
 	pkgdesc = Kodi FFmpeg dev files (patched Omega branch)
 	depends = kodi-omega
-	provides = kodi-ffmpeg-dev=20.90.801+git20231105.f3f52b9
+	provides = kodi-ffmpeg-dev=20.90.801+git20231106.bbd65bc
 	conflicts = kodi-ffmpeg-dev
 	conflicts = kodi-git-ffmpeg-dev
