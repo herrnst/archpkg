@@ -1,8 +1,8 @@
 # Maintainer: Daniel Scheller <d.scheller@gmx.net>
 
-_version=21.1.1
-_commitdate=20231104
-_commitid=029bbca35ae44f5b7fb4338b98d452867c3fb35b
+_version=21.1.2
+_commitdate=20231115
+_commitid=1b2152bbda3b33d006f41d3522abc678e2cdd2bf
 
 pkgname=kodi-addon-pvr-hts-omega
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
