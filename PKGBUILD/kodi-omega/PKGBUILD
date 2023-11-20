@@ -21,8 +21,8 @@
 _clangbuild=
 
 _version=20.90.801
-_commitdate=20231116
-_commitid=abfdb1d2276e2aa794d8b4cb3781079104a6f500
+_commitdate=20231119
+_commitid=dc1719e1b428f667ef2cc03c0f4baec8896b6781
 pkgbase=kodi-omega
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpeg-dev")
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
@@ -102,7 +102,7 @@ b2sums=('SKIP'                                                                  
 	'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e' # fstrcmp
 	'1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61' # libudfread
 	'6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0' # cheat-sse-build.patch
-	'094d09689d5761696de364183d5c5bd753ce6cd05be2a10a37603044507f735549f4ebe729b7ac30ec05843ca06efcab856fb84bb86edc4f002fd8f92e18c422' # depends-fixup
+	'1c9cfdea172ec6e7fe912fcd677b959712014a146c163bb1cd3c620e21241c2fdeff463702c5f260bf302c2f835bdcd88313aebcc90afa7c30bb6c628109a008' # depends-fixup
 )
 
 prepare() {
