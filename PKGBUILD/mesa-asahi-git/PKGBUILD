@@ -8,8 +8,8 @@ highmem=1
 
 _suffix=-asahi-git
 _version=24.0.0
-_commitdate=20231128
-_commitid=57b69f6d296f64aa3678d390bfef80ad388ba61b
+_commitdate=20231201
+_commitid=c49dd93190a6872f6d8cdf72bfb3a9120fe4a65b
 
 pkgbase=mesa$_suffix
 pkgname=(
@@ -31,7 +31,7 @@ license=('custom')
 options=('debug' '!lto')
 source=(https://gitlab.freedesktop.org/asahi/mesa/-/archive/$_commitid/mesa-$_commitid.tar.gz
         LICENSE)
-sha512sums=('f39ff0d50af76f4094a632e20c27f9d823d1c88ed3d7c66c5fcd7fea2f1b75e385179f1d9c25ea99be6fa477d1a81533a4358de1410522da0786beb82ebc24d5'
+sha512sums=('9b03835e18f93834df13c3194d16822c1bae9f5d159d7092296ba5e7ae0d85fc6c6a2017a9ce95aedd294b4106aae757c5fb80675ac4a5127782df278a835827'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 
 prepare() {
