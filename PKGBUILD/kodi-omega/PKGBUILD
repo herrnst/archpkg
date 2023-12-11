@@ -20,9 +20,9 @@
 # set this to anything to build with clang rather than with gcc
 _clangbuild=
 
-_version=20.90.801
-_commitdate=20231208
-_commitid=4c02479a87e272e94480d92d707f281d62b1eb6f
+_version=20.90.821
+_commitdate=20231211
+_commitid=2261918e28226c553df77ac052d2b83b4e9e4b40
 pkgbase=kodi-omega
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpeg-dev")
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
