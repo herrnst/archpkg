@@ -1,6 +1,6 @@
 pkgbase = mesa-asahi-git
 	pkgdesc = An open-source implementation of the OpenGL specification
-	pkgver = 24.0.0+git20231210.992dfa3
+	pkgver = 24.0.0+git20231212.bc4fa49
 	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = aarch64
@@ -38,9 +38,9 @@ pkgbase = mesa-asahi-git
 	makedepends = spirv-llvm-translator
 	options = debug
 	options = !lto
-	source = https://gitlab.freedesktop.org/asahi/mesa/-/archive/992dfa325fe9898224e10e4ac15eeeace302dc6f/mesa-992dfa325fe9898224e10e4ac15eeeace302dc6f.tar.gz
+	source = https://gitlab.freedesktop.org/asahi/mesa/-/archive/bc4fa49eddd83fc993c392263b5329aa4b38e201/mesa-bc4fa49eddd83fc993c392263b5329aa4b38e201.tar.gz
 	source = LICENSE
-	sha512sums = f14071e6408e96d8b29849fceb3c3f473b37e96bf1f9fef119d9f850566648ac0ba957efc9506bfe1261a4df72642bafa8e0cda305e296077101115da94576c8
+	sha512sums = 7e8822ff3c5e5f6f36648e792350ce489f32976be80fc3de60f4a6d4825fceb9437926de22acf41b9fcb4192f47b97811b558288170d56ae930db52fb34199c1
 	sha512sums = f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7
 
 pkgname = vulkan-swrast-asahi-git
