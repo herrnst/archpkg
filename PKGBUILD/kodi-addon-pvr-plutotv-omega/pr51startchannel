@@ -1,0 +1,110 @@
+From 27614994249f61dff59583434c113e9bf244f6a9 Mon Sep 17 00:00:00 2001
+From: Daniel Scheller <d.scheller@gmx.net>
+Date: Tue, 19 Dec 2023 09:39:06 +0100
+Subject: [PATCH] settings: Add setting for the first channel number used
+
+Make the first channel number used to populate the channel list configurable
+as the default of 1 very likely conflicts with other PVR backend channel
+list when multiple backends are activated.
+
+Signed-off-by: Daniel Scheller <d.scheller@gmx.net>
+---
+ .../language/resource.language.de_de/strings.po     |  4 ++++
+ .../language/resource.language.en_gb/strings.po     |  4 ++++
+ pvr.plutotv/resources/settings.xml                  |  8 ++++++++
+ src/PlutotvData.cpp                                 | 13 ++++++++++++-
+ src/PlutotvData.h                                   |  1 +
+ 5 files changed, 29 insertions(+), 1 deletion(-)
+
+diff --git a/pvr.plutotv/resources/language/resource.language.de_de/strings.po b/pvr.plutotv/resources/language/resource.language.de_de/strings.po
+index 5f19e87..912eedd 100644
+--- a/pvr.plutotv/resources/language/resource.language.de_de/strings.po
++++ b/pvr.plutotv/resources/language/resource.language.de_de/strings.po
+@@ -30,6 +30,10 @@ msgctxt "#30007"
+ msgid "(Re)install Widevine CDM library"
+ msgstr "Widevine CDM-Bibliothek (erneut) installieren"
+ 
++msgctxt "#30008"
++msgid "First channel number"
++msgstr "Erste Sendernummer"
++
+ msgctxt "#30040"
+ msgid "Debug"
+ msgstr "Debug"
+diff --git a/pvr.plutotv/resources/language/resource.language.en_gb/strings.po b/pvr.plutotv/resources/language/resource.language.en_gb/strings.po
+index 292a51e..33c9be4 100644
+--- a/pvr.plutotv/resources/language/resource.language.en_gb/strings.po
++++ b/pvr.plutotv/resources/language/resource.language.en_gb/strings.po
+@@ -30,6 +30,10 @@ msgctxt "#30007"
+ msgid "(Re)install Widevine CDM library"
+ msgstr ""
+ 
++msgctxt "#30008"
++msgid "First channel number"
++msgstr ""
++
+ msgctxt "#30040"
+ msgid "Debug"
+ msgstr ""
+diff --git a/pvr.plutotv/resources/settings.xml b/pvr.plutotv/resources/settings.xml
+index 2d7cc4f..b6a5616 100644
+--- a/pvr.plutotv/resources/settings.xml
++++ b/pvr.plutotv/resources/settings.xml
+@@ -3,6 +3,14 @@
+ 	<section id="pvr.plutotv">
+ 		<category id="credentials" label="30001" help="">
+ 			<group id="1" label="">
++				<setting id="start_channelnum" type="integer" label="30008" help="">
++					<level>0</level>
++					<default>1</default>
++					<constraints>
++						<allowempty>false</allowempty>
++					</constraints>
++					<control type="edit" format="integer" />
++				</setting>
+ 				<setting id="install_widevine" type="string" label="30007"
+ 					help="">
+ 					<level>0</level>
+diff --git a/src/PlutotvData.cpp b/src/PlutotvData.cpp
+index bcc76c2..4d8466d 100644
+--- a/src/PlutotvData.cpp
++++ b/src/PlutotvData.cpp
+@@ -113,7 +113,8 @@ bool PlutotvData::LoadChannelsData()
+   kodi::Log(ADDON_LOG_DEBUG, "[channels] iterate channels");
+   kodi::Log(ADDON_LOG_DEBUG, "[channels] size: %i;", channelsDoc["result"].Size());
+ 
+-  int i = 0;
++  // Use configured start channel number minus one due to the loop logic
++  int i = (GetSettingsStartChannel() - 1);
+   for (const auto& channel : channelsDoc["result"].GetArray())
+   {
+     /**
+@@ -262,6 +263,16 @@ std::string PlutotvData::GetSettingsUUID(const std::string& setting)
+   return uuid;
+ }
+ 
++int PlutotvData::GetSettingsStartChannel()
++{
++  int startnum = 1;
++
++  if(!kodi::addon::CheckSettingInt("start_channelnum", startnum))
++    kodi::Log(ADDON_LOG_DEBUG, "Start channel number not set, defaulting to 1");
++
++  return startnum;
++}
++
+ std::string PlutotvData::GetChannelStreamURL(int uniqueId)
+ {
+   LoadChannelsData();
+diff --git a/src/PlutotvData.h b/src/PlutotvData.h
+index 3bd6d70..f830d87 100644
+--- a/src/PlutotvData.h
++++ b/src/PlutotvData.h
+@@ -74,6 +74,7 @@ class ATTR_DLL_LOCAL PlutotvData : public kodi::addon::CAddonBase,
+ 
+   std::string GetChannelStreamURL(int uniqueId);
+   std::string GetSettingsUUID(const std::string& setting);
++  int GetSettingsStartChannel();
+   void SetStreamProperties(std::vector<kodi::addon::PVRStreamProperty>& properties,
+                            const std::string& url,
+                            bool realtime);

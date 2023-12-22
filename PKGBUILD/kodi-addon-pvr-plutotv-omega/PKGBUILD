@@ -6,7 +6,7 @@ _commitid=4ae4afb8e2ef1b96bbec6b5ca04445445155aac7
 
 pkgname=kodi-addon-pvr-plutotv-omega
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
-pkgrel=1
+pkgrel=2
 pkgdesc="Pluto.tv PVR addon for Kodi"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url="https://github.com/kodi-pvr/pvr.plutotv"
@@ -15,11 +15,24 @@ depends=('kodi-omega' 'kodi-addon-inputstream-adaptive-omega')
 makedepends=('kodi-omega-dev' 'git' 'cmake' 'rapidjson')
 provides=("${pkgname%-omega}")
 conflicts=("${pkgname%-omega}" "${pkgname%-omega}-git")
-source=("$pkgname::git+https://github.com/kodi-pvr/pvr.plutotv.git#commit=$_commitid")
-b2sums=('SKIP')
+source=(
+	"$pkgname::git+https://github.com/kodi-pvr/pvr.plutotv.git#commit=$_commitid"
+	'pr51startchannel'
+)
+b2sums=(
+	'SKIP'
+	'b048959a221dfc0ac25f8cad78e4a5023fc8d95c25868ace0af053349378a7248818393475aa8cc0c74e5bb8f76997aafba673d1319ee28db09652a5b5936422'
+)
+
+prepare() {
+  [[ -d "$srcdir/$pkgname/$pkgname-build" ]] && rm -rf "$srcdir/$pkgname/$pkgname-build"
+  mkdir -p "$srcdir/$pkgname/$pkgname-build"
+
+  cd "$srcdir/$pkgname"
+  patch -p1 -i "$srcdir/pr51startchannel"
+}
 
 build() {
-  mkdir -p "$srcdir/$pkgname/$pkgname-build"
   cd "$srcdir/$pkgname/$pkgname-build"
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
            -DCMAKE_BUILD_TYPE=Release \
