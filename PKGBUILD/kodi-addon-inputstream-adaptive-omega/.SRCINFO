@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-inputstream-adaptive-omega
 	pkgdesc = Inputstream Adaptive addon for Kodi
-	pkgver = 21.4.0+git20231201.aed0903
+	pkgver = 21.4.0+git20231222.c35451d
 	pkgrel = 1
 	url = https://github.com/xbmc/inputstream.adaptive
 	arch = x86_64
@@ -18,11 +18,9 @@ pkgbase = kodi-addon-inputstream-adaptive-omega
 	provides = kodi-addon-inputstream-adaptive
 	conflicts = kodi-addon-inputstream-adaptive
 	conflicts = kodi-addon-inputstream-adaptive-git
-	source = kodi-addon-inputstream-adaptive-omega::git+https://github.com/xbmc/inputstream.adaptive.git#commit=aed0903e84cfe115c59f87acfddc2734004c1831
+	source = kodi-addon-inputstream-adaptive-omega::git+https://github.com/xbmc/inputstream.adaptive.git#commit=c35451d2eea2cf9485644ebfd508986bfec8d382
 	source = bento4-1.6.0-639-8-Omega.tar.gz::https://github.com/xbmc/Bento4/archive/refs/tags/1.6.0-639-8-Omega.tar.gz
-	source = pr1399.patch
 	b2sums = SKIP
 	b2sums = 7f1b42e9643e88d39ee88e6804358789d491101d4edadc9fa152d8f2258f1dffef2c2c5a1da7928510778843019d0257924134a5d6177442c30783b7492aaa04
-	b2sums = e399366f95049e217519e50e2f2339818603f75030351f101c2574e264a5bd857e94c655e2d6955bd3bfae4731e44d87df100c7597bb31544bb3beece830bf65
 
 pkgname = kodi-addon-inputstream-adaptive-omega
