@@ -21,8 +21,8 @@
 _clangbuild=
 
 _version=20.90.821
-_commitdate=20231211
-_commitid=2261918e28226c553df77ac052d2b83b4e9e4b40
+_commitdate=20231221
+_commitid=ae87dd79f76f522d30508c6b1acee687f7edd801
 pkgbase=kodi-omega
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpeg-dev")
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}

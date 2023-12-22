@@ -1,5 +1,5 @@
 pkgbase = kodi-omega
-	pkgver = 20.90.821+git20231211.2261918
+	pkgver = 20.90.821+git20231221.ae87dd7
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = aarch64
@@ -71,7 +71,7 @@ pkgbase = kodi-omega
 	noextract = fstrcmp-0.7.D001.tar.gz
 	noextract = libudfread-1.1.2.tar.gz
 	options = !lto
-	source = git+https://github.com/herrnst/xbmc.git#commit=2261918e28226c553df77ac052d2b83b4e9e4b40
+	source = git+https://github.com/herrnst/xbmc.git#commit=ae87dd79f76f522d30508c6b1acee687f7edd801
 	source = libdvdcss-1.4.3-Next-Nexus-Alpha2-2.tar.gz::https://github.com/xbmc/libdvdcss/archive/1.4.3-Next-Nexus-Alpha2-2.tar.gz
 	source = libdvdnav-6.1.1-Next-Nexus-Alpha2-2.tar.gz::https://github.com/xbmc/libdvdnav/archive/6.1.1-Next-Nexus-Alpha2-2.tar.gz
 	source = libdvdread-6.1.3-Next-Nexus-Alpha2-2.tar.gz::https://github.com/xbmc/libdvdread/archive/6.1.3-Next-Nexus-Alpha2-2.tar.gz
@@ -138,7 +138,7 @@ pkgname = kodi-omega
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = upower: Display battery level
-	provides = kodi=20.90.821+git20231211.2261918
+	provides = kodi=20.90.821+git20231221.ae87dd7
 	provides = kodi-x11
 	provides = kodi-wayland
 	provides = kodi-gbm
@@ -157,7 +157,7 @@ pkgname = kodi-omega-eventclients
 	pkgdesc = Kodi Event Clients (patched Omega branch)
 	optdepends = kodi: local machine eventclient use
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=20.90.821+git20231211.2261918
+	provides = kodi-eventclients=20.90.821+git20231221.ae87dd7
 	conflicts = kodi-eventclients
 	conflicts = kodi-git-eventclients
 
@@ -167,20 +167,20 @@ pkgname = kodi-omega-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=20.90.821+git20231211.2261918
+	provides = kodi-tools-texturepacker=20.90.821+git20231221.ae87dd7
 	conflicts = kodi-tools-texturepacker
 	conflicts = kodi-git-tools-texturepacker
 
 pkgname = kodi-omega-dev
 	pkgdesc = Kodi dev files (patched Omega branch)
 	depends = kodi-omega
-	provides = kodi-dev=20.90.821+git20231211.2261918
+	provides = kodi-dev=20.90.821+git20231221.ae87dd7
 	conflicts = kodi-dev
 	conflicts = kodi-git-dev
 
 pkgname = kodi-omega-ffmpeg-dev
 	pkgdesc = Kodi FFmpeg dev files (patched Omega branch)
 	depends = kodi-omega
-	provides = kodi-ffmpeg-dev=20.90.821+git20231211.2261918
+	provides = kodi-ffmpeg-dev=20.90.821+git20231221.ae87dd7
 	conflicts = kodi-ffmpeg-dev
 	conflicts = kodi-git-ffmpeg-dev
