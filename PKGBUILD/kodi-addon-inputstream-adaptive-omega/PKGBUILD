@@ -1,8 +1,8 @@
 # Maintainer: Daniel Scheller <d.scheller@gmx.net>
 
-_version=21.4.0
-_commitdate=20231222
-_commitid=c35451d2eea2cf9485644ebfd508986bfec8d382
+_version=21.4.1
+_commitdate=20231230
+_commitid=2603755bcf8299472bfea12cafc692e3a6b1202b
 _bento4_version=1.6.0-639-8-Omega
 
 pkgname=kodi-addon-inputstream-adaptive-omega
