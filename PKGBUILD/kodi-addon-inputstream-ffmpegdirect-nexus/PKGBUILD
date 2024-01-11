@@ -1,8 +1,8 @@
 # Maintainer: Daniel Scheller <d.scheller@gmx.net>
 
 _version=20.6.0
-_commitdate=20230411
-_commitid=5bf6ad81e8acf3a38c69352e49e1147675ae04e9
+_commitdate=20240111
+_commitid=7ba8f54cb4c42198f6aad7707beef01e0c2e4128
 
 pkgname=kodi-addon-inputstream-ffmpegdirect-nexus
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
