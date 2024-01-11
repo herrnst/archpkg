@@ -20,9 +20,9 @@
 # set this to anything to build with clang rather than with gcc
 _clangbuild=
 
-_version=20.2
-_commitdate=20230911
-_commitid=6beb8ad608c1f28b880274d5efdf28c8750e115d
+_version=20.3
+_commitdate=20240110
+_commitid=1cd4c3391f66657e395de0956434600e0680ffb4
 pkgbase=kodi-nexus
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpeg-dev")
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
@@ -32,7 +32,7 @@ url="https://kodi.tv"
 license=('GPL2')
 makedepends=(
   'afpfs-ng' 'bluez-libs' 'cmake' 'curl' 'doxygen' 'git' 'glew'
-  'gperf' 'hicolor-icon-theme' 'java-runtime' 'libaacs' 'libass'
+  'gperf' 'hicolor-icon-theme' 'java-environment<21' 'libaacs' 'libass'
   'libbluray' 'libcdio' 'libcec' 'libgl' 'mariadb-libs' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libva'
   'libva-vdpau-driver' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
@@ -48,7 +48,7 @@ makedepends=(
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
 _gitname='xbmc'
-_codename=patched/Nexus-20.1
+_codename=patched/Nexus-20.3
 _sse_workaround=1
 
 # Found on their respective github release pages. One can check them against
