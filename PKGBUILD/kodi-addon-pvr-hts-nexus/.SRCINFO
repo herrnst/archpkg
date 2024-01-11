@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-pvr-hts-nexus
 	pkgdesc = HTS/TVHeadend PVR addon for Kodi
-	pkgver = 20.6.2+git20230319.b6b9368
+	pkgver = 20.7.0+git20231229.6d3cf7b
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.hts
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = kodi-addon-pvr-hts-nexus
 	provides = kodi-addon-pvr-hts
 	conflicts = kodi-addon-pvr-hts
 	conflicts = kodi-addon-pvr-hts-git
-	source = kodi-addon-pvr-hts-nexus::git+https://github.com/kodi-pvr/pvr.hts.git#commit=b6b936863cf1c0025a51119aa4eaefd512623ec6
+	source = kodi-addon-pvr-hts-nexus::git+https://github.com/kodi-pvr/pvr.hts.git#commit=6d3cf7b412829cdf25c1964387f8e39dd123c12a
 	b2sums = SKIP
 
 pkgname = kodi-addon-pvr-hts-nexus
