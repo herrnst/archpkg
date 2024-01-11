@@ -1,7 +1,7 @@
 pkgbase = kodi-addon-audiodecoder-sacd-nexus
 	pkgdesc = SACD audiodecoder addon for Kodi
 	pkgver = 20.3.0+git20230217.1309c66
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xbmc/audiodecoder.sacd
 	arch = x86_64
 	arch = i686

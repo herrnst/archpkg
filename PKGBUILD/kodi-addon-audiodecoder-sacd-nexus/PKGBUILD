@@ -6,7 +6,7 @@ _commitid=1309c663394d4ee6ec84ea71f1b86935159c8c51
 
 pkgname=kodi-addon-audiodecoder-sacd-nexus
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
-pkgrel=1
+pkgrel=2
 pkgdesc="SACD audiodecoder addon for Kodi"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url="https://github.com/xbmc/audiodecoder.sacd"
