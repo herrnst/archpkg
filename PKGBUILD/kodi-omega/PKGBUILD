@@ -82,6 +82,7 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
   'cheat-sse-build.patch'
   'depends-fixup.patch'
+  'ffmpeg-extraversion.patch'
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -103,6 +104,7 @@ b2sums=('SKIP'                                                                  
 	'1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61' # libudfread
 	'6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0' # cheat-sse-build.patch
 	'f9be4fa91f79fada1e0d2e3120bed361388e8fd45dfc3c780c141eca2cb2e9b7fa1c11d029315505c3f22bdf55d31b96c062ddca807fc458169e27d9e20206a7' # depends-fixup
+	'05213eab0c9f99fa9ea67bc7de49888b2e055dba360a3a4db62c90686a2f802c86965e9982f1217c7244b97214a532c9765be022b78e7ccaf6af79b6dfc578e5' # ffmpeg-extraversion
 )
 
 prepare() {
@@ -117,6 +119,9 @@ prepare() {
 
   # fixup depends checks
   patch -p1 -i "$srcdir/depends-fixup.patch"
+
+  # patch out FFmpeg extraversion
+  patch -p1 -i "$srcdir/ffmpeg-extraversion.patch"
 
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"

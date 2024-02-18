@@ -1,0 +1,23 @@
+diff --git a/tools/depends/target/ffmpeg/CMakeLists.txt b/tools/depends/target/ffmpeg/CMakeLists.txt
+index 578a4f08d7..7e635bf593 100644
+--- a/tools/depends/target/ffmpeg/CMakeLists.txt
++++ b/tools/depends/target/ffmpeg/CMakeLists.txt
+@@ -37,7 +37,6 @@ list(APPEND ffmpeg_conf --disable-doc
+                         --enable-postproc
+                         --enable-runtime-cpudetect
+                         --enable-pthreads
+-                        --extra-version="Kodi"
+             )
+ 
+ if(CMAKE_C_FLAGS)
+@@ -156,7 +155,6 @@ externalproject_add(ffmpeg
+                     SOURCE_DIR ${CMAKE_SOURCE_DIR}
+                     CONFIGURE_COMMAND ${pkgconf} ${pkgconf_path} <SOURCE_DIR>/configure
+                       --prefix=${CMAKE_INSTALL_PREFIX}
+-                      --extra-version="kodi-${FFMPEG_VER}"
+                       ${ffmpeg_conf}
+                     BUILD_COMMAND ${MAKE_COMMAND})
+ 
+-- 
+2.43.0
+
