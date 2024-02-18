@@ -1,0 +1,55 @@
+From 9f1b17d2f027be57c46fb6c4ffd63da640864120 Mon Sep 17 00:00:00 2001
+From: Daniel Scheller <d.scheller@gmx.net>
+Date: Sat, 3 Feb 2024 19:27:43 +0100
+Subject: [PATCH] Partially revert "Rework Authentication"
+
+This partially reverts commit af016df5f2ed174f5961022c12f00c428e2edb39.
+
+The changes to FindTinyXML2.cmake break building the plugin.
+---
+ FindTinyXML2.cmake | 22 +++++++++-------------
+ 1 file changed, 9 insertions(+), 13 deletions(-)
+
+diff --git a/FindTinyXML2.cmake b/FindTinyXML2.cmake
+index f217605..d06633a 100644
+--- a/FindTinyXML2.cmake
++++ b/FindTinyXML2.cmake
+@@ -8,26 +8,22 @@
+ 
+ find_package(PkgConfig)
+ if(PKG_CONFIG_FOUND)
+-  pkg_check_modules(PC_TinyXML2 TinyXML2 QUIET)
++  pkg_check_modules(PC_TINYXML2 tinyxml2 QUIET)
+ endif()
+ 
+-find_path(TINYXML2_INCLUDE_DIR NAMES tinyxml2.h PATHS ${PC_TinyXML2_INCLUDEDIR})
+-find_library(TINYXML2_LIBRARY NAMES tinyxml2 libtinyxml2.a PATHS ${ADDON_DEPENDS_PATH}/lib)
+-
+-#find_path(TINYXML2_INCLUDE_DIR tinyxml2.h)
+-#find_library(TINYXML2_LIBRARY libtinyxml2)
++find_path(TINYXML2_INCLUDE_DIR tinyxml2.h PATHS ${PC_TINYXML2_INCLUDEDIR})
++find_library(TINYXML2_LIBRARY NAMES tinyxml2 libtinyxml2 PATHS ${PC_TINYXML2_LIBDIR})
+ 
+ #include(FindPackageHandleStandardArgs)
+ #find_package_handle_standard_args(TinyXML2
+ #                                  REQUIRED_VARS TINYXML2_LIBRARY TINYXML2_INCLUDE_DIR
+ #                                  VERSION_VAR ${PC_TINYXML2_VERSION})
+ 
+-#if(TINYXML2_FOUND)
+-#  set(TINYXML2_INCLUDE_DIRS ${TINYXML2_INCLUDE_DIR})
+-#  set(TINYXML2_LIBRARIES ${TINYXML2_LIBRARY})
+-#endif()
+-  set(TINYXML2_INCLUDE_DIRS ${ADDON_DEPENDS_PATH}/include)
+-  set(TINYXML2_LIBRARIES ${ADDON_DEPENDS_PATH}/lib/libtinyxml2.a)
+-
++if(TINYXML2_FOUND)
++  set(TINYXML2_INCLUDE_DIRS ${TINYXML2_INCLUDE_DIR})
++  set(TINYXML2_LIBRARIES ${TINYXML2_LIBRARY})
++endif()
++#set(TINYXML2_INCLUDE_DIRS ${ADDON_DEPENDS_PATH}/include)
++#set(TINYXML2_LIBRARIES ${ADDON_DEPENDS_PATH}/lib/libtinyxml2.a)
+ 
+ mark_as_advanced(TINYXML2_INCLUDE_DIR TINYXML2_LIBRARY)
+-- 
+2.43.0
+

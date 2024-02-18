@@ -1,8 +1,8 @@
 # Maintainer: Daniel Scheller <d.scheller@gmx.net>
 
-_version=21.8.1
-_commitdate=20231220
-_commitid=f8927e29d083d9590bd1cdef6c7fc8f3d31ef75b
+_version=21.9.0
+_commitdate=20240218
+_commitid=d6d44f8b9c5225604b8fe1b3701ec9bd605652e8
 
 pkgname=kodi-addon-pvr-magenta-omega
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
@@ -15,11 +15,24 @@ depends=('kodi-omega' 'kodi-addon-inputstream-adaptive-omega')
 makedepends=('kodi-omega-dev' 'git' 'cmake' 'rapidjson')
 provides=("${pkgname%-omega}")
 conflicts=("${pkgname%-omega}" "${pkgname%-omega}-git")
-source=("$pkgname::git+https://github.com/nirvana-7777/pvr.magenta.git#commit=$_commitid")
-b2sums=('SKIP')
+source=(
+	"$pkgname::git+https://github.com/nirvana-7777/pvr.magenta.git#commit=$_commitid"
+	'fixtinyxml.patch'
+)
+b2sums=(
+	'SKIP'
+	'4c2d32d6c4561b85944381c72944fe6dd3ac0095807b3d4ba35ea572805e499781fcecc976f225ebcbb1bcd31464848cd3c85175ed9c50af7c6a874bee135e36'
+)
+
+prepare() {
+  [[ -d "$srcdir/$pkgname/$pkgname-build" ]] && rm -rf "$srcdir/$pkgname/$pkgname-build"
+  mkdir -p "$srcdir/$pkgname/$pkgname-build"
+
+  cd "$srcdir/$pkgname"
+  patch -p1 -i "$srcdir/fixtinyxml.patch"
+}
 
 build() {
-  mkdir -p "$srcdir/$pkgname/$pkgname-build"
   cd "$srcdir/$pkgname/$pkgname-build"
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
            -DCMAKE_BUILD_TYPE=Release \
