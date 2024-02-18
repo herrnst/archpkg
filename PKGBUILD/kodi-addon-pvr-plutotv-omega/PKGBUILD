@@ -1,12 +1,12 @@
 # Maintainer: Daniel Scheller <d.scheller@gmx.net>
 
 _version=21.0.1
-_commitdate=20231106
-_commitid=4ae4afb8e2ef1b96bbec6b5ca04445445155aac7
+_commitdate=20240213
+_commitid=a236890446df6e1ca9f1fdcbeb51a5ff4a700a89
 
 pkgname=kodi-addon-pvr-plutotv-omega
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
-pkgrel=2
+pkgrel=1
 pkgdesc="Pluto.tv PVR addon for Kodi"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url="https://github.com/kodi-pvr/pvr.plutotv"
