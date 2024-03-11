@@ -5,9 +5,11 @@ pkgbase = linux-aarch64-asahi
 	arch = aarch64
 	license = GPL2
 	makedepends = bc
+	makedepends = clang<=17.0.0
 	makedepends = dtc
 	makedepends = kmod
 	makedepends = libelf
+	makedepends = llvm-libs<=17.0.0
 	makedepends = pahole
 	makedepends = cpio
 	makedepends = perl
