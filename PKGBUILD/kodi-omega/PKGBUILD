@@ -20,9 +20,9 @@
 # set this to anything to build with clang rather than with gcc
 _clangbuild=
 
-_version=20.90.830
-_commitdate=20240215
-_commitid=43c37bb3302af783043134afaf4e2611d5e0d228
+_version=20.90.900
+_commitdate=20240316
+_commitid=6ad6353c06bee637448bbfd0d86686e84defbc08
 pkgbase=kodi-omega
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpeg-dev")
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
@@ -50,7 +50,7 @@ options=(!lto)
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
 _gitname='xbmc'
-_codename=patched/omega-beta3
+_codename=patched/Omega
 _sse_workaround=1
 
 # Found on their respective github release pages. One can check them against
