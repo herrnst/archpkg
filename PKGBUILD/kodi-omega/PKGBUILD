@@ -20,6 +20,9 @@
 # set this to anything to build with clang rather than with gcc
 _clangbuild=
 
+# define the applicaton render system, valid values are either 'gl' or 'gles'
+_renderer=gl
+
 _version=20.90.900
 _commitdate=20240316
 _commitid=6ad6353c06bee637448bbfd0d86686e84defbc08
@@ -32,11 +35,11 @@ url="https://kodi.tv"
 license=('GPL2')
 makedepends=(
   'afpfs-ng' 'bluez-libs' 'cmake' 'curl' 'doxygen' 'git' 'glew'
-  'gperf' 'hicolor-icon-theme' 'java-environment<21' 'fmt' 'libaacs' 'libass'
+  'gperf' 'hicolor-icon-theme' 'java-runtime' 'fmt' 'libaacs' 'libass'
   'libbluray' 'libcdio' 'libcec' 'libgl' 'mariadb-libs' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libva'
   'libva-vdpau-driver' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
-  'python-pycryptodomex' 'python-pillow' 'python-pybluez'
+  'pipewire' 'python-pycryptodomex' 'python-pillow' 'python-pybluez'
   'python-simplejson' 'shairplay' 'smbclient' 'sndio' 'spdlog' 'taglib'
   'tinyxml' 'swig' 'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest'
   'graphviz' 'pcre' 'libdisplay-info' 'tinyxml2' 'flatbuffers'
@@ -115,8 +118,6 @@ prepare() {
 
   rm -rf system/certs # remove not needed cacert
 
-  [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
-
   # fixup depends checks
   patch -p1 -i "$srcdir/depends-fixup.patch"
 
@@ -137,9 +138,17 @@ build() {
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
+    -DENABLE_SSE=ON
+    -DENABLE_SSE2=ON
+    -DENABLE_SSE3=ON
+    -DENABLE_SSSE3=ON
+    -DENABLE_SSE4_1=ON
+    -DENABLE_SSE4_2=ON
+    -DENABLE_AVX=ON
+    -DENABLE_AVX2=ON
     -DUSE_LTO=$(nproc)
     -DVERBOSE=ON
-    -DENABLE_LDGOLD=OFF
+    -DENABLE_GOLD=OFF
     -DENABLE_AIRTUNES=ON
     -DENABLE_AVAHI=ON
     -DENABLE_BLURAY=ON
@@ -174,8 +183,7 @@ build() {
     -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz"
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz"
     -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.gz"
-    -DAPP_RENDER_SYSTEM=gl
-    -DCORE_PLATFORM_NAME="x11 wayland gbm"
+    -DAPP_RENDER_SYSTEM=$_renderer
   )
 
   echo "building kodi"
