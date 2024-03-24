@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-pvr-plutotv-omega
 	pkgdesc = Pluto.tv PVR addon for Kodi
-	pkgver = 21.0.1+git20240213.a236890
+	pkgver = 21.1.0+git20240324.bc3fcd0
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.plutotv
 	arch = x86_64
@@ -18,9 +18,7 @@ pkgbase = kodi-addon-pvr-plutotv-omega
 	provides = kodi-addon-pvr-plutotv
 	conflicts = kodi-addon-pvr-plutotv
 	conflicts = kodi-addon-pvr-plutotv-git
-	source = kodi-addon-pvr-plutotv-omega::git+https://github.com/kodi-pvr/pvr.plutotv.git#commit=a236890446df6e1ca9f1fdcbeb51a5ff4a700a89
-	source = pr51startchannel
+	source = kodi-addon-pvr-plutotv-omega::git+https://github.com/kodi-pvr/pvr.plutotv.git#commit=bc3fcd0fa3297f160d512b7f9eec55deb42b5ef6
 	b2sums = SKIP
-	b2sums = b048959a221dfc0ac25f8cad78e4a5023fc8d95c25868ace0af053349378a7248818393475aa8cc0c74e5bb8f76997aafba673d1319ee28db09652a5b5936422
 
 pkgname = kodi-addon-pvr-plutotv-omega
