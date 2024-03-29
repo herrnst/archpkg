@@ -1,6 +1,6 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 
-_tagver=2023.10.06
+_tagver=2024.03.01
 pkgname=dosbox-x-sdl2
 pkgver=0.84.3+$_tagver
 pkgrel=1
@@ -17,7 +17,7 @@ source=(
 	'001-mt32_aarch64.patch'
 )
 sha256sums=(
-	'65f756e29f9c9b898fdbd22b0cb9b3b24c6e3becb5dcda588aa20a3fde9539a5'
+	'2a89d3196ddc15361f6dc7e6ab142bfe95945d93d527cfd6bacca1f7a401a513'
 	'413c25ec5242d14ac6406c1b13ef7097f9b7ae85c069624318ad4252e8d9a7f7'
 )
 
@@ -29,10 +29,6 @@ build() {
 
   ./autogen.sh
 
-  export CFLAGS="${CFLAGS} -Wno-error=format-security"
-  export CXXFLAGS="${CXXFLAGS} -Wno-error=format-security"
-
-  export LDFLAGS="${LDFLAGS//,--as-needed}"
   chmod +x configure
   ./configure --enable-core-inline --disable-debug --enable-avcodec --prefix=/usr --enable-sdl2
   make -j$(nproc)
