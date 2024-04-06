@@ -23,9 +23,9 @@ _clangbuild=
 # define the applicaton render system, valid values are either 'gl' or 'gles'
 _renderer=gl
 
-_version=20.90.910
-_commitdate=20240318
-_commitid=d704247561a289277da70fba687a30370b06f48b
+_version=21.0.0
+_commitdate=20240406
+_commitid=12773736f0419f3b2968420479fcadec243f7b84
 pkgbase=kodi-omega
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpeg-dev")
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
@@ -53,7 +53,7 @@ options=(!lto)
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
 _gitname='xbmc'
-_codename=patched/omega-rc2
+_codename=patched/Omega-21.0
 _sse_workaround=1
 
 # Found on their respective github release pages. One can check them against
