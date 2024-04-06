@@ -1,9 +1,9 @@
 # Maintainer: Daniel Scheller <d.scheller@gmx.net>
 
-_version=21.4.3
-_commitdate=20240310
-_commitid=df8b32db36cbf4e2e14441ebe533d547ebf3c947
-_bento4_version=1.6.0-639-8-Omega
+_version=21.4.4
+_commitdate=20240406
+_commitid=a82e3eb8333187d8bb346bf5eca384524a553e57
+_bento4_version=1.6.0-641-Omega
 
 pkgname=kodi-addon-inputstream-adaptive-omega
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
@@ -22,7 +22,7 @@ source=("$pkgname::git+https://github.com/xbmc/inputstream.adaptive.git#commit=$
 )
 b2sums=(
 	'SKIP'
-	'7f1b42e9643e88d39ee88e6804358789d491101d4edadc9fa152d8f2258f1dffef2c2c5a1da7928510778843019d0257924134a5d6177442c30783b7492aaa04'
+	'b1a92d4688731fc626327ec4900bc4808e04e496fb44d6ff711bdf427c0aa98dd785c4c9e6a31ea6f141e938199cacdaf34c7579a9b8ca58c767cf69c26d79a0'
 )
 
 prepare() {
