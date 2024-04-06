@@ -1,8 +1,8 @@
 # Maintainer: Daniel Scheller <d.scheller@gmx.net>
 
 _version=21.0.0
-_commitdate=20240216
-_commitid=aa1f322d3e5bef3df4096aefaf1bb25bac2c7a26
+_commitdate=20240219
+_commitid=7ef138335d064aaf338b99d3595db408c73845cc
 
 pkgname=kodi-addon-audiodecoder-sacd-omega
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}

@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-audiodecoder-sacd-omega
 	pkgdesc = SACD audiodecoder addon for Kodi
-	pkgver = 21.0.0+git20240216.aa1f322
+	pkgver = 21.0.0+git20240219.7ef1383
 	pkgrel = 1
 	url = https://github.com/xbmc/audiodecoder.sacd
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = kodi-addon-audiodecoder-sacd-omega
 	provides = kodi-addon-audiodecoder-sacd
 	conflicts = kodi-addon-audiodecoder-sacd
 	conflicts = kodi-addon-audiodecoder-sacd-git
-	source = kodi-addon-audiodecoder-sacd-omega::git+https://github.com/xbmc/audiodecoder.sacd.git#commit=aa1f322d3e5bef3df4096aefaf1bb25bac2c7a26
+	source = kodi-addon-audiodecoder-sacd-omega::git+https://github.com/xbmc/audiodecoder.sacd.git#commit=7ef138335d064aaf338b99d3595db408c73845cc
 	b2sums = SKIP
 
 pkgname = kodi-addon-audiodecoder-sacd-omega
