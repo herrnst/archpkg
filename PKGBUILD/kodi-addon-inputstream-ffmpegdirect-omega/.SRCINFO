@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-inputstream-ffmpegdirect-omega
 	pkgdesc = FFmpegdirect Inputstream addon for Kodi
-	pkgver = 21.3.3+git20240214.1834f76
+	pkgver = 21.3.5+git20240330.abe42fd
 	pkgrel = 1
 	url = https://github.com/xbmc/inputstream.ffmpegdirect
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = kodi-addon-inputstream-ffmpegdirect-omega
 	provides = kodi-addon-inputstream-ffmpegdirect
 	conflicts = kodi-addon-inputstream-ffmpegdirect
 	conflicts = kodi-addon-inputstream-ffmpegdirect-git
-	source = kodi-addon-inputstream-ffmpegdirect-omega::git+https://github.com/xbmc/inputstream.ffmpegdirect.git#commit=1834f760ecaa118a5f781918cf17a39753337543
+	source = kodi-addon-inputstream-ffmpegdirect-omega::git+https://github.com/xbmc/inputstream.ffmpegdirect.git#commit=abe42fd985f6e8e4452c2b460a8da119ff4ebabd
 	sha256sums = SKIP
 
 pkgname = kodi-addon-inputstream-ffmpegdirect-omega
