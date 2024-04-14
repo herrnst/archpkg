@@ -1,8 +1,8 @@
 # Maintainer: Daniel Scheller <d.scheller@gmx.net>
 
 _version=21.3.5
-_commitdate=20240330
-_commitid=abe42fd985f6e8e4452c2b460a8da119ff4ebabd
+_commitdate=20240407
+_commitid=b0c71122ccbad45cbf631e1a4b1f2c3e34c340f2
 
 pkgname=kodi-addon-inputstream-ffmpegdirect-omega
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
