@@ -1,8 +1,8 @@
 # Maintainer: Hector Martin <marcan@marcan.st>
 
 _version=1.4.11
-_commitdate=20231217
-_commitid=90eef7223e5da9bdc7ad7f823e7748326ba862d2
+_commitdate=20240409
+_commitid=396d1d7207b863c92f78ffc4f21c90b0627f95ad
 
 pkgname=m1n1-git
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
@@ -20,15 +20,21 @@ provides=("m1n1=${_version}")
 source=(
   "artwork-${_artwork_commit_id}.tar.gz::https://github.com/AsahiLinux/artwork/archive/${_artwork_commit_id}.tar.gz"
   "git+https://github.com/AsahiLinux/m1n1.git#commit=$_commitid"
+  "pr389.patch"
 )
 sha256sums=('ffa129b5cae8debd4ffd97f7f1ac7f571c7ba4679793cd138918c2ae76a7103d'
-            SKIP)
+            SKIP
+            'a9f2a5bc08097edabd5db9600d950a0abc43b3892c6ce676fe45a0931c8d884a')
 b2sums=('26e9668f7c7393fec24b53b184ea0eabed4f46479c1aab26728d01c179091683cc4387ff83796bdcbb289376236faf9f651197b9fbba51e52540e58ebdc8bcc5'
-        SKIP)
+        SKIP
+        '2a73ea7da1181c3ac8b9d5533a4fc7e02ebcbb259f34db20cc77c3ac66ea08f61709f70c2d75dd1d4a26605a043556c01d96ae7e022df5e370d3a2906ef5ed03')
 
 prepare() {
   rm -rf "${srcdir}"/m1n1/artwork
   cp -r "${srcdir}/$_artwork_srcname" "${srcdir}"/m1n1/artwork
+
+  cd "${srcdir}"/m1n1
+  patch -p1 -i "${srcdir}"/pr389.patch
 }
 
 build() {
