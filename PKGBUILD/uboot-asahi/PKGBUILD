@@ -1,23 +1,23 @@
 # Maintainer: Hector Martin <marcan@marcan.st>
 
 pkgname=uboot-asahi
-_ver=2023.07.02
-_asahirel=2
+_ver=2024.04
+_commitdate=20240418
+_commitid=e80039fbccbca268d9b48c9c0deb84d2827a4c6a
 
-pkgver=${_ver}.asahi${_asahirel}
+pkgver=${_ver}+git${_commitdate}.${_commitid:0:7}
 pkgrel=1
 pkgdesc='U-Boot for Apple Silicon Macs'
-_commit_id=asahi-v${_ver}-${_asahirel}
-_srcname=u-boot-${_commit_id}
+_srcname=u-boot-${_commitid}
 arch=('aarch64')
 url='http://asahilinux.org'
 license=('MIT' 'GPL2')
 makedepends=( bc imagemagick )
 source=(
-  "u-boot-${_commit_id}.tar.gz::https://github.com/AsahiLinux/u-boot/archive/${_commit_id}.tar.gz"
+  "u-boot-${pkgver}.tar.gz::https://github.com/AsahiLinux/u-boot/archive/${_commitid}.tar.gz"
 )
-sha256sums=('0208241691890fc44aeb353ceba880c198f26734aa92837f9be7dbf32f8e8357')
-b2sums=('658098da2e0e279fe6c0a6f372002f6ccccfc5c5807f0f99d8db9d4a8a76abb7752a81cdbcf02e9bafd60016e4cfc2528e6b2a945012e3af2ddc6797a13c422b')
+sha256sums=('9b2bf09173a35f516c3849fd07cad0d855f8b253ddc08eac0caa1730d79f9fda')
+b2sums=('ab9babc1b8147f4adb4b5e587775d5f76667d062a39333f30527b717c1a7798eea6a6cd27999e1645bbdbd64421c9fc409e1f3794f3b2c16c4d8458d7b63eb6a')
 
 prepare() {
   cd "${srcdir}/$_srcname"
