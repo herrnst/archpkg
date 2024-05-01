@@ -8,8 +8,8 @@ highmem=1
 
 _suffix=-asahi-git
 _version=24.1.0
-_commitdate=20240228
-_commitid=eebfe8416a6266bc1662f2d99485b2dce87a34f5
+_commitdate=20240430
+_commitid=9e86906a90fef7efb75c3411896779ad5bb37446
 
 pkgbase=mesa$_suffix
 pkgname=(
@@ -31,7 +31,7 @@ license=('custom')
 options=('debug' '!lto')
 source=(https://gitlab.freedesktop.org/asahi/mesa/-/archive/$_commitid/mesa-$_commitid.tar.gz
         LICENSE)
-sha512sums=('f0c502fb696efacdf54bf24ac880db123d3d2225863a0de3b52e6e6c81df9feba9795903fb9a1c6c88a1a9a91286debfd119ca9a0817f2d4818e6f237aa48bfc'
+sha512sums=('9b80cdeb237e3afefa0ea96fe3e1d38978fd5364a55b7fbe0fd984234192564aedc392a1102639e6edab9d04a6508ba225f4b4f4218152feee9bbd25734a34b6'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 
 prepare() {
@@ -63,6 +63,7 @@ build() {
     -D gles2=enabled \
     -D glvnd=true \
     -D glx=dri \
+    -D intel-rt=false \
     -D libunwind=disabled \
     -D llvm=enabled \
     -D lmsensors=enabled \
