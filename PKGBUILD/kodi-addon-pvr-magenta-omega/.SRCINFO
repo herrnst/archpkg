@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-pvr-magenta-omega
 	pkgdesc = MagentaTV PVR addon for Kodi
-	pkgver = 21.9.2+git20240410.6da6759
+	pkgver = 21.9.4+git20240501.edd376c
 	pkgrel = 1
 	url = https://github.com/nirvana-7777/pvr.magenta
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = kodi-addon-pvr-magenta-omega
 	provides = kodi-addon-pvr-magenta
 	conflicts = kodi-addon-pvr-magenta
 	conflicts = kodi-addon-pvr-magenta-git
-	source = kodi-addon-pvr-magenta-omega::git+https://github.com/nirvana-7777/pvr.magenta.git#commit=6da67596cc7f49dd1bc6d0e2e1ae0b5594e31052
+	source = kodi-addon-pvr-magenta-omega::git+https://github.com/nirvana-7777/pvr.magenta.git#commit=edd376c9c2fe50e156829db0628febfb31d1a37c
 	source = fixtinyxml.patch
 	b2sums = SKIP
 	b2sums = 4c2d32d6c4561b85944381c72944fe6dd3ac0095807b3d4ba35ea572805e499781fcecc976f225ebcbb1bcd31464848cd3c85175ed9c50af7c6a874bee135e36
