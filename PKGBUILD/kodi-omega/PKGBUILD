@@ -23,9 +23,9 @@ _clangbuild=
 # define the applicaton render system, valid values are either 'gl' or 'gles'
 _renderer=gl
 
-_version=21.0.0
-_commitdate=20240406
-_commitid=12773736f0419f3b2968420479fcadec243f7b84
+_version=21.0.1
+_commitdate=20240521
+_commitid=08154f36d1e963c7878ee69ad67321c8d52f9049
 pkgbase=kodi-omega
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpeg-dev")
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
