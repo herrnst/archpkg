@@ -7,9 +7,9 @@
 highmem=1
 
 _suffix=-asahi-git
-_version=24.1.0
-_commitdate=20240501
-_commitid=81e232b5734e937dc448b11eb99b7c012c04e2b3
+_version=24.2.0
+_commitdate=20240528
+_commitid=878b415ecb2c2099adc28670d99d40106724e827
 
 pkgbase=mesa$_suffix
 pkgname=(
@@ -25,13 +25,13 @@ makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence
              'libxdamage' 'libvdpau' 'libva' 'wayland' 'wayland-protocols' 'zstd' 'elfutils' 'llvm'
              'libomxil-bellagio' 'libclc' 'clang' 'libglvnd' 'libunwind' 'lm_sensors' 'libxrandr'
              'systemd' 'valgrind' 'glslang' 'vulkan-icd-loader' 'directx-headers' 'cmake' 'meson'
-             'spirv-tools' 'spirv-llvm-translator')
+             'spirv-tools' 'spirv-llvm-translator' 'python-mako' 'python-packaging')
 url="https://www.mesa3d.org/"
 license=('custom')
 options=('debug' '!lto')
 source=(https://gitlab.freedesktop.org/asahi/mesa/-/archive/$_commitid/mesa-$_commitid.tar.gz
         LICENSE)
-sha512sums=('1a0618fd5aeaafbe6b3aa053dab8d7a3e5bf4b786faeb3f7cb7fd582303795941392e0a38c4779502335257be9e17fc58cc4b53f58cab8584afe50d5ff182b91'
+sha512sums=('fbad8c120deb1e5298bc3225c0b3770857afab4cf10401272093eb46caa5567441229c4599d0326234c783b7b70589b3511c1e7d7d51fe370289d2c7111cb0da'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 
 prepare() {
@@ -61,9 +61,9 @@ build() {
     -D gbm=enabled \
     -D gles1=disabled \
     -D gles2=enabled \
-    -D glvnd=true \
+    -D glvnd=enabled \
     -D glx=dri \
-    -D intel-rt=false \
+    -D intel-rt=disabled \
     -D libunwind=disabled \
     -D llvm=enabled \
     -D lmsensors=enabled \
