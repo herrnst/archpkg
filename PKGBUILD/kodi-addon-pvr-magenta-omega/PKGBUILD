@@ -1,8 +1,8 @@
 # Maintainer: Daniel Scheller <d.scheller@gmx.net>
 
-_version=21.9.4
-_commitdate=20240501
-_commitid=edd376c9c2fe50e156829db0628febfb31d1a37c
+_version=21.9.5
+_commitdate=20240618
+_commitid=af55a16bad506472688c6d17a37ad3055b15f71e
 
 pkgname=kodi-addon-pvr-magenta-omega
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
