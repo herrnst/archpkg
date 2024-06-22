@@ -1,0 +1,33 @@
+From 5921b017500b4cc3e30c2b2c5898a6ea414b3df2 Mon Sep 17 00:00:00 2001
+From: Sergio Lopez <slp@sinrega.org>
+Date: Wed, 29 May 2024 17:52:22 +0200
+Subject: [PATCH] asahi/virtio: honor GEM_VM_PRIVATE semantics
+
+Signed-off-by: Sergio Lopez <slp@sinrega.org>
+---
+ src/asahi/lib/agx_device_virtio.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/src/asahi/lib/agx_device_virtio.c b/src/asahi/lib/agx_device_virtio.c
+index 8a31b8bb383e4..70bebc27de3dd 100644
+--- a/src/asahi/lib/agx_device_virtio.c
++++ b/src/asahi/lib/agx_device_virtio.c
+@@ -73,8 +73,13 @@ agx_virtio_bo_alloc(struct agx_device *dev, size_t size, size_t align,
+    if (flags & AGX_BO_WRITEBACK)
+       req.flags |= ASAHI_GEM_WRITEBACK;
+ 
+-   uint32_t blob_flags =
+-      VIRTGPU_BLOB_FLAG_USE_MAPPABLE | VIRTGPU_BLOB_FLAG_USE_SHAREABLE;
++   uint32_t blob_flags = VIRTGPU_BLOB_FLAG_USE_MAPPABLE;
++
++   if (!(flags & (AGX_BO_SHARED | AGX_BO_SHAREABLE))) {
++      req.flags |= ASAHI_GEM_VM_PRIVATE;
++   } else {
++      blob_flags |= VIRTGPU_BLOB_FLAG_USE_SHAREABLE;
++   }
+ 
+    req.bind_flags = ASAHI_BIND_READ;
+    if (!(flags & AGX_BO_READONLY)) {
+-- 
+GitLab
+
