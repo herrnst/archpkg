@@ -16,7 +16,7 @@
 buildarch=8
 
 pkgbase=linux-aarch64-asahi
-pkgver=6.9.7
+pkgver=6.9.8
 pkgrel=1
 
 _srcdir="linux-asahi-${pkgver}-asahi"
@@ -35,9 +35,9 @@ source=(
   https://github.com/herrnst/linux-asahi/archive/refs/tags/v${pkgver}-asahi.tar.gz
   config         # merged olddefconfig+asahi+asahiedge config file
 )
-sha256sums=('2e603253bf82056718198ef2c61d65f5c200eaf9d870cd6128ffcc6dbc271f9d'
+sha256sums=('f04ea5dcec5debe3a4f02410f9a8c69dac65b02a6c0614c6dcf945d838ff6595'
             '806b0cff1518db4e57dd01583c0880323c3080a6855f66b91c1100b1a6f10220')
-b2sums=('86160a92e5f7f6b189978f75e4b8a32e64169d838146da833d39d93d384df4c1da8975ed1bc522173db419232f84af3a4cc546fdd6145d6dda0cd214f6787268'
+b2sums=('ea5543b1554ed68b5267a90bb7076e0a498d072c5d46ecffc6c4a6c575f46515e256fb01eb7bbb6e8dc4f0c33625de7d5f84757d164c2b10acd375b71e807b1d'
         'aed71dad5efd251ea84ba4906459ba79a85b8474c0f07bacc13d074a9a42d50e4dc68fedfee74e25cac773dd0595d8604a70c6bc9a90fa07e5e8094abbca22d7')
 
 prepare() {
