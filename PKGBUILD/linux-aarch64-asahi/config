@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.9.6 Kernel Configuration
+# Linux/arm64 6.9.9 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 12.1.0"
 CONFIG_CC_IS_GCC=y
@@ -3795,6 +3795,7 @@ CONFIG_HWMON=y
 # CONFIG_SENSORS_LM95234 is not set
 # CONFIG_SENSORS_LM95241 is not set
 # CONFIG_SENSORS_LM95245 is not set
+CONFIG_SENSORS_MACSMC=m
 # CONFIG_SENSORS_PC87360 is not set
 # CONFIG_SENSORS_PC87427 is not set
 # CONFIG_SENSORS_NCT6683 is not set
