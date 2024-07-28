@@ -1,7 +1,7 @@
 pkgbase = mesa-asahi-git
 	pkgdesc = An open-source implementation of the OpenGL specification
-	pkgver = 24.2.0+git20240528.878b415
-	pkgrel = 2
+	pkgver = 24.2.0+git20240724.6d00b02
+	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = aarch64
 	license = custom
@@ -40,14 +40,12 @@ pkgbase = mesa-asahi-git
 	makedepends = python-packaging
 	options = debug
 	options = !lto
-	source = https://gitlab.freedesktop.org/asahi/mesa/-/archive/878b415ecb2c2099adc28670d99d40106724e827/mesa-878b415ecb2c2099adc28670d99d40106724e827.tar.gz
+	source = https://gitlab.freedesktop.org/asahi/mesa/-/archive/6d00b02b727f89a324e7e3dcb34e6c74ef0848b3/mesa-6d00b02b727f89a324e7e3dcb34e6c74ef0848b3.tar.gz
 	source = LICENSE
 	source = pr283-virtio.patch
-	source = pr285-uapi.patch
-	sha512sums = fbad8c120deb1e5298bc3225c0b3770857afab4cf10401272093eb46caa5567441229c4599d0326234c783b7b70589b3511c1e7d7d51fe370289d2c7111cb0da
+	sha512sums = cabb6ae8e388449585053702a6ec077dc91ef2549ca32e0fa038e03e26f9291fd0e1fc8058186a35c6b12ed016279ae7d53331266aea559a07acccb5cc6ee58a
 	sha512sums = f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7
 	sha512sums = c6c1db1ae173e90ebb96c431ccee6478221801f0ce79b8b53b8d750a410a94b423b523ab337b3765295f3b8a8d8ef51178d46d0d80e27970175979f6ced24483
-	sha512sums = 7ae3da44a36632531cab0c694962657e86f10ea242ae7d59e0f6038660e8f5c17ab8725c089ba645d1c9fcf94d966bd28491b54784133df03472b3380f7e632c
 
 pkgname = vulkan-swrast-asahi-git
 	pkgdesc = Vulkan software rasteriser driver
