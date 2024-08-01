@@ -24,8 +24,8 @@ _clangbuild=
 _renderer=gl
 
 _version=21.0.1
-_commitdate=20240622
-_commitid=e30f83be4ebf38cb1ce5da29e18a2683944fecda
+_commitdate=20240730
+_commitid=cbef5274c5d4595ed56986d1323a991b9f5e95db
 pkgbase=kodi-omega
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpeg-dev")
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
