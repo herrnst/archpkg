@@ -1,5 +1,5 @@
 pkgbase = kodi-omega
-	pkgver = 21.0.1+git20240730.cbef527
+	pkgver = 21.1.0+git20240817.b9821cd
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = aarch64
@@ -67,17 +67,18 @@ pkgbase = kodi-omega
 	noextract = libdvdcss-1.4.3-Next-Nexus-Alpha2-2.tar.gz
 	noextract = libdvdnav-6.1.1-Next-Nexus-Alpha2-2.tar.gz
 	noextract = libdvdread-6.1.3-Next-Nexus-Alpha2-2.tar.gz
-	noextract = ffmpeg-6.1.1.tar.gz
+	noextract = ffmpeg-7.0.2.tar.gz
+	noextract = dav1d-1.4.3.tar.bz2
 	noextract = crossguid-ca1bf4b810e2d188d04cb6286f957008ee1b7681.tar.gz
 	noextract = fstrcmp-0.7.D001.tar.gz
 	noextract = libudfread-1.1.2.tar.gz
 	options = !lto
-	source = git+https://github.com/herrnst/xbmc.git#commit=cbef5274c5d4595ed56986d1323a991b9f5e95db
+	source = git+https://github.com/herrnst/xbmc.git#commit=b9821cd66227388e189446e7683fbda468ce809f
 	source = libdvdcss-1.4.3-Next-Nexus-Alpha2-2.tar.gz::https://github.com/xbmc/libdvdcss/archive/1.4.3-Next-Nexus-Alpha2-2.tar.gz
 	source = libdvdnav-6.1.1-Next-Nexus-Alpha2-2.tar.gz::https://github.com/xbmc/libdvdnav/archive/6.1.1-Next-Nexus-Alpha2-2.tar.gz
 	source = libdvdread-6.1.3-Next-Nexus-Alpha2-2.tar.gz::https://github.com/xbmc/libdvdread/archive/6.1.3-Next-Nexus-Alpha2-2.tar.gz
-	source = ffmpeg-6.1.1.tar.gz::https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n6.1.1.tar.gz
-	source = https://code.videolan.org/videolan/dav1d/-/archive/1.4.1/dav1d-1.4.1.tar.bz2
+	source = ffmpeg-7.0.2.tar.gz::https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n7.0.2.tar.gz
+	source = https://code.videolan.org/videolan/dav1d/-/archive/1.4.3/dav1d-1.4.3.tar.bz2
 	source = http://mirrors.kodi.tv/build-deps/sources/crossguid-ca1bf4b810e2d188d04cb6286f957008ee1b7681.tar.gz
 	source = http://mirrors.kodi.tv/build-deps/sources/fstrcmp-0.7.D001.tar.gz
 	source = http://mirrors.kodi.tv/build-deps/sources/libudfread-1.1.2.tar.gz
@@ -88,13 +89,13 @@ pkgbase = kodi-omega
 	b2sums = 2f503d3ab767094958f7ec10b4ad11ffd02665deee571c8f3c739bef5fc7e2ff84babc5a3fdee638dc095f896b72fe3ce65e6b688674cb5f7b7b77190992688c
 	b2sums = db4d05836d8fbb3637ae50bdbfc0e4b612ee6b3be24addfea94ce772c3bf28d58b63a3f252d6f9f016f72f8cbb841cc1820b091226b136f4c4664385a32da73c
 	b2sums = c94feb5a03a12efa5b7767965118d2500a088299ea36f3b82e46d157e45893e6b04503cb50f179ca681bac914457607fab26acfa6e304752b355c407578572d1
-	b2sums = c8328096181eb59bdba456986271ed2a34aa34180114d0d2feeadc0bdf51e8fcd7cff07aa4b1e40537bde29e6984d8c705c9eb295c70ac233bbfb11509dea6da
-	b2sums = a75c957b0b02977bbff09844e309d160d6e4e9ae7b22768f847aa46c50fba64408faca55e9ccef2e24e787c23ad29594c3840ee97708caa7e1b976f928ce3bd2
+	b2sums = a2c2d56b902218eb30f3301f118ce10e11e0e14ef5561a59716f8b7684fa2e6bdf1ba2d558d19613abf41750cb207b2dcc14bddc83f809c7f65e5c5c8e72c572
+	b2sums = 73e8b9a78152e383a95d63e202646d3e1b791157983d50509185f6373402732394336a8c37d5c5f40542e7b51867aa5147f28364ec02e15e2a16cbeba8af5b5a
 	b2sums = 0f78a8ab5a420297f666b3b8156d499a9141ec25c049d4d2bb2ba594dc585abe211a149b83c605cce4f5530207231a065d5f3a87a0c969781de8c6381afa2527
 	b2sums = a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e
 	b2sums = 1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61
 	b2sums = 6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0
-	b2sums = a461793d17ef5e8911b817b347a1ac3d20b573818a454d1f4174b2ca24d8ccb5fbd995ee1837723f1cce035cc6bff582ee5046ea29ae944ff7528f9865bfd77f
+	b2sums = c1bd1c6e4b3383d2174ab9e124a00a0dbd96dfd8d784476efaf16fff318129ee52e5d55e334ab0b690f2371fa28ab3971a1391fab149732b989c8b3afef5c5d0
 	b2sums = 05213eab0c9f99fa9ea67bc7de49888b2e055dba360a3a4db62c90686a2f802c86965e9982f1217c7244b97214a532c9765be022b78e7ccaf6af79b6dfc578e5
 
 pkgname = kodi-omega
@@ -141,7 +142,7 @@ pkgname = kodi-omega
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = upower: Display battery level
-	provides = kodi=21.0.1+git20240730.cbef527
+	provides = kodi=21.1.0+git20240817.b9821cd
 	provides = kodi-x11
 	provides = kodi-wayland
 	provides = kodi-gbm
@@ -160,7 +161,7 @@ pkgname = kodi-omega-eventclients
 	pkgdesc = Kodi Event Clients (patched Omega branch)
 	optdepends = kodi: local machine eventclient use
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=21.0.1+git20240730.cbef527
+	provides = kodi-eventclients=21.1.0+git20240817.b9821cd
 	conflicts = kodi-eventclients
 	conflicts = kodi-git-eventclients
 
@@ -170,20 +171,20 @@ pkgname = kodi-omega-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=21.0.1+git20240730.cbef527
+	provides = kodi-tools-texturepacker=21.1.0+git20240817.b9821cd
 	conflicts = kodi-tools-texturepacker
 	conflicts = kodi-git-tools-texturepacker
 
 pkgname = kodi-omega-dev
 	pkgdesc = Kodi dev files (patched Omega branch)
 	depends = kodi-omega
-	provides = kodi-dev=21.0.1+git20240730.cbef527
+	provides = kodi-dev=21.1.0+git20240817.b9821cd
 	conflicts = kodi-dev
 	conflicts = kodi-git-dev
 
 pkgname = kodi-omega-ffmpeg-dev
 	pkgdesc = Kodi FFmpeg dev files (patched Omega branch)
 	depends = kodi-omega
-	provides = kodi-ffmpeg-dev=21.0.1+git20240730.cbef527
+	provides = kodi-ffmpeg-dev=21.1.0+git20240817.b9821cd
 	conflicts = kodi-ffmpeg-dev
 	conflicts = kodi-git-ffmpeg-dev
