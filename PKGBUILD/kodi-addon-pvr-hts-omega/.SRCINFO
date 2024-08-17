@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-pvr-hts-omega
 	pkgdesc = HTS/TVHeadend PVR addon for Kodi
-	pkgver = 21.2.1+git20240303.0effdb6
+	pkgver = 21.2.5+git20240728.5d05ec9
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.hts
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = kodi-addon-pvr-hts-omega
 	provides = kodi-addon-pvr-hts
 	conflicts = kodi-addon-pvr-hts
 	conflicts = kodi-addon-pvr-hts-git
-	source = kodi-addon-pvr-hts-omega::git+https://github.com/kodi-pvr/pvr.hts.git#commit=0effdb6269684db0385299c1121cfc982c2a9bd4
+	source = kodi-addon-pvr-hts-omega::git+https://github.com/kodi-pvr/pvr.hts.git#commit=5d05ec930459f2604657d358365a709cd2217a49
 	b2sums = SKIP
 
 pkgname = kodi-addon-pvr-hts-omega
