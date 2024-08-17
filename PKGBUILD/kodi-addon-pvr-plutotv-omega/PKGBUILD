@@ -1,8 +1,8 @@
 # Maintainer: Daniel Scheller <d.scheller@gmx.net>
 
-_version=21.1.0
-_commitdate=20240324
-_commitid=bc3fcd0fa3297f160d512b7f9eec55deb42b5ef6
+_version=21.3.1
+_commitdate=20240728
+_commitid=d0772e5b467999257785401db2c4e5f1b63f7eea
 
 pkgname=kodi-addon-pvr-plutotv-omega
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
