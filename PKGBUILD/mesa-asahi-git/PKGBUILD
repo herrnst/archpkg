@@ -7,13 +7,14 @@
 highmem=1
 
 _suffix=-asahi-git
-_version=24.2.0
-_commitdate=20240724
-_commitid=6d00b02b727f89a324e7e3dcb34e6c74ef0848b3
+_version=24.3.0
+_commitdate=20240926
+_commitid=04a65924530910d2ca64531dd399f07257624161
 
 pkgbase=mesa$_suffix
 pkgname=(
 	"vulkan-swrast$_suffix"
+	"vulkan-asahi$_suffix"
 	"mesa$_suffix"
 )
 pkgdesc="An open-source implementation of the OpenGL specification"
@@ -25,20 +26,27 @@ makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence
              'libxdamage' 'libvdpau' 'libva' 'wayland' 'wayland-protocols' 'zstd' 'elfutils' 'llvm'
              'libomxil-bellagio' 'libclc' 'clang' 'libglvnd' 'libunwind' 'lm_sensors' 'libxrandr'
              'systemd' 'valgrind' 'glslang' 'vulkan-icd-loader' 'directx-headers' 'cmake' 'meson'
-             'spirv-tools' 'spirv-llvm-translator' 'python-mako' 'python-packaging')
+             'spirv-tools' 'spirv-llvm-translator' 'python-mako' 'python-yaml' 'python-packaging')
 url="https://www.mesa3d.org/"
 license=('custom')
 options=('debug' '!lto')
-source=(https://gitlab.freedesktop.org/asahi/mesa/-/archive/$_commitid/mesa-$_commitid.tar.gz
-        LICENSE
-	pr283-virtio.patch)
-sha512sums=('cabb6ae8e388449585053702a6ec077dc91ef2549ca32e0fa038e03e26f9291fd0e1fc8058186a35c6b12ed016279ae7d53331266aea559a07acccb5cc6ee58a'
-            'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7'
-            'c6c1db1ae173e90ebb96c431ccee6478221801f0ce79b8b53b8d750a410a94b423b523ab337b3765295f3b8a8d8ef51178d46d0d80e27970175979f6ced24483')
+source=(
+	https://gitlab.freedesktop.org/asahi/mesa/-/archive/$_commitid/mesa-$_commitid.tar.gz
+	LICENSE
+	pr283-virtio.patch
+	ilikerottenapples.patch
+)
+sha512sums=(
+	'0055e564605994377f32ed661c4e41af58f0d257c8f4728b920e766075a142ac75eddfad4c00782504d4152419c620af89bec8d7596e57569939af9ecc973422'
+	'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7'
+	'c6c1db1ae173e90ebb96c431ccee6478221801f0ce79b8b53b8d750a410a94b423b523ab337b3765295f3b8a8d8ef51178d46d0d80e27970175979f6ced24483'
+	'74b6ff6428802d8d7a403fecd38138b9ff7c800696ea8932162547d13a241a0400add3238f00c58e74973eda68701e09b19adb3edafa83ba7a27be2337a8df1a'
+)
 
 prepare() {
   cd mesa-$_commitid
   patch -p1 -i "$srcdir/pr283-virtio.patch"
+  patch -p1 -i "$srcdir/ilikerottenapples.patch"
 }
 
 build() {
@@ -50,10 +58,10 @@ build() {
     -D b_ndebug=true \
     -D b_lto=false \
     -D platforms=x11,wayland \
-    -D gallium-drivers=swrast,virgl,kmsro,asahi \
-    -D vulkan-drivers=swrast \
+    -D gallium-drivers=softpipe,llvmpipe,virgl,asahi \
+    -D vulkan-drivers=swrast,asahi \
     -D vulkan-layers= \
-    -D dri3=enabled \
+    -D video-codecs=all \
     -D egl=enabled \
     -D gallium-extra-hud=true \
     -D gallium-opencl=disabled \
@@ -66,6 +74,7 @@ build() {
     -D gles2=enabled \
     -D glvnd=enabled \
     -D glx=dri \
+    -D legacy-x11=dri2 \
     -D intel-rt=disabled \
     -D libunwind=disabled \
     -D llvm=enabled \
@@ -111,6 +120,20 @@ _package_vulkan-swrast() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
+_package_vulkan-asahi() {
+  pkgdesc="Vulkan Asahi driver"
+  depends=('wayland' 'libx11' 'libxshmfence' 'libdrm' 'zstd' 'llvm-libs' 'systemd-libs' 'libunwind')
+  optdepends=('vulkan-mesa-layers: additional vulkan layers')
+  conflicts=('vulkan-mesa' 'vulkan-asahi')
+  replaces=('vulkan-mesa')
+  provides=('vulkan-driver' 'vulkan-asahi')
+
+  _install fakeinstall/usr/share/vulkan/icd.d/asahi_icd*.json
+  _install fakeinstall/usr/lib/libvulkan_asahi.so
+
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+}
+
 _package_mesa() {
   depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
            'libomxil-bellagio' 'libunwind' 'llvm-libs' 'lm_sensors' 'libglvnd'
@@ -140,6 +163,9 @@ _package_mesa() {
 
   # indirect rendering
   ln -s /usr/lib/libGLX_mesa.so.0 "${pkgdir}/usr/lib/libGLX_indirect.so.0"
+
+  # libgallium
+  _install fakeinstall/usr/lib/libgallium-*.so
 
   # make sure there are no files left to install
   find fakeinstall -depth -print0 | xargs -0 rmdir
