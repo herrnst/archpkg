@@ -1,6 +1,6 @@
 pkgbase = kodi-omega
 	pkgver = 21.1.0+git20240817.b9821cd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kodi.tv
 	arch = aarch64
 	arch = x86_64
