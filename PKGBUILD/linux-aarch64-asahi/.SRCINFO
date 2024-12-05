@@ -1,5 +1,5 @@
 pkgbase = linux-aarch64-asahi
-	pkgver = 6.12.1
+	pkgver = 6.12.2
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = aarch64
@@ -18,12 +18,12 @@ pkgbase = linux-aarch64-asahi
 	makedepends = xz
 	makedepends = xmlto
 	options = !strip
-	source = https://github.com/herrnst/linux-asahi/archive/refs/tags/v6.12.1-asahi.tar.gz
+	source = https://github.com/herrnst/linux-asahi/archive/refs/tags/v6.12.2-asahi.tar.gz
 	source = config
-	sha256sums = 2c4d29819dc7d83b7b7e523b3699e421ef6f5d0c89e7c738530f3280d0357cc8
-	sha256sums = e93a07c8ef73c280215a0d05919bb78f5cc3ffe6c97f74501082baaf70312e91
-	b2sums = e76d781cd8f1931caac40ac3e616d48a01d59d4e4f493d7465cf5d490b01048495c26067680ef804929dbcec6294b804421c00e8686763f5c4382a5ca306c7d5
-	b2sums = 27008c1550cdba54f26332659fbb5dfd0baba4e3fb98861d792ba5051c64ba95b91b43daafe211751d6619a99c60bac739d7ca4ef87a7fce10cb0ed5fea8fa54
+	sha256sums = 7474c2c6df40d77eb1f94377c4395c9d3b64384b9c757b75f7bc17ba34bef0e2
+	sha256sums = 29bebf52fbf881b18ce8b7de3d22fb4bebf6bc5bc22015194c9ba623fd2c0abe
+	b2sums = 908d8dc6d5be22db25f3850b849bd8b6ad13dcc9c2cc921f37a6f1b660cbfd0d271dc9dffe9c5dab8039c617170467a3e744b0c17e0aec4fd09b7635c563085c
+	b2sums = 230fb5dfbd658ab6fde7f948f434af29092108e4d2491b2370720e9057e14da0e9a78ce3841fae8319c0c4c191b40640dea27f960c7035491fc5c3cdd756d8a3
 
 pkgname = linux-aarch64-asahi
 	pkgdesc = The kernel and modules
@@ -34,7 +34,7 @@ pkgname = linux-aarch64-asahi
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = WIREGUARD-MODULE
-	provides = linux=6.12.1
+	provides = linux=6.12.2
 	provides = linux-asahi
 	conflicts = linux
 	replaces = wireguard-arch
