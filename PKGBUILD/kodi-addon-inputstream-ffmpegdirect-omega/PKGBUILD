@@ -6,7 +6,7 @@ _commitid=f81ec9fd1171a6af927f66eef910c18a5c997514
 
 pkgname=kodi-addon-inputstream-ffmpegdirect-omega
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
-pkgrel=1
+pkgrel=2
 pkgdesc="FFmpegdirect Inputstream addon for Kodi"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url="https://github.com/xbmc/inputstream.ffmpegdirect"
@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=(
 	'SKIP'
-	'fd3cc3adcac01e9a3ff01de84b715741d38b2f4dc9e17064679cc56e67b4358f'
+	'ae8c733b6cc3b1cc510d252be2ff680f44a19e44a2a98ba2566594f1a63003ce'
 )
 
 prepare() {

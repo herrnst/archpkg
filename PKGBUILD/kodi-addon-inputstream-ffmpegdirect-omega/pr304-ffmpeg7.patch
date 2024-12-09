@@ -64,14 +64,14 @@ index fa8ee93a..3a589d7e 100644
 +++ b/depends/common/ffmpeg/ffmpeg.sha256
 @@ -1 +1 @@
 -9a1fa94608300e835bf89bdfcd7d77deceba67bff3494f609816f84bd69a459e
-+8dab1da0c7ebccb2dce99265901f22ac40f8e0fbbe4a89a368d7645f2e79caa0
++7ddad2d992bd250a6c56053c26029f7e728bebf0f37f80cf3f8a0e6ec706431a
 diff --git a/depends/common/ffmpeg/ffmpeg.txt b/depends/common/ffmpeg/ffmpeg.txt
 index 2d01c290..258694f9 100644
 --- a/depends/common/ffmpeg/ffmpeg.txt
 +++ b/depends/common/ffmpeg/ffmpeg.txt
 @@ -1 +1 @@
 -ffmpeg https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n6.0.tar.gz
-+ffmpeg https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n7.0.1.tar.gz
++ffmpeg https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n7.1.tar.gz
 diff --git a/src/stream/FFmpegStream.cpp b/src/stream/FFmpegStream.cpp
 index 8bf474f3..c77e09dd 100644
 --- a/src/stream/FFmpegStream.cpp
