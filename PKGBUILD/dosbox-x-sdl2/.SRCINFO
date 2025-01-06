@@ -1,6 +1,6 @@
 pkgbase = dosbox-x-sdl2
 	pkgdesc = x86 emulator with builtin DOS, with patches and more features
-	pkgver = 2024.07.01+git20240705.3ca4fbc
+	pkgver = 2025.01.01+git20250105.7da02c3
 	pkgrel = 1
 	url = http://dosbox-x.com
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = dosbox-x-sdl2
 	conflicts = dosbox-x-git
 	conflicts = dosbox-x
 	conflicts = dosbox-x-sdl2-git
-	source = dosbox-x-sdl2::git+https://github.com/joncampbell123/dosbox-x.git#commit=3ca4fbca2077b802414db9f7f73f931cc5dc4aa2
+	source = dosbox-x-sdl2::git+https://github.com/joncampbell123/dosbox-x.git#commit=7da02c33737852d52d2e9fd1bda07e01de0c2100
 	source = 001-mt32_aarch64.patch
 	sha256sums = SKIP
 	sha256sums = 413c25ec5242d14ac6406c1b13ef7097f9b7ae85c069624318ad4252e8d9a7f7
