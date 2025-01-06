@@ -1,6 +1,6 @@
 pkgbase = mesa-asahi-git
 	pkgdesc = An open-source implementation of the OpenGL specification
-	pkgver = 25.0.0+git20241111.ad35794
+	pkgver = 25.0.0+git20250105.ff1005e
 	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = aarch64
@@ -41,10 +41,10 @@ pkgbase = mesa-asahi-git
 	makedepends = python-packaging
 	options = debug
 	options = !lto
-	source = https://gitlab.freedesktop.org/asahi/mesa/-/archive/ad35794788cc1c42a2ca37d538d236a915cdeaa8/mesa-ad35794788cc1c42a2ca37d538d236a915cdeaa8.tar.gz
+	source = https://gitlab.freedesktop.org/asahi/mesa/-/archive/ff1005e56e07a402ac6eb9ba771ce85c23dbc567/mesa-ff1005e56e07a402ac6eb9ba771ce85c23dbc567.tar.gz
 	source = LICENSE
 	source = pr283-virtio.patch
-	sha512sums = f52b553f7c8c32c79ef8cb9b64ae8c2c8badf8e4f8fe42d63c6c07b026976df12308b993bbb73a6aea636b707fe5a9957e5fd14a4a544b3411f68f711102b7bd
+	sha512sums = 9659be9764a92232bdc01406dc29f07b205000eb30217022f328c30652b6c2a2b34e9f2016d40f58b58459d8caaaab3242c16e1fcef17ea6b8d6ad3fdba2066f
 	sha512sums = f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7
 	sha512sums = c6c1db1ae173e90ebb96c431ccee6478221801f0ce79b8b53b8d750a410a94b423b523ab337b3765295f3b8a8d8ef51178d46d0d80e27970175979f6ced24483
 
