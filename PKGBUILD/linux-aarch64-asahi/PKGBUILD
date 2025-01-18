@@ -16,10 +16,10 @@
 buildarch=8
 
 pkgbase=linux-aarch64-asahi
-pkgver=6.12.8
+pkgver=6.12.10
 pkgrel=1
 
-_srcdir="linux-asahi-${pkgver}-asahi"
+_srcdir="linux-asahi-${pkgver}-asahi-atcphy"
 _m1n1_version=1.3.2
 _kernelname=${pkgbase#linux}
 _desc="AArch64 Apple Silicon (M1 development kernel)"
@@ -32,12 +32,12 @@ makedepends=(
 )
 options=('!strip')
 source=(
-  https://github.com/herrnst/linux-asahi/archive/refs/tags/v${pkgver}-asahi.tar.gz
+  https://github.com/herrnst/linux-asahi/archive/refs/tags/v${pkgver}-asahi-atcphy.tar.gz
   config         # merged olddefconfig+asahi+asahiedge config file
 )
-sha256sums=('85e3d62d66faa62af9871ad37c4b73d6c490cc1f130a38932557ca8d24cb5034'
+sha256sums=('6aa5953c6c9f502cc2e8f41ad796fc0adb78b676920ac8af4c1f69438fa03275'
             'f469db7030822b2849e28b0945d771b2b4963431f8cc41a59e90d63f631f989f')
-b2sums=('dbc6809c2eec07a2dd20205ad051aae477a554a5e59cd872c401b9a2ea6d158ac2c3f3576b9311af6b87e15099811e83bf7bd7fca8396b940f4b426d3062fe17'
+b2sums=('5a4ea572c5c72e3d3929c4d4abc6fe85179bfe05d30289d4bb1b4f3c3910564153127a5ebf3edd22b6286f06c6de490126acfa748bec1c0e027bbaa072a61584'
         '8154aaaa9d319e5d9c0c9b9d5ab4ead8057db777c00d24e4bdc2d25ad7288b67d6c84f79a02975ea541a7ed88f85e5b61d9dddd2c0de7e89ab83add1e890dcfc')
 
 prepare() {
