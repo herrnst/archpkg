@@ -1,8 +1,8 @@
 # Maintainer: Hector Martin <marcan@marcan.st>
 
-_version=1.4.17
-_commitdate=20250117
-_commitid=2000f7706d436d76ff948c71164d0fdca5ed7b24
+_version=1.4.19
+_commitdate=20250125
+_commitid=168de834d8c132049e058aff2fb6425dfb55d60d
 
 pkgname=m1n1-git
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
@@ -24,11 +24,11 @@ source=(
 )
 sha256sums=('ffa129b5cae8debd4ffd97f7f1ac7f571c7ba4679793cd138918c2ae76a7103d'
             SKIP
-            'bf86a935cec575d30594db9aa3e4027e25c9643d72a6ebb4adade89dbf4131c0'
+            'b3e99a0a63542666ede6cd5994560256f43b7b7d79540c166759796f43868e05'
 )
 b2sums=('26e9668f7c7393fec24b53b184ea0eabed4f46479c1aab26728d01c179091683cc4387ff83796bdcbb289376236faf9f651197b9fbba51e52540e58ebdc8bcc5'
         SKIP
-        'e0c6f6411ead1aa080d5326e360eb81155eef721fca13169ac05ba56f04362e581908557cc6743a2e32177c5a34afa6580abfaf567387725b504e4ca6fab9eaa'
+        'eb1a4d24258bf5d4150d9101ce674afb57e801b9002711f59daae5d700a4a7af94d571ae7dedc59a9106dc95d7f0b5b35b6b0137cc87933e7d1dd323945cf6ca'
 )
 
 prepare() {
