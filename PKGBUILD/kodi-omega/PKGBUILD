@@ -24,8 +24,8 @@ _clangbuild=
 _renderer=gl
 
 _version=21.2.0
-_commitdate=20250131
-_commitid=9e48b00e64cad18cc5fd753157a15164c22a9496
+_commitdate=20250211
+_commitid=eed2039346810dff9452bd3014bcd7519f1bb012
 pkgbase=kodi-omega
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpeg-dev")
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
@@ -86,7 +86,6 @@ source=(
   'cheat-sse-build.patch'
   'depends-fixup.patch'
   'ffmpeg-extraversion.patch'
-  'fix-libnfs-6-compatibility.patch'
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -110,7 +109,6 @@ b2sums=('SKIP'                                                                  
 	'6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0' # cheat-sse-build.patch
 	'23444b936dc74e3ab7a4377a6b42d57197004255960e3be10b43868d7bfbee54a715c8965f1bce481d9cc3de71c78424361e9d0ac3742a6f21586fcc73de9a3a' # depends-fixup
 	'05213eab0c9f99fa9ea67bc7de49888b2e055dba360a3a4db62c90686a2f802c86965e9982f1217c7244b97214a532c9765be022b78e7ccaf6af79b6dfc578e5' # ffmpeg-extraversion
-	'afddcfb4c7dd1f4bb8ae8474878fe591f1fe39ae3ccf86751d497699718065fec86a7e1171f7954d9b4251fc80239940cc8a156eddc2b21fde7ecc1ede50d9a1' # fix-libnfs-6-compatibility.patch
 )
 
 prepare() {
@@ -126,9 +124,6 @@ prepare() {
 
   # patch out FFmpeg extraversion
   patch -p1 -i "$srcdir/ffmpeg-extraversion.patch"
-
-  # patch libnfs 6.x compatibility
-  patch -p1 -i "$srcdir/fix-libnfs-6-compatibility.patch"
 
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
