@@ -1,8 +1,8 @@
 # Maintainer: Daniel Scheller <d.scheller@gmx.net>
 
-_version=21.5.7
-_commitdate=20241116
-_commitid=b585676accf876f29c496062a57ce55d1cd77e42
+_version=21.5.13
+_commitdate=20250504
+_commitid=9eb85d2f505efcb499369df46d14c693ac93e437
 _bento4_version=1.6.0-641-3-Omega
 
 pkgname=kodi-addon-inputstream-adaptive-omega
@@ -19,10 +19,12 @@ conflicts=("${pkgname%-omega}" "${pkgname%-omega}-git")
 # kodi 20
 source=("$pkgname::git+https://github.com/xbmc/inputstream.adaptive.git#commit=$_commitid"
 	"bento4-$_bento4_version.tar.gz::https://github.com/xbmc/Bento4/archive/refs/tags/$_bento4_version.tar.gz"
+	"0001-gcc-15-build-fixes.patch"
 )
 b2sums=(
 	'SKIP'
 	'ae38a7f0f155efb3e31f2fb3ffeec29ae68ed524307c277e3b522ee60b0d7fa1ae8b35931837bddbba90d91c69ce51b81c7ecf9c3559ca5d6fde401aacb36327'
+	'e7cb1245906c4806e978232a3a33aa2a2c0a2f5c689517c27e9496e75d8730d3ce3b365d2aa24f50637072cbdce555deffedbebae91a1080044844a63a037ff4'
 )
 
 prepare() {
@@ -30,8 +32,8 @@ prepare() {
   mkdir -p "$srcdir/$pkgname/$pkgname-build"
 
   # add whatever source preparation steps are needed, ie. apply patches
-  #cd "$srcdir/$pkgname"
-  #patch -p1 -i patchfile
+  cd "$srcdir/$pkgname"
+  patch -p1 -i "$srcdir/0001-gcc-15-build-fixes.patch"
 }
 
 build() {

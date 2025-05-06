@@ -1,0 +1,34 @@
+From da033ceefb17b27b9d2b12373c89e4e3c9e51546 Mon Sep 17 00:00:00 2001
+From: BlackEagle <ike.devolder@gmail.com>
+Date: Sun, 4 May 2025 14:49:02 +0200
+Subject: [PATCH] gcc 15 build fixes
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+```
+error: ‘uint16_t’ does not name a type
+```
+
+add `#include <cstdint>`
+
+Signed-off-by: BlackEagle <ike.devolder@gmail.com>
+---
+ src/common/AdaptiveUtils.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/common/AdaptiveUtils.h b/src/common/AdaptiveUtils.h
+index 7563cb86..89812532 100644
+--- a/src/common/AdaptiveUtils.h
++++ b/src/common/AdaptiveUtils.h
+@@ -13,6 +13,7 @@
+ #include <memory>
+ #include <string_view>
+ #include <vector>
++#include <cstdint>
+ 
+ // forwards
+ class AP4_Movie;
+-- 
+2.49.0
+
