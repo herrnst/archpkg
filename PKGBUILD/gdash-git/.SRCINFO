@@ -1,0 +1,23 @@
+pkgbase = gdash-git
+	pkgdesc = A Boulder Dash clone, intended to be as close to the original as possible.
+	pkgver = 1.9.15+git20250106.e775952
+	pkgrel = 1
+	url = https://github.com/revvv/gdash-export-CrLi.git
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gettext
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = git
+	depends = gtk3
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	source = gdash-git::git+https://github.com/revvv/gdash-export-CrLi.git#commit=e775952eca74f8314158bc583261f83d98dbb6db
+	source = no-po.patch
+	sha512sums = SKIP
+	sha512sums = 0d0bfc9cbea7da0125319154159f18f000816e76f2f03be0ff5e2f9ff4a863b6b3937c16b23d6df7cb56e095632d7ea153e2ff85abc81d22a7cdc60821c164af
+
+pkgname = gdash-git

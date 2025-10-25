@@ -1,0 +1,48 @@
+#
+# Maintainer: Uffe Jakobsen <uffe@uffe.org>
+#
+
+_tagver=1.9.15
+_commitdate=20250106
+_commitid=e775952eca74f8314158bc583261f83d98dbb6db
+
+pkgname=gdash-git
+pkgver=${_tagver}+git${_commitdate}.${_commitid:0:7}
+pkgrel=1
+pkgdesc="A Boulder Dash clone, intended to be as close to the original as possible."
+arch=("i686" "x86_64" "aarch64")
+url="https://github.com/revvv/gdash-export-CrLi.git"
+license=("MIT")
+depends=("gtk3" "sdl2" "sdl2_image" "sdl2_mixer")
+makedepends=("gettext" "autoconf" "automake" "git")
+conflict=("gdash")
+source=(
+	"$pkgname::git+https://github.com/revvv/gdash-export-CrLi.git#commit=$_commitid"
+	"no-po.patch"
+)
+sha512sums=(
+	'SKIP'
+	'0d0bfc9cbea7da0125319154159f18f000816e76f2f03be0ff5e2f9ff4a863b6b3937c16b23d6df7cb56e095632d7ea153e2ff85abc81d22a7cdc60821c164af'
+)
+
+build() {
+  cd "${srcdir}/${pkgname}"
+
+  # Disable building po dir
+  patch -p1 < ../no-po.patch
+
+  # Run autoconf
+  autoreconf -fvi -I /usr/share/gettext/m4
+
+  # Build
+  ./configure --prefix=/usr --with-gtk --with-sdl --enable-sound || return 1
+
+  # be sure to descend into include/ first
+  make -j1 -C include
+  make -j$(nproc) || return 1
+}
+
+package() {
+  cd "${srcdir}/${pkgname}"
+  make DESTDIR="${pkgdir}/" install
+}
