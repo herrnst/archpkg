@@ -1,8 +1,8 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 
-_tagver=2025.05.03
-_commitdate=20250812
-_commitid=cbdc94cc660e065c84ee1e920d1cfca9061841f6
+_tagver=2025.10.07
+_commitdate=20251021
+_commitid=5e7f129f43683a0dd5a797d29b962a429d9bd0a7
 
 pkgname=dosbox-x-sdl2
 pkgver=${_tagver}+git${_commitdate}.${_commitid:0:7}
@@ -18,10 +18,12 @@ conflicts=('dosbox-x-git' 'dosbox-x' 'dosbox-x-sdl2-git')
 source=(
 	"$pkgname::git+https://github.com/joncampbell123/dosbox-x.git#commit=$_commitid"
 	'001-mt32_aarch64.patch'
+	'revertcmos.patch'
 )
 sha256sums=(
 	'SKIP'
 	'413c25ec5242d14ac6406c1b13ef7097f9b7ae85c069624318ad4252e8d9a7f7'
+	'fe5e04c75ecb654db78ea23bdf7fbb6e1abda16da4700c0f8edbd3e973266242'
 )
 
 build() {
@@ -29,6 +31,9 @@ build() {
 
   # Enable MT32 on aarch64
   patch -p1 < ../001-mt32_aarch64.patch
+
+  # Revert possibly problematic CMOS changes (which at least break Windows NT)
+  patch -p1 < ../revertcmos.patch
 
   ./update-build-timestamp.pl
   ./autogen.sh
