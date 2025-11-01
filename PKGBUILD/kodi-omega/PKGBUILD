@@ -23,9 +23,9 @@ _clangbuild=
 # define the applicaton render system, valid values are either 'gl' or 'gles'
 _renderer=gl
 
-_version=21.2.0
-_commitdate=20250424
-_commitid=f3e64b9cc2d71b098ed508f01f583d0f3bea7cd1
+_version=21.3.0
+_commitdate=20251031
+_commitid=7d3fb6a324e236b5ba83e8aa9912bcba14c897e9
 pkgbase=kodi-omega
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpeg-dev")
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
@@ -69,7 +69,7 @@ _libdvdcss_version="1.4.3-Next-Nexus-Alpha2-2"
 _libdvdnav_version="6.1.1-Next-Nexus-Alpha2-2"
 _libdvdread_version="6.1.3-Next-Nexus-Alpha2-2"
 _ffmpeg_version="7.1"
-_dav1d_version="1.5.1"
+_dav1d_version="1.5.2"
 _crossguid_version="ca1bf4b810e2d188d04cb6286f957008ee1b7681"
 _fstrcmp_version="0.7.D001"
 _libudfread_version="1.1.2"
@@ -102,12 +102,12 @@ b2sums=('SKIP'                                                                  
 	'db4d05836d8fbb3637ae50bdbfc0e4b612ee6b3be24addfea94ce772c3bf28d58b63a3f252d6f9f016f72f8cbb841cc1820b091226b136f4c4664385a32da73c' # libdvdnav
 	'c94feb5a03a12efa5b7767965118d2500a088299ea36f3b82e46d157e45893e6b04503cb50f179ca681bac914457607fab26acfa6e304752b355c407578572d1' # libdvdread
 	'cc4afe1cd3f74e5275831b5a225f544399d8e6f61611fc623a0edb2cda8adf1d69f27233f8b7dc749682a2fd87d4212193e143b2acb729aa47fb5851ba879085' # ffmpeg
-	'7d715d26c602fcd9085a3c52e6f136b0ae82a1c61ce7149d9979c43ab87f507ee13c1842d46dbc9c14d7ee7a04aa0b8da233018d898f4d752b3d14aa866be0e8' # dav1d
+	'b2de8d6328341002fc3640eb62a395c2cf77f1a35344d3b6e07d581d3086c96e07356984fe48a9a635026f5a0057c85affd5a00a2823a527141795bf1ebb7b3a' # dav1d
 	'0f78a8ab5a420297f666b3b8156d499a9141ec25c049d4d2bb2ba594dc585abe211a149b83c605cce4f5530207231a065d5f3a87a0c969781de8c6381afa2527' # crossguid
 	'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e' # fstrcmp
 	'1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61' # libudfread
 	'6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0' # cheat-sse-build.patch
-	'23444b936dc74e3ab7a4377a6b42d57197004255960e3be10b43868d7bfbee54a715c8965f1bce481d9cc3de71c78424361e9d0ac3742a6f21586fcc73de9a3a' # depends-fixup
+	'b8afb9dca79bfb2dc3b9afb99c4d558cefa91240cf5f94971934f6f96f929bd97c46992d6972f9c28105ad0cf1b81f278b57af21ef62b6612c8bef3d5432403b' # depends-fixup
 	'05213eab0c9f99fa9ea67bc7de49888b2e055dba360a3a4db62c90686a2f802c86965e9982f1217c7244b97214a532c9765be022b78e7ccaf6af79b6dfc578e5' # ffmpeg-extraversion
 )
 
