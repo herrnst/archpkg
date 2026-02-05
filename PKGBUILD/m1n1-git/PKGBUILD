@@ -1,8 +1,8 @@
 # Maintainer: Hector Martin <marcan@marcan.st>
 
-_version=1.4.19
-_commitdate=20250125
-_commitid=168de834d8c132049e058aff2fb6425dfb55d60d
+_version=1.5.2
+_commitdate=20260201
+_commitid=af8e3b8f34f7e249106f81cef22dea6eb4fad28e
 
 pkgname=m1n1-git
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
@@ -13,7 +13,7 @@ _artwork_srcname=artwork-${_artwork_commit_id}
 arch=('aarch64')
 url='http://asahilinux.org'
 license=('MIT')
-makedepends=( imagemagick git )
+makedepends=( imagemagick git cargo-nightly )
 conflicts=('m1n1')
 replaces=('m1n1')
 provides=("m1n1=${_version}")
@@ -32,6 +32,13 @@ b2sums=('26e9668f7c7393fec24b53b184ea0eabed4f46479c1aab26728d01c179091683cc4387f
 )
 
 prepare() {
+  # Make sure we have a nightly rust toolchain
+  rustup toolchain install nightly && rustup target install aarch64-unknown-none-softfloat
+
+  # Update git submodules
+  cd "${srcdir}"/m1n1
+  git submodule update --init
+
   rm -rf "${srcdir}"/m1n1/artwork
   cp -r "${srcdir}/$_artwork_srcname" "${srcdir}"/m1n1/artwork
 
