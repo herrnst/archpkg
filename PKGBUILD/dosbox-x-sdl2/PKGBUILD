@@ -1,8 +1,8 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 
-_tagver=2025.10.07
-_commitdate=20251021
-_commitid=5e7f129f43683a0dd5a797d29b962a429d9bd0a7
+_tagver=2026.01.02
+_commitdate=20260204
+_commitid=fe47cfb20de17f9cf3c3a4382aa23a29e090e102
 
 pkgname=dosbox-x-sdl2
 pkgver=${_tagver}+git${_commitdate}.${_commitid:0:7}
