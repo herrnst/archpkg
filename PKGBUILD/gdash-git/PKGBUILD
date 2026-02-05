@@ -2,9 +2,9 @@
 # Maintainer: Uffe Jakobsen <uffe@uffe.org>
 #
 
-_tagver=1.9.15
-_commitdate=20250106
-_commitid=e775952eca74f8314158bc583261f83d98dbb6db
+_tagver=1.10.2
+_commitdate=20260204
+_commitid=195047cd4ee216e50f1225b3f8d518986ee664a6
 
 pkgname=gdash-git
 pkgver=${_tagver}+git${_commitdate}.${_commitid:0:7}
@@ -14,7 +14,7 @@ arch=("i686" "x86_64" "aarch64")
 url="https://github.com/revvv/gdash-export-CrLi.git"
 license=("MIT")
 depends=("gtk3" "sdl2" "sdl2_image" "sdl2_mixer")
-makedepends=("gettext" "autoconf" "automake" "git")
+makedepends=("gettext" "autoconf" "automake" "git" "tar")
 conflict=("gdash")
 source=(
 	"$pkgname::git+https://github.com/revvv/gdash-export-CrLi.git#commit=$_commitid"
