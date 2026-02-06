@@ -1,6 +1,6 @@
 pkgbase = uboot-asahi
 	pkgdesc = U-Boot for Apple Silicon Macs
-	pkgver = 2024.10+git20241029.4b6e0ff
+	pkgver = 2025.10+git20260123.4411224
 	pkgrel = 1
 	url = http://asahilinux.org
 	arch = aarch64
@@ -8,8 +8,8 @@ pkgbase = uboot-asahi
 	license = GPL2
 	makedepends = bc
 	makedepends = imagemagick
-	source = u-boot-2024.10+git20241029.4b6e0ff.tar.gz::https://github.com/AsahiLinux/u-boot/archive/4b6e0ff9087fba59f189b8f0ca3c3f6cf26e704f.tar.gz
-	sha256sums = 97bd414926166e91b4a7594de6cf9ea6c2573308af474470270d0c58a0683c67
-	b2sums = dbe047ed8832d56b3088642e73f38dc91ab17c00031d02dd69e5b392278295ba767ff3736a27adb488f38174223ac5a3f0a9f70ec84ae83cb173920c32e13648
+	source = u-boot-2025.10+git20260123.4411224.tar.gz::https://github.com/AsahiLinux/u-boot/archive/4411224f218ee67526f74d10cd3b3a7cd70ff2ad.tar.gz
+	sha256sums = ecb9f772f50e459f9e6586ca69ac79873c58115892110162321b4197ee3d56a8
+	b2sums = 7dfab60c76ae7bb83a021e2ff90eb77821999057a9864afa5579c3767ecaf21d91b11aafac36a22e37c3311b0ec4b982cb5608fcbf48e2660db546e369548fff
 
 pkgname = uboot-asahi
