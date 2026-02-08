@@ -1,6 +1,6 @@
 pkgbase = linux-aarch64-rpi
 	pkgver = 6.18.9
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.kernel.org/
 	arch = aarch64
 	license = GPL2
@@ -20,7 +20,7 @@ pkgbase = linux-aarch64-rpi
 	source = 90-linux.hook
 	md5sums = 8176d8c06fd7454a0f158c4a22745745
 	md5sums = 3b781286c0b97cec552ad6c8a7a019dd
-	md5sums = 1da76f73f30d09ccad4a25d88bd24df6
+	md5sums = 67d080d4862dfe21daf1e41d5ebcb630
 	md5sums = 41cb5fef62715ead2dd109dbea8413d6
 	md5sums = 0a5f16bfec6ad982a2f6782724cca8ba
 	md5sums = 3dc88030a8f2f5a5f97266d99b149f77
