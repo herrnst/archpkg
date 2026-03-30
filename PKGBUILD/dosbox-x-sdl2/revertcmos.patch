@@ -1,8 +1,8 @@
 diff --git a/CHANGELOG b/CHANGELOG
-index 7de7a408c..bcb49e9ae 100644
+index 5ca63d86ec..28c9d0e0de 100644
 --- a/CHANGELOG
 +++ b/CHANGELOG
-@@ -1041,15 +1041,6 @@ Next version
+@@ -1349,15 +1349,6 @@
      instances of DOSBox. (joncampbell123)
    - Added record function to capture NE2000 network traffic to a
      pcap/Wireshark file in the capture directory. (joncampbell123)
@@ -19,10 +19,10 @@ index 7de7a408c..bcb49e9ae 100644
      allocated block position. (maxpat78)
    - Enhanced Dynamic and Differencing VHD support #4273 (maxpat78)
 diff --git a/src/dos/dos.cpp b/src/dos/dos.cpp
-index c44763fdd..93c24323b 100644
+index d499927998..0c23b330d5 100644
 --- a/src/dos/dos.cpp
 +++ b/src/dos/dos.cpp
-@@ -608,24 +608,6 @@ char appname[DOSNAMEBUF+2+DOS_NAMELENGTH_ASCII], appargs[CTBUF];
+@@ -623,24 +623,6 @@ char appname[DOSNAMEBUF+2+DOS_NAMELENGTH_ASCII], appargs[CTBUF];
  bool dos_program_running = false;
  bool DOS_BreakINT23InProgress = false;
  
@@ -47,7 +47,7 @@ index c44763fdd..93c24323b 100644
  void DOS_PrintCBreak() {
  	/* print ^C <newline> */
  	uint16_t n = 4;
-@@ -1514,18 +1496,18 @@ static Bitu DOS_21Handler(void) {
+@@ -1541,18 +1523,18 @@ static Bitu DOS_21Handler(void) {
                  reg_dh = BCD2BIN((unsigned int)mem_readb(memaddr+1) >> 4u);
                  reg_dl = BCD2BIN(mem_readb(memaddr+2));
                  reg_al = BCD2BIN(mem_readb(memaddr+1) & 0xFu);
@@ -76,7 +76,7 @@ index c44763fdd..93c24323b 100644
  
                  // calculate day of week (we could of course read it from CMOS, but never mind)
                  /* Use Zeller's congruence */
-@@ -1539,6 +1521,9 @@ static Bitu DOS_21Handler(void) {
+@@ -1566,6 +1548,9 @@ static Bitu DOS_21Handler(void) {
                  reg_al = weekday < 0 ? weekday + 7 : weekday;
                  /* Sunday=0, Monday=1, ... */
              }
@@ -85,8 +85,8 @@ index c44763fdd..93c24323b 100644
 +            dos.date.day=reg_dl;
              break;
          case 0x2b:      /* Set System Date */
-             {
-@@ -1614,24 +1599,20 @@ static Bitu DOS_21Handler(void) {
+ #if !defined(OSFREE)
+@@ -1643,24 +1628,20 @@ static Bitu DOS_21Handler(void) {
                  reg_dl = 0;
              }
              else {
@@ -124,7 +124,7 @@ index c44763fdd..93c24323b 100644
              }
  
              //Simulate DOS overhead for timing-sensitive games
-@@ -1654,8 +1635,8 @@ static Bitu DOS_21Handler(void) {
+@@ -1684,8 +1665,8 @@ static Bitu DOS_21Handler(void) {
                  }
                  else {
                      // timer ticks every 55ms
@@ -136,10 +136,10 @@ index c44763fdd..93c24323b 100644
                      CPU_Push16(reg_ax);
                      CPU_Push16(reg_cx);
 diff --git a/src/gui/sdlmain.cpp b/src/gui/sdlmain.cpp
-index dfc9e2eae..811acf017 100644
+index 77f4f32124..13de1a37b0 100644
 --- a/src/gui/sdlmain.cpp
 +++ b/src/gui/sdlmain.cpp
-@@ -7546,7 +7546,6 @@ void IDE_Init();
+@@ -7816,7 +7816,6 @@ void IDE_Init();
  void NE2K_Init();
  void FDC_Primary_Init();
  void AUTOEXEC_Init();
@@ -147,18 +147,18 @@ index dfc9e2eae..811acf017 100644
  
  #if defined(WIN32)
  // NTS: I intend to add code that not only indicates High DPI awareness but also queries the monitor DPI
-@@ -7637,9 +7636,6 @@ bool VM_Boot_DOSBox_Kernel() {
+@@ -7911,9 +7910,6 @@ bool VM_Boot_DOSBox_Kernel() {
  
          DispatchVMEvent(VM_EVENT_DOS_INIT_KERNEL_READY); // <- kernel is ready
  
 -        /* Date/time */
 -        DOS_InitClock();
 -
+ #if !defined(OSFREE)
          /* keyboard mapping, at this point in CONFIG.SYS parsing, right? */
          void DOS_KeyboardLayout_Startup(Section* sec);
-         DOS_KeyboardLayout_Startup(NULL);
 diff --git a/src/hardware/cmos.cpp b/src/hardware/cmos.cpp
-index 501840fb4..76e4e1e02 100644
+index 501840fb45..76e4e1e02a 100644
 --- a/src/hardware/cmos.cpp
 +++ b/src/hardware/cmos.cpp
 @@ -44,113 +44,25 @@ static struct {
@@ -718,7 +718,7 @@ index 501840fb4..76e4e1e02 100644
      AddExitFunction(AddExitFunctionFuncPair(CMOS_Destroy),true);
      AddVMEventFunction(VM_EVENT_RESET,AddVMEventFunctionFuncPair(CMOS_Reset));
  }
-@@ -576,10 +613,14 @@ public:
+@@ -576,10 +613,14 @@ class SerializeCmos : public SerializeGlobalPOD
          registerPOD(cmos.regs);
          registerPOD(cmos.nmi);
          registerPOD(cmos.reg);
@@ -734,10 +734,10 @@ index 501840fb4..76e4e1e02 100644
  } dummy;
  }
 diff --git a/src/ints/bios.cpp b/src/ints/bios.cpp
-index 645878bea..dbdaeb908 100644
+index 507a5ac122..5a28fbaa68 100644
 --- a/src/ints/bios.cpp
 +++ b/src/ints/bios.cpp
-@@ -6229,8 +6229,7 @@ static Bitu INT11_Handler(void) {
+@@ -6443,8 +6443,7 @@ static Bitu INT11_Handler(void) {
  #define DOSBOX_CLOCKSYNC 0
  #endif
  
@@ -747,7 +747,7 @@ index 645878bea..dbdaeb908 100644
      uint32_t milli = 0;
  #if defined(DB_HAVE_CLOCK_GETTIME) && ! defined(WIN32)
      struct timespec tp;
-@@ -6257,7 +6256,6 @@ uint32_t BIOS_HostTimeSync(uint32_t /*ticks*/) {
+@@ -6471,7 +6470,6 @@ uint32_t BIOS_HostTimeSync(uint32_t /*ticks*/) {
      loctime->tm_year = 2007 - 1900;
      */
  
@@ -755,7 +755,7 @@ index 645878bea..dbdaeb908 100644
      dos.date.day=(uint8_t)loctime->tm_mday;
      dos.date.month=(uint8_t)loctime->tm_mon+1;
      dos.date.year=(uint16_t)loctime->tm_year+1900;
-@@ -6273,8 +6271,6 @@ uint32_t BIOS_HostTimeSync(uint32_t /*ticks*/) {
+@@ -6487,8 +6485,6 @@ uint32_t BIOS_HostTimeSync(uint32_t /*ticks*/) {
          nticks = ticks;
  
      return nticks;
@@ -764,7 +764,7 @@ index 645878bea..dbdaeb908 100644
  }
  
  // TODO: make option
-@@ -6326,10 +6322,6 @@ static Bitu INT8_PC98_Handler(void) {
+@@ -6540,10 +6536,6 @@ static Bitu INT8_PC98_Handler(void) {
      return CBRET_NONE;
  }
  
@@ -775,7 +775,7 @@ index 645878bea..dbdaeb908 100644
  extern bool sync_time, manualtime;
  bool sync_time_timerrate_warning = false;
  
-@@ -6360,11 +6352,6 @@ static Bitu INT8_Handler(void) {
+@@ -6574,11 +6566,6 @@ static Bitu INT8_Handler(void) {
              BIOS_KEYBOARD_SetLEDs(should_be);
      }
  
@@ -787,7 +787,7 @@ index 645878bea..dbdaeb908 100644
      if (sync_time&&!manualtime) {
  #if DOSBOX_CLOCKSYNC
          static bool check = false;
-@@ -6417,7 +6404,6 @@ static Bitu INT8_Handler(void) {
+@@ -6631,7 +6618,6 @@ static Bitu INT8_Handler(void) {
              }
          }
      }
@@ -795,7 +795,7 @@ index 645878bea..dbdaeb908 100644
      mem_writed(BIOS_TIMER,value);
  
  	if(bootdrive>=0) {
-@@ -8305,11 +8291,6 @@ static Bitu pc98_default_stop_handler(void) {
+@@ -8519,11 +8505,6 @@ static Bitu pc98_default_stop_handler(void) {
      return CBRET_NONE;
  }
  
@@ -807,7 +807,7 @@ index 645878bea..dbdaeb908 100644
  /* NTS: Remember the 8259 is non-sentient, and the term "slave" is used in a computer programming context */
  static Bitu Default_IRQ_Handler_Cooperative_Slave_Pic(void) {
      /* PC-98 style IRQ 8-15 handling.
-@@ -10468,19 +10449,8 @@ private:
+@@ -10686,19 +10667,8 @@ class BIOS:public Module_base{
  
              uint32_t value = 0;
  
