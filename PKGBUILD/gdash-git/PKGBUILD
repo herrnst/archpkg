@@ -3,8 +3,8 @@
 #
 
 _tagver=1.10.2
-_commitdate=20260204
-_commitid=195047cd4ee216e50f1225b3f8d518986ee664a6
+_commitdate=20260330
+_commitid=dfa9a400869c65ec6bdb99f37da5a6ce7c3eca2f
 
 pkgname=gdash-git
 pkgver=${_tagver}+git${_commitdate}.${_commitid:0:7}
