@@ -1,8 +1,8 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 
-_tagver=2026.01.02
-_commitdate=20260204
-_commitid=fe47cfb20de17f9cf3c3a4382aa23a29e090e102
+_tagver=2026.03.29
+_commitdate=20260330
+_commitid=b6dff3015cad5e166188d0a575215875e3f63844
 
 pkgname=dosbox-x-sdl2
 pkgver=${_tagver}+git${_commitdate}.${_commitid:0:7}
@@ -23,7 +23,7 @@ source=(
 sha256sums=(
 	'SKIP'
 	'413c25ec5242d14ac6406c1b13ef7097f9b7ae85c069624318ad4252e8d9a7f7'
-	'fe5e04c75ecb654db78ea23bdf7fbb6e1abda16da4700c0f8edbd3e973266242'
+	'f73cde6f5e0ad04ab643658be38a05a5e15d14667293160b98839d86eac2058a'
 )
 
 build() {
