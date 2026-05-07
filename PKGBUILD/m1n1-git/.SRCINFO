@@ -1,6 +1,6 @@
 pkgbase = m1n1-git
 	pkgdesc = Asahi Linux bootloader
-	pkgver = 1.5.2+git20260312.46fc983
+	pkgver = 1.5.2+git20260506.3e76436
 	pkgrel = 1
 	url = http://asahilinux.org
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = m1n1-git
 	conflicts = m1n1
 	replaces = m1n1
 	source = artwork-35626c31f5c5a8a884aaff93f864795026495742.tar.gz::https://github.com/AsahiLinux/artwork/archive/35626c31f5c5a8a884aaff93f864795026495742.tar.gz
-	source = git+https://github.com/AsahiLinux/m1n1.git#commit=46fc983b1cc6deb3e7b77ef672a5d18164e49878
+	source = git+https://github.com/AsahiLinux/m1n1.git#commit=3e764361537a7c316b1e471921470a8202300024
 	source = fix-makefile
 	sha256sums = ffa129b5cae8debd4ffd97f7f1ac7f571c7ba4679793cd138918c2ae76a7103d
 	sha256sums = SKIP
