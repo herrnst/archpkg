@@ -1,9 +1,9 @@
 # Maintainer: Hector Martin <marcan@marcan.st>
 
 pkgname=uboot-asahi
-_ver=2025.10
-_commitdate=20260123
-_commitid=4411224f218ee67526f74d10cd3b3a7cd70ff2ad
+_ver=2026.04
+_commitdate=20260501
+_commitid=10c5e0e5f01bf7360ecb8dc06e02daba4c6b60e4
 
 pkgver=${_ver}+git${_commitdate}.${_commitid:0:7}
 pkgrel=1
@@ -16,8 +16,8 @@ makedepends=( bc imagemagick )
 source=(
   "u-boot-${pkgver}.tar.gz::https://github.com/AsahiLinux/u-boot/archive/${_commitid}.tar.gz"
 )
-sha256sums=('ecb9f772f50e459f9e6586ca69ac79873c58115892110162321b4197ee3d56a8')
-b2sums=('7dfab60c76ae7bb83a021e2ff90eb77821999057a9864afa5579c3767ecaf21d91b11aafac36a22e37c3311b0ec4b982cb5608fcbf48e2660db546e369548fff')
+sha256sums=('3c7693aba50ef3041a08b03dda180c47b15bf28c6ab927049d74eae0c3287302')
+b2sums=('593a449c42dae75fda87b2a53a7c17a10f8ac85d59775ab40a8a1cff600ab2dfd2369cbaf8d0dcf7434b506edd9539b7e2e8568847fdeabbb61914dd720d7992')
 
 prepare() {
   cd "${srcdir}/$_srcname"
@@ -35,5 +35,5 @@ package() {
   tgtdir="$pkgdir/usr/lib/asahi-boot"
 
   install -Dt "$tgtdir" -m644 "$_srcname/u-boot-nodtb.bin"
-  install -Dt "$tgtdir/dtb" -m644 "$_srcname/arch/arm/dts/"t[86]*.dtb
+  install -Dt "$tgtdir/dtb" -m644 "$_srcname/dts/upstream/src/arm64/apple/"t[86]*.dtb
 }
