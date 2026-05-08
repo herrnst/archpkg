@@ -6,7 +6,7 @@ _commitid=3e764361537a7c316b1e471921470a8202300024
 
 pkgname=m1n1-git
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
-pkgrel=1
+pkgrel=2
 pkgdesc='Asahi Linux bootloader'
 _artwork_commit_id=35626c31f5c5a8a884aaff93f864795026495742
 _artwork_srcname=artwork-${_artwork_commit_id}
@@ -21,14 +21,17 @@ source=(
   "artwork-${_artwork_commit_id}.tar.gz::https://github.com/AsahiLinux/artwork/archive/${_artwork_commit_id}.tar.gz"
   "git+https://github.com/AsahiLinux/m1n1.git#commit=$_commitid"
   "fix-makefile"
+  "tbt-acio-alias"
 )
 sha256sums=('ffa129b5cae8debd4ffd97f7f1ac7f571c7ba4679793cd138918c2ae76a7103d'
             SKIP
             'b3e99a0a63542666ede6cd5994560256f43b7b7d79540c166759796f43868e05'
+            '81ce1c84d8039acf34a8615ee4a08bd69ab8840d141e619271847806222a1566'
 )
 b2sums=('26e9668f7c7393fec24b53b184ea0eabed4f46479c1aab26728d01c179091683cc4387ff83796bdcbb289376236faf9f651197b9fbba51e52540e58ebdc8bcc5'
         SKIP
         'eb1a4d24258bf5d4150d9101ce674afb57e801b9002711f59daae5d700a4a7af94d571ae7dedc59a9106dc95d7f0b5b35b6b0137cc87933e7d1dd323945cf6ca'
+        'b2ea3110458c2ef926237eb64e559b3512d7e9fb15a50a3aeae77582bf3dde458a4fb132ceee69ba71efa9f47f68de7f160e2431521dce53ce7bd2c7cf734f7d'
 )
 
 prepare() {
@@ -46,6 +49,7 @@ prepare() {
   # apply patches/modify sources as needed
 
   patch -p1 < "${srcdir}"/fix-makefile
+  patch -p1 < "${srcdir}"/tbt-acio-alias
 }
 
 build() {

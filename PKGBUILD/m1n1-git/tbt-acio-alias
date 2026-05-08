@@ -1,0 +1,25 @@
+From 3e781e2d2582c0c05d70a243d5fb40ad9e253d81 Mon Sep 17 00:00:00 2001
+From: Sven Peter <sven@svenpeter.dev>
+Date: Sun, 18 Jan 2026 13:21:23 +0100
+Subject: [PATCH] kboot: Change name of acio alias
+
+The root block is the ACIO co-processor and not the USB4 root complex (rc)
+
+Signed-off-by: Sven Peter <sven@svenpeter.dev>
+---
+ src/kboot.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/kboot.c b/src/kboot.c
+index 05c941047..73104abd5 100644
+--- a/src/kboot.c
++++ b/src/kboot.c
+@@ -1218,7 +1218,7 @@ static int dt_set_acio_tunables(void)
+         snprintf(adt_path, sizeof(adt_path), "/arm-io/acio%d", i);
+ 
+         memset(fdt_alias, 0, sizeof(fdt_alias));
+-        snprintf(fdt_alias, sizeof(fdt_alias), "usb4_%d_rc", i);
++        snprintf(fdt_alias, sizeof(fdt_alias), "usb4_%d_acio", i);
+         dt_copy_acio_tunables(adt_path, fdt_alias, usb4_rc_tunables,
+                               sizeof(usb4_rc_tunables) / sizeof(*usb4_rc_tunables));
+ 
