@@ -1,12 +1,12 @@
 # Maintainer: Hector Martin <marcan@marcan.st>
 
 _version=1.5.2
-_commitdate=20260506
-_commitid=3e764361537a7c316b1e471921470a8202300024
+_commitdate=20260515
+_commitid=37b7f749a965ce90a9360c77eae900d4893385eb
 
 pkgname=m1n1-git
 pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
-pkgrel=2
+pkgrel=1
 pkgdesc='Asahi Linux bootloader'
 _artwork_commit_id=35626c31f5c5a8a884aaff93f864795026495742
 _artwork_srcname=artwork-${_artwork_commit_id}
