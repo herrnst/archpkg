@@ -1,8 +1,8 @@
 diff --git a/CHANGELOG b/CHANGELOG
-index 5ca63d86ec..28c9d0e0de 100644
+index 77d13c768..a18f1dd8f 100644
 --- a/CHANGELOG
 +++ b/CHANGELOG
-@@ -1349,15 +1349,6 @@
+@@ -1601,15 +1601,6 @@ Next version
      instances of DOSBox. (joncampbell123)
    - Added record function to capture NE2000 network traffic to a
      pcap/Wireshark file in the capture directory. (joncampbell123)
@@ -18,8 +18,43 @@ index 5ca63d86ec..28c9d0e0de 100644
    - Fixed VHD disk image calculation of footer position and, thus, of newly
      allocated block position. (maxpat78)
    - Enhanced Dynamic and Differencing VHD support #4273 (maxpat78)
+diff --git a/src/debug/debug.cpp b/src/debug/debug.cpp
+index e47294956..2f5bb17a8 100644
+--- a/src/debug/debug.cpp
++++ b/src/debug/debug.cpp
+@@ -149,7 +149,6 @@ extern bool logBuffSuppressConsole;
+ extern bool logBuffSuppressConsoleNeedUpdate;
+ 
+ void DEBUG_PrintGUS();
+-void DEBUG_PrintRTC();
+ 
+ // Forwards
+ static void DrawCode(void);
+@@ -3235,22 +3234,8 @@ bool ParseCommand(char* str) {
+         return true;
+     }
+ 
+-    if (command == "RTC") {
+-        while (*found == ' ') found++;
+-        command.clear(); // iostream >> command does not update "command" if there is no string there, so it's basically fancy scanf() then!
+-        stream >> command;
+-        while (*found != 0 && *found != ' ') found++;
+-        while (*found == ' ') found++;
+-
+-        if (command == "") {
+-            DEBUG_PrintRTC();
+-            return true;
+-        }
+-    }
+-
+     if (command == "VGA") {
+         while (*found == ' ') found++;
+-        command.clear(); // iostream >> command does not update "command" if there is no string there, so it's basically fancy scanf() then!
+         stream >> command;
+         while (*found != 0 && *found != ' ') found++;
+         while (*found == ' ') found++;
 diff --git a/src/dos/dos.cpp b/src/dos/dos.cpp
-index d499927998..0c23b330d5 100644
+index a23a08487..0b6fbb418 100644
 --- a/src/dos/dos.cpp
 +++ b/src/dos/dos.cpp
 @@ -623,24 +623,6 @@ char appname[DOSNAMEBUF+2+DOS_NAMELENGTH_ASCII], appargs[CTBUF];
@@ -136,10 +171,10 @@ index d499927998..0c23b330d5 100644
                      CPU_Push16(reg_ax);
                      CPU_Push16(reg_cx);
 diff --git a/src/gui/sdlmain.cpp b/src/gui/sdlmain.cpp
-index 77f4f32124..13de1a37b0 100644
+index 442d1a88e..bad2ae4cb 100644
 --- a/src/gui/sdlmain.cpp
 +++ b/src/gui/sdlmain.cpp
-@@ -7816,7 +7816,6 @@ void IDE_Init();
+@@ -7833,7 +7833,6 @@ void IDE_Init();
  void NE2K_Init();
  void FDC_Primary_Init();
  void AUTOEXEC_Init();
@@ -147,7 +182,7 @@ index 77f4f32124..13de1a37b0 100644
  
  #if defined(WIN32)
  // NTS: I intend to add code that not only indicates High DPI awareness but also queries the monitor DPI
-@@ -7911,9 +7910,6 @@ bool VM_Boot_DOSBox_Kernel() {
+@@ -7928,9 +7927,6 @@ bool VM_Boot_DOSBox_Kernel() {
  
          DispatchVMEvent(VM_EVENT_DOS_INIT_KERNEL_READY); // <- kernel is ready
  
@@ -158,10 +193,10 @@ index 77f4f32124..13de1a37b0 100644
          /* keyboard mapping, at this point in CONFIG.SYS parsing, right? */
          void DOS_KeyboardLayout_Startup(Section* sec);
 diff --git a/src/hardware/cmos.cpp b/src/hardware/cmos.cpp
-index 501840fb45..76e4e1e02a 100644
+index 88f297650..76e4e1e02 100644
 --- a/src/hardware/cmos.cpp
 +++ b/src/hardware/cmos.cpp
-@@ -44,113 +44,25 @@ static struct {
+@@ -44,116 +44,28 @@ static struct {
      bool lock;                  // lock bit set (no updates)
      uint8_t reg;
      struct {
@@ -281,8 +316,13 @@ index 501840fb45..76e4e1e02a 100644
 -    {
 +    if (cmos.timer.enabled) {
          double index = PIC_FullIndex();
-         double remd = fma((index/(double)cmos.timer.delay), -(double)cmos.timer.delay, index);
-         //double remd = fmod(index, (double)cmos.timer.delay); // original delay calculation
+-        //double remd = fma((index/(double)cmos.timer.delay), -(double)cmos.timer.delay, index); // no, this doesn't work
+-        double remd = fmod(index, (double)cmos.timer.delay); // original delay calculation
++        double remd = fma((index/(double)cmos.timer.delay), -(double)cmos.timer.delay, index);
++        //double remd = fmod(index, (double)cmos.timer.delay); // original delay calculation
+         //double remd = index - trunc(index / (double)cmos.timer.delay) * (double)cmos.timer.delay; // alternative fix
+         //LOG_MSG("cmos timerevent: index=%f, interval=%f", index, cmos.timer.delay - remd);
+ 
 @@ -166,11 +78,6 @@ static void cmos_timerevent(Bitu val) {
              cmos.last.ended -= fmod(cmos.last.ended,1000);
              cmos.last.ended += 1000;
@@ -304,16 +344,70 @@ index 501840fb45..76e4e1e02a 100644
              double delay = (double)cmos.last.ended + 1000 - index;
              if (delay < 0.01) delay = 0.01;
              PIC_AddEvent(cmos_timerevent, (float)delay);
-@@ -194,7 +101,7 @@ static void cmos_checktimer(void) {
+@@ -194,58 +101,17 @@ static void cmos_checktimer(void) {
      PIC_RemoveEvents(cmos_timerevent);
      if (cmos.timer.div<=2) cmos.timer.div+=7;
      cmos.timer.delay=(1000.0f/(32768.0f / (1 << (cmos.timer.div - 1))));
--    if (!cmos.timer.div) return;
+-    if (!cmos.timer.div) {
+-        LOG(LOG_PIT,LOG_DEBUG)("RTC Timer at %.2f hz, but the divider is zero, so the clock tick is disabled",1000.0/cmos.timer.delay);
+-        return;
+-    }
 +    if (!cmos.timer.div || !cmos.timer.enabled) return;
-     LOG(LOG_PIT,LOG_NORMAL)("RTC Timer at %.2f hz",1000.0/cmos.timer.delay);
- //  PIC_AddEvent(cmos_timerevent,cmos.timer.delay);
++    LOG(LOG_PIT,LOG_NORMAL)("RTC Timer at %.2f hz",1000.0/cmos.timer.delay);
++//  PIC_AddEvent(cmos_timerevent,cmos.timer.delay);
      /* A rtc is always running */
-@@ -220,7 +127,7 @@ void cmos_selreg(Bitu port,Bitu val,Bitu iolen) {
+     //double remd=fmod(PIC_FullIndex(),(double)cmos.timer.delay);
+     double index = PIC_FullIndex();
+-    //double remd = fma((index / (double)cmos.timer.delay), -(double)cmos.timer.delay, index); // no, this doesn't work
+-    double remd = fmod(index, (double)cmos.timer.delay); // original delay calculation
+-    LOG(LOG_PIT,LOG_DEBUG)("RTC Timer at %.2f hz index=%.3f remd=%.3f delay=%.3f",1000.0/cmos.timer.delay,index,remd,cmos.timer.delay);
++    double remd = fma((index / (double)cmos.timer.delay), -(double)cmos.timer.delay, index);
+     PIC_AddEvent(cmos_timerevent,(float)((double)cmos.timer.delay-remd)); //Should be more like a real pc. Check
+ //  status reg A reading with this (and with other delays actually)
+ }
+ 
+-#if C_DEBUG
+-void DEBUG_PrintRTC(void) {
+-        double index = PIC_FullIndex();
+-        //double remd = fma((index/(double)cmos.timer.delay), -(double)cmos.timer.delay, index); // no, this doesn't work
+-        double remd = fmod(index, (double)cmos.timer.delay); // original delay calculation
+-
+-	LOG_MSG("RTC: year=%u mon=%u day=%u wday=%u hour=%u min=%u sec=%u",
+-		cmos.clock.year,cmos.clock.month,cmos.clock.day,
+-		cmos.clock.weekday,cmos.clock.hour,cmos.clock.min,cmos.clock.sec);
+-	LOG_MSG("RTC: alarmhour=%u alarmmin=%u alarmsec=%u",
+-		cmos.alarm.hour,cmos.alarm.min,cmos.alarm.sec);
+-	LOG_MSG("RTC: clock_time_t=%lu reg=%02x lock=%u ampm=%u bcd=%u nmi=%u",
+-		(unsigned long)cmos.clock_time_t,
+-		cmos.reg,cmos.lock,cmos.ampm,cmos.bcd,cmos.nmi);
+-	LOG_MSG("RTC: div=%u delay=%.3f ack=%u remaining_time_to_delay=%.3f",
+-		cmos.timer.div,
+-		(double)cmos.timer.delay,
+-		cmos.timer.acknowledged,
+-		remd);
+-	LOG_MSG("RTC: now=%.3f last_ended=%.3f since_last=%.3f",
+-		index,
+-		cmos.last.ended,
+-		index - cmos.last.ended);
+-
+-	char tmp[64];
+-	std::string tms;
+-	for (unsigned int i=0;i < 0x40;i++) {
+-		if ((i&15) != 0) tms += " ";
+-		sprintf(tmp,"%02x",cmos.regs[i]);
+-		tms += tmp;
+-		if ((i&15) == 15) {
+-			LOG_MSG("RTC: regs[%02x-%02x]: %s",i,i+0xF,tms.c_str());
+-			tms.clear();
+-		}
+-	}
+-}
+-#endif
+-
+ void cmos_selreg(Bitu port,Bitu val,Bitu iolen) {
+     (void)port;//UNUSED
+     (void)iolen;//UNUSED
+@@ -261,7 +127,7 @@ void cmos_selreg(Bitu port,Bitu val,Bitu iolen) {
  static void cmos_writereg(Bitu port,Bitu val,Bitu iolen) {
      (void)port;//UNUSED
      (void)iolen;//UNUSED
@@ -322,7 +416,7 @@ index 501840fb45..76e4e1e02a 100644
          if (cmos.bcd)           // values supplied are BCD, convert to binary values
          {
              if ((val & 0xf0) > 0x90 || (val & 0x0f) > 0x09) return;     // invalid BCD value
-@@ -236,95 +143,164 @@ static void cmos_writereg(Bitu port,Bitu val,Bitu iolen) {
+@@ -277,99 +143,164 @@ static void cmos_writereg(Bitu port,Bitu val,Bitu iolen) {
                  val = ((val >> 4) * 10) + (val & 0x0f);
              }
          }
@@ -436,12 +530,11 @@ index 501840fb45..76e4e1e02a 100644
 +            loctime->tm_year += (int)((val - 19) * 100);
              break;
 -        case 0x0a:      /* Status reg A */
--            cmos.regs[cmos.reg]=val & 0x7f;
--            if ((val & 0x70)!=0x20) LOG(LOG_BIOS,LOG_ERROR)("CMOS:Illegal 22 stage divider value");
--            cmos.timer.div=(val & 0xf);
--            cmos_checktimer();
--            break;
--        case 0x0b:      /* Status reg B */
+-            if (cmos.regs[cmos.reg] != (uint8_t)val) {
+-                cmos.regs[cmos.reg]=val & 0x7f;
+-                if ((val & 0x70)!=0x20) LOG(LOG_BIOS,LOG_ERROR)("CMOS:Illegal 22 stage divider value");
+-                cmos.timer.div=(val & 0xf);
+-                cmos_checktimer();
 +
 +        case 0x01:      /* Seconds Alarm */
 +        case 0x03:      /* Minutes Alarm */
@@ -456,30 +549,20 @@ index 501840fb45..76e4e1e02a 100644
 +        if (newtime != (time_t)-1)
 +        {
 +            if (!cmos.lock)         // no lock, takes immediate effect
-             {
--                cmos.ampm = !(val & 0x02);
--                cmos.bcd = !(val & 0x04);
--                cmos.lock = (val & 0x80) != 0;
--                if (cmos.lock) val &= ~0x10; /* Setting bit 7 clears bit 4 (UEI) */
--                cmos.regs[cmos.reg] = (uint8_t)val;
--                cmos_checktimer();
++            {
 +                cmos.time_diff = newtime - time(NULL);  // calculate new diff
              }
 -            break;
--        case 0x0c:      /* Status reg C */
--            break;
--        case 0x0d:      /* Status reg D */
--            cmos.regs[cmos.reg]=val & 0x80; /*Bit 7=1:RTC Power on*/
--            break;
--        case 0x0f:      /* Shutdown status byte */
--            cmos.regs[cmos.reg]=val & 0x7f;
--            break;
--        default:
--            LOG(LOG_BIOS, LOG_NORMAL)("CMOS:Writing to register %x", cmos.reg);
--            cmos.regs[cmos.reg]=val;
--            break;
+-        case 0x0b:      /* Status reg B */
 +            else
-+            {
+             {
+-                if (cmos.regs[cmos.reg] != (uint8_t)val) {
+-                    cmos.ampm = !(val & 0x02);
+-                    cmos.bcd = !(val & 0x04);
+-                    cmos.lock = (val & 0x80) != 0;
+-                    if (cmos.lock) val &= ~0x10; /* Setting bit 7 clears bit 4 (UEI) */
+-                    cmos.regs[cmos.reg] = (uint8_t)val;
+-                    cmos_checktimer();
 +                cmos.locktime.tv_sec = newtime;         // store for later use
 +                // no need to set usec, we don't use it
 +            }
@@ -528,8 +611,21 @@ index 501840fb45..76e4e1e02a 100644
 +                    // locked for the first time, calculate dosbox UTC
 +                    gettimeofday(&cmos.locktime, NULL);
 +                    cmos.locktime.tv_sec += cmos.time_diff;
-+                }
-+            }
+                 }
+             }
+-            break;
+-        case 0x0c:      /* Status reg C */
+-            break;
+-        case 0x0d:      /* Status reg D */
+-            cmos.regs[cmos.reg]=val & 0x80; /*Bit 7=1:RTC Power on*/
+-            break;
+-        case 0x0f:      /* Shutdown status byte */
+-            cmos.regs[cmos.reg]=val & 0x7f;
+-            break;
+-        default:
+-            LOG(LOG_BIOS, LOG_NORMAL)("CMOS:Writing to register %x", cmos.reg);
+-            cmos.regs[cmos.reg]=val;
+-            break;
 +            else if (waslocked)         // time was locked, now unlock
 +            {
 +                // calculate new diff between real UTC and dosbox UTC
@@ -554,7 +650,7 @@ index 501840fb45..76e4e1e02a 100644
      }
  }
  
-@@ -349,44 +325,105 @@ static Bitu cmos_readreg(Bitu port,Bitu iolen) {
+@@ -394,44 +325,105 @@ static Bitu cmos_readreg(Bitu port,Bitu iolen) {
          return 0xff;
      }
  
@@ -684,7 +780,7 @@ index 501840fb45..76e4e1e02a 100644
      case 0x0c:      /* Status register C */
      {
          cmos.timer.acknowledged=true;
-@@ -528,15 +565,15 @@ void CMOS_Reset(Section* sec) {
+@@ -573,15 +565,15 @@ void CMOS_Reset(Section* sec) {
      if (IS_PC98_ARCH)
          return;
  
@@ -702,7 +798,7 @@ index 501840fb45..76e4e1e02a 100644
      cmos.regs[0x0c] = 0;
      cmos.regs[0x0d]=(uint8_t)0x80;
      // Equipment is updated from bios.cpp and bios_disk.cpp
-@@ -552,13 +589,13 @@ void CMOS_Reset(Section* sec) {
+@@ -597,13 +589,13 @@ void CMOS_Reset(Section* sec) {
      cmos.regs[0x18]=(uint8_t)(exsize >> 8);
      cmos.regs[0x30]=(uint8_t)exsize;
      cmos.regs[0x31]=(uint8_t)(exsize >> 8);
@@ -718,7 +814,7 @@ index 501840fb45..76e4e1e02a 100644
      AddExitFunction(AddExitFunctionFuncPair(CMOS_Destroy),true);
      AddVMEventFunction(VM_EVENT_RESET,AddVMEventFunctionFuncPair(CMOS_Reset));
  }
-@@ -576,10 +613,14 @@ class SerializeCmos : public SerializeGlobalPOD
+@@ -621,10 +613,14 @@ public:
          registerPOD(cmos.regs);
          registerPOD(cmos.nmi);
          registerPOD(cmos.reg);
@@ -734,7 +830,7 @@ index 501840fb45..76e4e1e02a 100644
  } dummy;
  }
 diff --git a/src/ints/bios.cpp b/src/ints/bios.cpp
-index 507a5ac122..5a28fbaa68 100644
+index 5eb671128..f484c5e1a 100644
 --- a/src/ints/bios.cpp
 +++ b/src/ints/bios.cpp
 @@ -6443,8 +6443,7 @@ static Bitu INT11_Handler(void) {
@@ -807,7 +903,7 @@ index 507a5ac122..5a28fbaa68 100644
  /* NTS: Remember the 8259 is non-sentient, and the term "slave" is used in a computer programming context */
  static Bitu Default_IRQ_Handler_Cooperative_Slave_Pic(void) {
      /* PC-98 style IRQ 8-15 handling.
-@@ -10686,19 +10667,8 @@ class BIOS:public Module_base{
+@@ -10690,19 +10671,8 @@ private:
  
              uint32_t value = 0;
  
