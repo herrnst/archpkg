@@ -1,0 +1,36 @@
+# Maintainer: drakkan <nicola dot murino at gmail dot com>
+# Contributor: XZS <d dot f dot fischer at web dot de>
+# Contributor: Carl George < arch at cgtx dot us >
+# Contributor: Janne Haapsaari <haaja@iki.fi>
+# Contributor: Christopher Krooß <didi2002 at web.de>
+
+_version=105
+_commitdate=20260605
+_commitid=248d42bb64c5e4d21203562f2ef68baf8c9ff083
+
+_pkgname=dash-to-dock
+
+pkgname=gnome-shell-extension-${_pkgname}
+pkgver=${_version}+git${_commitdate}.${_commitid:0:7}
+pkgrel=1
+epoch=1
+pkgdesc="Move the dash out of the overview transforming it in a dock"
+arch=('any')
+url="https://micheleg.github.io/dash-to-dock/"
+license=('GPL-2.0-or-later')
+depends=('gnome-shell')
+makedepends=('gettext' 'git' 'sassc')
+source=("git+https://github.com/micheleg/dash-to-dock.git#commit=$_commitid")
+sha256sums=('SKIP')
+
+build() {
+  cd "${srcdir}"/${_pkgname}
+  make
+}
+
+package() {
+  cd "${srcdir}"/${_pkgname}
+  make DESTDIR="${pkgdir}" VERSION="${pkgver}" install
+}
+
+# vim:set ts=2 sw=2 et:
