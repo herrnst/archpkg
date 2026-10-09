@@ -6,7 +6,7 @@ buildarch=8
 
 pkgbase=linux-aarch64-rpi-16k
 pkgver=7.2.9
-pkgrel=1
+pkgrel=2
 _srcdir="linux-raspberrypi-${pkgver}-rpi"
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
@@ -20,13 +20,15 @@ source=("https://github.com/herrnst/linux-raspberrypi/archive/refs/tags/v${pkgve
         'config'
         'linux.preset'
         '60-linux.hook'
-        '90-linux.hook')
+        '90-linux.hook'
+        'nvme-fua-kc3000.patch')
 md5sums=('b53f4886f6ef044184e03478016dc305'
          '3b781286c0b97cec552ad6c8a7a019dd'
          '40e01b04fa71d2da583c7321b682248b'
          '41cb5fef62715ead2dd109dbea8413d6'
          '0a5f16bfec6ad982a2f6782724cca8ba'
-         '3dc88030a8f2f5a5f97266d99b149f77')
+         '3dc88030a8f2f5a5f97266d99b149f77'
+         '404227e00d171542a9a9a92ee7d86a83')
 
 prepare() {
   cd ${_srcdir}
@@ -37,6 +39,9 @@ prepare() {
 
   # ALARM patches
   git apply ../0001-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
+
+  # Kingston KC3000 FUA quirk
+  patch -p1 < ../nvme-fua-kc3000.patch
 
   cat "${srcdir}/config" > ./.config
 }
