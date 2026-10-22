@@ -1,9 +1,9 @@
 diff --git a/Makefile b/Makefile
-index 141b76e..7e40d28 100644
+index 336edc94..f6d4f9c5 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -232,13 +232,13 @@ build/$(NAME).bin: build/$(NAME)-raw.elf
- 	$(QUIET)$(OBJCOPY) -O binary --strip-debug $< $@
+@@ -286,13 +286,13 @@ build/$(NAME).bin: build/$(NAME)-asahi.bin build/$(LOGO).logo
+ endif
  
  .INTERMEDIATE: build-tag build-cfg
 -build-tag src/../build/build_tag.h &:
