@@ -1,9 +1,9 @@
 # Maintainer: Hector Martin <marcan@marcan.st>
 
 pkgname=uboot-asahi
-_ver=2026.04
-_commitdate=20260501
-_commitid=10c5e0e5f01bf7360ecb8dc06e02daba4c6b60e4
+_ver=2026.07
+_commitdate=20260904
+_commitid=ec49c9d70e6ab003813d6f475fec62dc1c0f4bfe
 
 pkgver=${_ver}+git${_commitdate}.${_commitid:0:7}
 pkgrel=1
@@ -16,8 +16,8 @@ makedepends=( bc imagemagick )
 source=(
   "u-boot-${pkgver}.tar.gz::https://github.com/AsahiLinux/u-boot/archive/${_commitid}.tar.gz"
 )
-sha256sums=('3c7693aba50ef3041a08b03dda180c47b15bf28c6ab927049d74eae0c3287302')
-b2sums=('593a449c42dae75fda87b2a53a7c17a10f8ac85d59775ab40a8a1cff600ab2dfd2369cbaf8d0dcf7434b506edd9539b7e2e8568847fdeabbb61914dd720d7992')
+sha256sums=('46d2cbf8d55a32375e6047b298bf2ea2045f12a10724f559c4f15ef49fbbf1f4')
+b2sums=('ccba06d0af2d7db2e84346ab7d30f8f7081a3d4bee3cdaf10f369441180b566c5d092f905019f7ec2437978c73e7a7a0001cf88ed0653c5609ee434ccec633cd')
 
 prepare() {
   cd "${srcdir}/$_srcname"
