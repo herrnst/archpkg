@@ -1,0 +1,14 @@
+pkgbase = firmware-apple-avd-git
+	pkgdesc = Apple AVD firmware
+	pkgver = 0.1+git20260919.220b1e7
+	pkgrel = 1
+	url = https://github.com/AsahiLinux/avd-fw.git
+	arch = aarch64
+	license = MIT
+	makedepends = meson
+	makedepends = git
+	makedepends = clang
+	source = firmware-apple-avd-git::git+https://github.com/AsahiLinux/avd-fw.git#commit=220b1e70c9d7dcccbf66d5194e372300aa3c5a32
+	sha512sums = SKIP
+
+pkgname = firmware-apple-avd-git

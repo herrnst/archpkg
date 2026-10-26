@@ -1,0 +1,40 @@
+# Apple AVD firmware PKGBUILD
+
+_tagver=0.1
+_commitdate=20260919
+_commitid=220b1e70c9d7dcccbf66d5194e372300aa3c5a32
+
+pkgname=firmware-apple-avd-git
+pkgver=${_tagver}+git${_commitdate}.${_commitid:0:7}
+pkgrel=1
+pkgdesc="Apple AVD firmware"
+arch=("aarch64")
+url="https://github.com/AsahiLinux/avd-fw.git"
+license=("MIT")
+makedepends=("meson" "git" "clang")
+source=(
+	"$pkgname::git+https://github.com/AsahiLinux/avd-fw.git#commit=$_commitid"
+)
+sha512sums=(
+	'SKIP'
+)
+
+build() {
+  cd "${srcdir}/${pkgname}"
+
+  # Strip all compiler options
+  export CFLAGS=""
+  export CXXFLAGS=""
+  export CPPFLAGS=""
+  export LDFLAGS=""
+
+  # Prepare build
+  mkdir -p build
+  meson setup --cross-file=./llvm.ini --buildtype=release -Dprefix=/usr build && cd build
+  meson compile
+}
+
+package() {
+  cd "${srcdir}/${pkgname}"
+  cd build && meson install --destdir="${pkgdir}/"
+}
