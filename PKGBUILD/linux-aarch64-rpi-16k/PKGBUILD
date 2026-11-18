@@ -5,7 +5,7 @@
 buildarch=8
 
 pkgbase=linux-aarch64-rpi-16k
-pkgver=7.2.15
+pkgver=7.3.5
 pkgrel=1
 _srcdir="linux-raspberrypi-${pkgver}-rpi"
 _kernelname=${pkgbase#linux}
@@ -22,9 +22,9 @@ source=("https://github.com/herrnst/linux-raspberrypi/archive/refs/tags/v${pkgve
         '60-linux.hook'
         '90-linux.hook'
         'nvme-fua-kc3000.patch')
-md5sums=('c671180238045e4adbcd3c8f326b78f0'
+md5sums=('28664bf82d6fe6a96ee0bf3ba58dbcef'
          '3b781286c0b97cec552ad6c8a7a019dd'
-         '3897126b05338f5f6cd37cdc6f046b0b'
+         'b966ff2b9855cc4b24c0e12de2fac925'
          '41cb5fef62715ead2dd109dbea8413d6'
          '0a5f16bfec6ad982a2f6782724cca8ba'
          '3dc88030a8f2f5a5f97266d99b149f77'
